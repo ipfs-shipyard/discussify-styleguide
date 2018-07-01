@@ -1,0 +1,36 @@
+@import "variables.css";
+
+.floating-d {
+    width: 60px;
+    height: 60px;
+    border: 2px solid transparent;
+    background-color: var(--color-white);
+    border-radius: 50%;
+    box-shadow: 0 11px 25px 0 var(--color-geyser);
+    color: var(--color-science-blue);
+    font-size: 16px;
+    transition-property: background-color, color, border-color;
+    transition-duration: 0.2s;
+    fill: var(--color-science-blue);
+
+    &:hover,
+    &:focus {
+        border-color: var(--color-science-blue);
+    }
+
+    &.has-unread {
+        border-color: var(--color-white);
+        background-color: var(--color-science-blue);
+        color: var(--color-white);
+        fill: var(--color-white);
+    }
+
+    &.has-unread:hover {
+        border-color: transparent;
+    }
+
+    & .logo {
+        width: 26px;
+        height: 23px;
+    }
+}

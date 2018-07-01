@@ -1,0 +1,17 @@
+@import "variables.css";
+
+.brand-logo {
+    &.normal {
+        width: 126px;
+        height: 14px;
+    }
+
+    &.abbr {
+        width: 44px;
+        height: 39px;
+    }
+
+    &.colored {
+        fill: var(--color-science-blue);
+    }
+}

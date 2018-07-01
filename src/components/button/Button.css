@@ -1,0 +1,49 @@
+@import "variables.css";
+
+.button {
+    min-width: 140px;
+    height: 44px;
+    padding: 10px 25px;
+    border: 0;
+    border-radius: 2px;
+    font-size: 14px;
+    transition-property: background-color, color, border-color, opacity;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+
+    &.full-width {
+        width: 100%;
+    }
+
+    &.primary {
+        background-color: var(--color-science-blue);
+        color: var(--color-white);
+    }
+
+    &.primary:hover,
+    &.primary:focus {
+        background-color: color(var(--color-science-blue) alpha(0.8));
+    }
+
+    &.primary[disabled] {
+        background-color: var(--color-seashell);
+        color: var(--color-gray);
+    }
+
+    &.secondary {
+        border: 1px solid var(--color-gray);
+        background-color: var(--color-white);
+        color: var(--color-black);
+    }
+
+    &.secondary:hover,
+    &.secondary:focus {
+        border-color: var(--color-science-blue);
+    }
+
+    &.secondary[disabled] {
+        border-color: var(--color-gray);
+        opacity: 0.4;
+        color: var(--color-gray);
+    }
+}

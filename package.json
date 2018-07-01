@@ -1,0 +1,47 @@
+{
+  "name": "@discussify/styleguide",
+  "version": "0.0.0",
+  "description": "Discussify's living styleguide",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "scripts": {
+    "start": "npm run storybook",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "discussify",
+    "styleguide",
+    "react"
+  ],
+  "author": "André Cruz <andre@moxy.studio>",
+  "license": "MIT",
+  "bugs": "https://github.com/ipfs-shipyard/discussify-styleguide/issues",
+  "homepage": "https://github.com/ipfs-shipyard/discussify-styleguide",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ipfs-shipyard/discussify-styleguide"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "normalize.css": "^8.0.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-knobs": "^3.4.8",
+    "@storybook/react": "^3.4.8",
+    "babel-core": "^6.26.3",
+    "eslint": "^4.19.1",
+    "eslint-config-moxy": "^5.4.1",
+    "external-svg-sprite-loader": "^3.4.1",
+    "postcss-preset-moxy": "^1.4.2",
+    "raw-loader": "^0.5.1",
+    "storybook-readme": "^3.3.0",
+    "stylelint": "^9.3.0",
+    "stylelint-config-moxy": "^5.0.0",
+    "svg-css-modules-loader": "^1.6.1",
+    "svgo-loader": "^2.1.0"
+  }
+}
