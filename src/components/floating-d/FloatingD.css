@@ -1,35 +1,55 @@
-@import "variables.css";
+@import "variables";
 
 .floating-d {
+    position: relative;
     width: 60px;
     height: 60px;
-    border: 2px solid transparent;
+    border: 0;
     background-color: var(--color-white);
     border-radius: 50%;
     box-shadow: 0 11px 25px 0 var(--color-geyser);
     color: var(--color-science-blue);
     font-size: 16px;
-    transition-property: background-color, color, border-color;
+    transition-property: background-color, color;
     transition-duration: 0.2s;
+    transition-timing-function: ease;
     fill: var(--color-science-blue);
 
-    &:hover,
-    &:focus {
-        border-color: var(--color-science-blue);
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-radius: 50%;
+        box-shadow: 0 0 0 0 var(--color-science-blue);
+        transition: box-shadow 0.2s ease;
     }
 
+    &:hover::after {
+        box-shadow: 0 0 0 2px var(--color-science-blue);
+    }
+
+    &.active,
+    &:focus,
     &.has-unread {
-        border-color: var(--color-white);
         background-color: var(--color-science-blue);
         color: var(--color-white);
         fill: var(--color-white);
-    }
 
-    &.has-unread:hover {
-        border-color: transparent;
+        &::after {
+            box-shadow: 0 0 0 0 var(--color-white);
+        }
+
+        &:hover::after {
+            box-shadow: 0 0 0 2px var(--color-white);
+        }
     }
 
     & .logo {
+        position: relative;
+        left: 2px;
         width: 26px;
         height: 23px;
     }

@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 import BrandLogo from '../brand-logo';
 import styles from './FloatingD.css';
 
-const FloatingD = ({ className, commentsCount, hasUnread, ...rest }) => {
+const FloatingD = ({ className, active, commentsCount, hasUnread, ...rest }) => {
     const hasComments = commentsCount > 0;
     const finalClassName = classNames(
         styles.floatingD,
+        active && styles.active,
         hasComments && hasUnread && styles.hasUnread,
         className
     );
@@ -22,6 +23,7 @@ const FloatingD = ({ className, commentsCount, hasUnread, ...rest }) => {
 };
 
 FloatingD.propTypes = {
+    active: PropTypes.bool,
     commentsCount: PropTypes.number,
     hasUnread: PropTypes.bool,
     className: PropTypes.string,

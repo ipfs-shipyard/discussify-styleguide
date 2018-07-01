@@ -27,7 +27,8 @@
     "normalize.css": "^8.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "react-dom": "^16.4.1",
+    "react-preload-image": "^1.0.4"
   },
   "devDependencies": {
     "@storybook/addon-knobs": "^3.4.8",
@@ -36,7 +37,7 @@
     "eslint": "^4.19.1",
     "eslint-config-moxy": "^5.4.1",
     "external-svg-sprite-loader": "^3.4.1",
-    "postcss-preset-moxy": "^1.4.2",
+    "postcss-preset-moxy": "^2.0.0",
     "raw-loader": "^0.5.1",
     "storybook-readme": "^3.3.0",
     "stylelint": "^9.3.0",

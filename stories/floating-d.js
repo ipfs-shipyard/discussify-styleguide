@@ -16,11 +16,13 @@ storiesOf('FloatingD', module)
     <FloatingD commentsCount={ 2 } onClick={ action('click') } />
 ))
 .add('Knobs playground ⚽', () => {
+    const active = boolean('active');
     const commentsCount = number('commentsCount');
     const hasUnread = boolean('hasUnread');
 
     return (
         <FloatingD
+            active={ active }
             commentsCount={ commentsCount }
             hasUnread={ hasUnread }
             onClick={ action('click') } />

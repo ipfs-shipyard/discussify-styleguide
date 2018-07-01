@@ -14,8 +14,8 @@ import { Button } from '@discussify/styleguide';
 
 | name | type | default | description |
 | -----| ---- | ------- | ----------- |
-| variant | string | | The variant of the button, can be one of: `primary`, `secondary` |
+| variant | string | *required* | The variant of the button, can be one of: `primary`, `secondary` |
 | fullWidth | boolean | false | Ocupies 100% width |
-| disabled | boolean | Sets the disabled state |
+| disabled | boolean | false | Sets the disabled state |
 
-Any other properties supplied will be spread to the root element (native element).
+Any other properties supplied will be spread to the root element.

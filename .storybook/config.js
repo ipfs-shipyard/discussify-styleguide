@@ -8,4 +8,5 @@ configure(() => {
     require('../stories/icon.js');
     require('../stories/button.js');
     require('../stories/floating-d.js');
+    require('../stories/avatar.js');
 }, module);

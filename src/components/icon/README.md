@@ -30,4 +30,4 @@ import mySvg from './path/to/my.svg';
 | -----| ---- | ------- | ----------- |
 | svg | string, object | | The svg contents or the object exported by [external-svg-sprite-loader](https://github.com/Karify/external-svg-sprite-loader) |
 
-Any other properties supplied will be spread to the root element (native element).
+Any other properties supplied will be spread to the root element.

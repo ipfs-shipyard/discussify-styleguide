@@ -18,4 +18,4 @@ import { FloatingD } from '@discussify/styleguide';
 | commentsCount | number | | Number of comments within the discussion |
 | hasUnread | bool | false | True if there's unread comments within the discussion |
 
-Any other properties supplied will be spread to the root element (native element).
+Any other properties supplied will be spread to the root element.

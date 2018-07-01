@@ -5,7 +5,7 @@ import styles from './Icon.css';
 
 // See: https://github.com/Karify/external-svg-sprite-loader
 
-const ExternalIcon = ({ svg, ...rest }) => (
+const SpriteIcon = ({ svg, ...rest }) => (
     <i { ...rest }>
         <svg viewBox={ svg.viewBox }>
             <use xlinkHref={ svg.symbol } />
@@ -13,7 +13,7 @@ const ExternalIcon = ({ svg, ...rest }) => (
     </i>
 );
 
-ExternalIcon.propTypes = {
+SpriteIcon.propTypes = {
     svg: PropTypes.object.isRequired,
 };
 
@@ -35,7 +35,7 @@ const Icon = (props) => {
 
     return typeof svg === 'string' ?
         <InlineIcon { ...finalProps } /> :
-        <ExternalIcon svg={ svg } { ...finalProps } />;
+        <SpriteIcon svg={ svg } { ...finalProps } />;
 };
 
 Icon.propTypes = {
