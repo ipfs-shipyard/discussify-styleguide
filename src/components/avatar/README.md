@@ -1,6 +1,6 @@
 # Avatar
 
-Avatar to render the user's image, fallbacking to the user's initials.
+Avatar to render the user's image, fallbacks to the user's initials.
 
 ## Usage
 
