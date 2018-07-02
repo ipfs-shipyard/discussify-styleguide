@@ -3,6 +3,7 @@ import './base/typography';
 import './avatar';
 import './brand-logo';
 import './button';
+import './circular-loader';
 import './dot-loader';
 import './floating-d';
 import './icon';
