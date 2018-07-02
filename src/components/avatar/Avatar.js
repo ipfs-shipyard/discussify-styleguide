@@ -14,13 +14,13 @@ const getInitials = (name) => {
     return deburr((first + second).trim()).toUpperCase();
 };
 
-const Avatar = ({ name, image, className, ...rest }) => {
+const Avatar = ({ name, image, lazy, className, ...rest }) => {
     const finalClassName = classNames(styles.avatar, className);
 
     return (
         <div { ...rest } className={ finalClassName }>
             { getInitials(name) }
-            { image ? <PreloadImage className={ styles.image } src={ image } lazy /> : null }
+            { image ? <PreloadImage className={ styles.image } src={ image } lazy={ lazy } /> : null }
         </div>
     );
 };
@@ -28,6 +28,7 @@ const Avatar = ({ name, image, className, ...rest }) => {
 Avatar.propTypes = {
     name: PropTypes.string.isRequired,
     image: PropTypes.string,
+    lazy: PropTypes.bool,
     className: PropTypes.string,
 };
 

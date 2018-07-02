@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
-import { withKnobs, text } from '@storybook/addon-knobs';
+import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import Avatar from '../src/components/avatar';
 import readme from '../src/components/avatar/README.md';
 
@@ -17,6 +17,7 @@ storiesOf('Avatar', module)
 .add('Knobs playground ⚽', () => {
     const name = text('name', 'André Cruz');
     const image = text('image', 'https://en.gravatar.com/userimage/102855892/467eb9028a2018993024d612255dc20e.png');
+    const lazy = boolean('lazy');
 
-    return <Avatar name={ name } image={ image } />;
+    return <Avatar name={ name } image={ image } lazy={ lazy } />;
 });

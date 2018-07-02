@@ -17,5 +17,6 @@ import { Avatar } from '@discussify/styleguide';
 | -----| ---- | ------- | ----------- |
 | name | string | *required* | The user's name |
 | image | string | | The user's image |
+| lazy | bool | false | Load the user's image only when it's about to enter the viewport |
 
 Any other properties supplied will be spread to the root element.
