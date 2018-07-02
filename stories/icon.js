@@ -10,7 +10,7 @@ const parsedIcons = Object.entries(icons).filter(([name]) => name !== 'default')
 const styles = {
     ul: {
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
         gridGap: 10,
         padding: 0,
         margin: 0,
@@ -20,15 +20,17 @@ const styles = {
         border: '1px solid #efefef',
         borderRadius: 4,
         padding: 20,
+        minHeight: 100,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        justifyContent: 'space-between',
     },
     icon: {
         marginBottom: 15,
     },
     usage: {
-        fontSize: 12,
+        fontSize: 13,
     },
 };
 
