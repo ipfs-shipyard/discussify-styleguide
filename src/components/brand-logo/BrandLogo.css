@@ -2,13 +2,13 @@
 
 .brand-logo {
     &.normal {
-        width: 126px;
-        height: 14px;
+        width: 12.6em;
+        height: 1.4em;
     }
 
     &.abbr {
-        width: 44px;
-        height: 39px;
+        width: 4.4em;
+        height: 3.9em;
     }
 
     &.colored {

@@ -10,6 +10,8 @@ import { BrandLogo } from '@discussify/styleguide';
 <BrandLogo variant="normal" />
 ```
 
+Please read the `Icon` documentation for how to change the color and size of the logos.
+
 ## Props
 
 | name | type | default | description |
