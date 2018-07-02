@@ -1,13 +1,13 @@
-# TypingLoader
+# DotLoader
 
-A horizontal loader.
+A dot loader.
 
 ## Usage
 
 ```jsx
-import { TypingLoader } from '@discussify/styleguide';
+import { DotLoader } from '@discussify/styleguide';
 
-<TypingLoader />
+<DotLoader />
 ```
 
 ### Changing the color
@@ -15,9 +15,9 @@ import { TypingLoader } from '@discussify/styleguide';
 You may change the dots color via the `color` CSS property.
 
 ```jsx
-import { TypingLoader } from '@discussify/styleguide';
+import { DotLoader } from '@discussify/styleguide';
 
-<TypingLoader style={ { color: 'red' } } />
+<DotLoader style={ { color: 'red' } } />
 ```
 
 ### Changing the size
@@ -25,9 +25,9 @@ import { TypingLoader } from '@discussify/styleguide';
 You may change the dots size via the `fontSize` CSS property.
 
 ```jsx
-import { TypingLoader } from '@discussify/styleguide';
+import { DotLoader } from '@discussify/styleguide';
 
-<TypingLoader style={ { fontSize: 20 } } />
+<DotLoader style={ { fontSize: 20 } } />
 ```
 
 ## Props

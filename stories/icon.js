@@ -5,7 +5,7 @@ import { withKnobs, object } from '@storybook/addon-knobs';
 import * as icons from '../src/components/icon';
 import readme from '../src/components/icon/README.md';
 
-const iconsWithoutDefault = Object.entries(icons).filter(([name]) => name !== 'default');
+const parsedIcons = Object.entries(icons).filter(([name]) => name !== 'default');
 
 const styles = {
     ul: {
@@ -25,8 +25,10 @@ const styles = {
         alignItems: 'center',
     },
     icon: {
-        textAlign: 'center',
         marginBottom: 15,
+    },
+    usage: {
+        fontSize: 12,
     },
 };
 
@@ -35,12 +37,12 @@ storiesOf('Icon', module)
 .addDecorator(withKnobs)
 .add('All icons', () => (
     <ul style={ styles.ul }>
-        { iconsWithoutDefault.map(([name, Icon]) => (
+        { parsedIcons.map(([name, Icon]) => (
             <li key={ name } style={ styles.li }>
                 <div style={ styles.icon }>
                     <Icon />
                 </div>
-                <code>{ `<${name} />` }</code>
+                <code style={ styles.usage }>{ `<${name} />` }</code>
             </li>
         )) }
     </ul>

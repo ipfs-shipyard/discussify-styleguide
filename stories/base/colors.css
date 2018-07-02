@@ -1,0 +1,29 @@
+@import "variables";
+
+.science-blue {
+    background-color: var(--color-science-blue);
+}
+
+.selago {
+    background-color: var(--color-selago);
+}
+
+.geyser {
+    background-color: var(--color-geyser);
+}
+
+.seashell {
+    background-color: var(--color-seashell);
+}
+
+.gray {
+    background-color: var(--color-gray);
+}
+
+.black {
+    background-color: var(--color-black);
+}
+
+.white {
+    background-color: var(--color-white);
+}

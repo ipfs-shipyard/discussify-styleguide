@@ -1,8 +1,15 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { withReadme } from 'storybook-readme';
+import marked from 'marked';
 
 /* eslint-disable max-len */
 storiesOf('base/Typography', module)
+.addDecorator(withReadme(marked(`
+# Typography
+
+Discussify's typography defaults, including headings, paragraphs and links.
+`)))
 .add('Headings', () => (
     <div>
         <h1>Heading 1</h1>
