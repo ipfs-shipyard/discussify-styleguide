@@ -8,20 +8,29 @@ import readme from '../src/components/brand-logo/README.md';
 storiesOf('BrandLogo', module)
 .addDecorator(withReadme(readme))
 .addDecorator(withKnobs)
-.add('Normal', () => (
-    <BrandLogo variant="normal" />
+.add('Horizontal', () => (
+    <BrandLogo variant="horizontal" />
 ))
-.add('Normal colored', () => (
-    <BrandLogo variant="normal" colored />
+.add('Vertical', () => (
+    <BrandLogo variant="vertical" />
 ))
-.add('Abbreviated', () => (
-    <BrandLogo variant="abbr" />
+.add('Logotype', () => (
+    <BrandLogo variant="logotype" />
 ))
-.add('Abbreviated colored', () => (
-    <BrandLogo variant="abbr" colored />
+.add('Logomark', () => (
+    <BrandLogo variant="logomark" />
+))
+.add('Brand color', () => (
+    <BrandLogo variant="horizontal" colored />
+))
+.add('Custom color', () => (
+    <BrandLogo variant="horizontal" style={ { fill: 'red' } } />
+))
+.add('Custom size', () => (
+    <BrandLogo variant="horizontal" style={ { fontSize: 20 } } />
 ))
 .add('Knobs playground ⚽', () => {
-    const variant = selectV2('variant', ['normal', 'abbr'], 'abbr');
+    const variant = selectV2('variant', ['horizontal', 'vertical', 'logotype', 'logomark'], 'horizontal');
     const colored = boolean('colored');
     const style = object('style', { fill: 'red', fillOpacity: 1, fontSize: 20 });
 

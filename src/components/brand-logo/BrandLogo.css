@@ -1,14 +1,36 @@
 @import "variables";
 
 .brand-logo {
-    &.normal {
+    display: inline-block;
+    font-size: 10px;
+
+    & .logotype,
+    & .logomark {
+        font-size: inherit;
+    }
+
+    & .logotype {
         width: 12.6em;
         height: 1.4em;
     }
 
-    &.abbr {
+    & .logomark {
         width: 4.4em;
         height: 3.9em;
+    }
+
+    &.horizontal .logomark {
+        margin-right: 2.5em;
+    }
+
+    &.vertical .logomark {
+        margin: 0 auto 2.5em auto;
+        display: block;
+    }
+
+    &.vertical .logotype {
+        margin: 0 auto;
+        display: block;
     }
 
     &.colored {
