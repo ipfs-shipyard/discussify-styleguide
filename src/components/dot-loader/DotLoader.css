@@ -1,0 +1,58 @@
+@import "variables";
+
+:root {
+    --size: 2em;
+}
+
+.dot-loader {
+    position: relative;
+    width: var(--size);
+    height: var(--size);
+    display: inline-block;
+    color: var(--color-black);
+    font-size: 10px;
+
+    & div {
+        position: absolute;
+        top: 50%;
+        width: calc(var(--size) / 4);
+        height: 100%;
+        margin-top: calc(var(--size) / -2);
+        transform: scaleY(0.25);
+        transform-origin: 0;
+        background: currentColor;
+        border-radius: 50%;
+        animation: bounce 1.75s infinite;
+
+        &:nth-child(2) {
+            left: 50%;
+            margin-left: calc(var(--size) / -8);
+            animation-delay: 0.25s;
+        }
+
+        &:nth-child(3) {
+            right: 0;
+            animation-delay: 0.5s;
+        }
+    }
+}
+
+@keyframes bounce {
+    10% {
+        transform: translate3d(0, calc(var(--size) / 4), 0) scaleY(0.25);
+        animation-timing-function: cubic-bezier(0.5, 0, 0.5, 1);
+    }
+
+    14% {
+        transform: translate3d(0, calc(var(--size) / 4), 0) scaleY(0.65);
+    }
+
+    15% {
+        transform: translate3d(0, calc(var(--size) / -2), 0) scaleY(0.25);
+        animation-timing-function: cubic-bezier(0.8, 0, 0.8, 1);
+    }
+
+    35% {
+        transform: translate3d(0, 0, 0) scaleY(0.25);
+    }
+}

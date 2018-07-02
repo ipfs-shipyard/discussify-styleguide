@@ -18,32 +18,32 @@
     &.primary {
         background-color: var(--color-science-blue);
         color: var(--color-white);
-    }
 
-    &.primary:hover,
-    &.primary:focus {
-        background-color: color(var(--color-science-blue) alpha(0.8));
-    }
+        &:hover,
+        &:focus {
+            background-color: color(var(--color-science-blue) alpha(0.8));
+        }
 
-    &.primary[disabled] {
-        background-color: var(--color-seashell);
-        color: var(--color-gray);
+        &[disabled] {
+            background-color: var(--color-seashell);
+            color: var(--color-gray);
+        }
     }
 
     &.secondary {
         border: 1px solid var(--color-gray);
         background-color: var(--color-white);
         color: var(--color-black);
-    }
 
-    &.secondary:hover,
-    &.secondary:focus {
-        border-color: var(--color-science-blue);
-    }
+        &:hover,
+        &:focus {
+            border-color: var(--color-science-blue);
+        }
 
-    &.secondary[disabled] {
-        border-color: var(--color-gray);
-        opacity: 0.4;
-        color: var(--color-gray);
+        &[disabled] {
+            border-color: var(--color-gray);
+            opacity: 0.4;
+            color: var(--color-gray);
+        }
     }
 }

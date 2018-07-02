@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 /* eslint-disable max-len */
-storiesOf('Typography', module)
+storiesOf('base/Typography', module)
 .add('Headings', () => (
     <div>
         <h1>Heading 1</h1>

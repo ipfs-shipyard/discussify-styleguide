@@ -13,7 +13,7 @@ import { CloseIcon, ReplyIcon } from '@discussify/styleguide';
 <ReplyIcon />
 ```
 
-Please check the "Icons/Catalogue" under Storybook for the list of available icons.
+Please check the "Icons/All icons" under Storybook for the list of available icons.
 
 **Using manually:**
 
@@ -22,6 +22,27 @@ import { Icon } from '@discussify/styleguide';
 import mySvg from './path/to/my.svg';
 
 <Icon svg={ mySvg } />
+```
+
+### Changing the color
+
+You may change the dots color via the `fill` CSS property.   
+Additionally, you may tweak the opacity via the `fill-opacity` CSS property.
+
+```jsx
+import { ReplyIcon } from '@discussify/styleguide';
+
+<ReplyIcon style={ { fill: 'red' } } />
+
+```
+### Changing the size
+
+You may change the icon size via the `fontSize` CSS property.
+
+```jsx
+import { ReplyIcon } from '@discussify/styleguide';
+
+<ReplyIcon style={ { fontSize: 20 } } />
 ```
 
 ## Props

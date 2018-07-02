@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
+import { withKnobs, object } from '@storybook/addon-knobs';
 import * as icons from '../src/components/icon';
 import readme from '../src/components/icon/README.md';
 
@@ -31,7 +32,8 @@ const styles = {
 
 storiesOf('Icon', module)
 .addDecorator(withReadme(readme))
-.add('Catalogue', () => (
+.addDecorator(withKnobs)
+.add('All icons', () => (
     <ul style={ styles.ul }>
         { iconsWithoutDefault.map(([name, Icon]) => (
             <li key={ name } style={ styles.li }>
@@ -42,4 +44,18 @@ storiesOf('Icon', module)
             </li>
         )) }
     </ul>
-));
+))
+.add('Custom color', () => (
+    <icons.ReplyIcon style={ { fill: 'red' } } />
+))
+.add('Custom color & opacity', () => (
+    <icons.ReplyIcon style={ { fill: 'red', fillOpacity: 0.5 } } />
+))
+.add('Custom size', () => (
+    <icons.ReplyIcon style={ { fontSize: 20 } } />
+))
+.add('Knobs playground ⚽', () => {
+    const style = object('style', { fill: 'red', fillOpacity: 1, fontSize: 20 });
+
+    return <icons.ReplyIcon style={ style } />;
+});

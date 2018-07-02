@@ -37,7 +37,7 @@
     "eslint": "^4.19.1",
     "eslint-config-moxy": "^5.4.1",
     "external-svg-sprite-loader": "^3.4.1",
-    "postcss-preset-moxy": "^2.0.0",
+    "postcss-preset-moxy": "^2.0.2",
     "raw-loader": "^0.5.1",
     "storybook-readme": "^3.3.0",
     "stylelint": "^9.3.0",
