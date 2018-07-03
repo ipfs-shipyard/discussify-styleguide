@@ -3,17 +3,17 @@ import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { withKnobs, number, boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import FloatingD from '../src/components/floating-d';
-import readme from '../src/components/floating-d/README.md';
+import DiscussionFab from '../src/components/discussion-fab';
+import readme from '../src/components/discussion-fab/README.md';
 
-storiesOf('FloatingD', module)
+storiesOf('DiscussionFab', module)
 .addDecorator(withReadme(readme))
 .addDecorator(withKnobs)
 .add('Without comments', () => (
-    <FloatingD onClick={ action('clicked') } />
+    <DiscussionFab onClick={ action('clicked') } />
 ))
 .add('With comments', () => (
-    <FloatingD commentsCount={ 2 } onClick={ action('click') } />
+    <DiscussionFab commentsCount={ 2 } onClick={ action('click') } />
 ))
 .add('Knobs playground ⚽', () => {
     const active = boolean('active');
@@ -21,7 +21,7 @@ storiesOf('FloatingD', module)
     const hasUnread = boolean('hasUnread');
 
     return (
-        <FloatingD
+        <DiscussionFab
             active={ active }
             commentsCount={ commentsCount }
             hasUnread={ hasUnread }

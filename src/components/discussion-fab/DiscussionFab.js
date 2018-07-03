@@ -2,12 +2,14 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import BrandLogo from '../brand-logo';
-import styles from './FloatingD.css';
+import styles from './DiscussionFab.css';
 
-const FloatingD = ({ className, active, commentsCount, hasUnread, ...rest }) => {
+// TODO: Fix focus border
+
+const DicussionFab = ({ className, active, commentsCount, hasUnread, ...rest }) => {
     const hasComments = commentsCount > 0;
     const finalClassName = classNames(
-        styles.floatingD,
+        styles.discussionFab,
         active && styles.active,
         hasComments && hasUnread && styles.hasUnread,
         className
@@ -22,11 +24,11 @@ const FloatingD = ({ className, active, commentsCount, hasUnread, ...rest }) => 
     );
 };
 
-FloatingD.propTypes = {
+DicussionFab.propTypes = {
     active: PropTypes.bool,
     commentsCount: PropTypes.number,
     hasUnread: PropTypes.bool,
     className: PropTypes.string,
 };
 
-export default FloatingD;
+export default DicussionFab;

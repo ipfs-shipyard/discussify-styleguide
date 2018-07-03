@@ -1,7 +1,7 @@
 @import "variables";
 
-.floating-d {
-    position: relative;
+.discussion-fab {
+    position: fixed;
     width: 60px;
     height: 60px;
     border: 0;

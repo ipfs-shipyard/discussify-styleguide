@@ -1,13 +1,15 @@
-# FloatingD
+# DicussionFab
 
-The Floating "D" used to open the sidebar and display the active discussion status.
+The floating action button used to open the sidebar and display the active discussion status.
+
+*Note*: Fab is an acronym for "floating action button".
 
 ## Usage
 
 ```jsx
-import { FloatingD } from '@discussify/styleguide';
+import { DiscussionFab } from '@discussify/styleguide';
 
-<FloatingD />
+<DiscussionFab />
 ```
 
 ## Props
