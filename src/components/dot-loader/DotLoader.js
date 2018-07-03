@@ -10,11 +10,11 @@ const DotLoader = ({ className, ...rest }) => {
     );
 
     return (
-        <div { ...rest } className={ finalClassName }>
-            <div />
-            <div />
-            <div />
-        </div>
+        <span { ...rest } className={ finalClassName }>
+            <span />
+            <span />
+            <span />
+        </span>
     );
 };
 

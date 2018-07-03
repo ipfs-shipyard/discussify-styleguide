@@ -8,15 +8,16 @@
     font-size: 10px;
 }
 
-.circular-loader > div {
+.circular-loader > span {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    display: block;
 }
 
-.circular-loader > div::before {
+.circular-loader > span::before {
     content: "";
     width: 15%;
     height: 15%;
@@ -27,91 +28,91 @@
     animation: circle-bounce 1.2s infinite ease-in-out both;
 }
 
-.circular-loader > div:nth-child(2) {
+.circular-loader > span:nth-child(2) {
     transform: rotate(30deg);
 }
 
-.circular-loader > div:nth-child(3) {
+.circular-loader > span:nth-child(3) {
     transform: rotate(60deg);
 }
 
-.circular-loader > div:nth-child(4) {
+.circular-loader > span:nth-child(4) {
     transform: rotate(90deg);
 }
 
-.circular-loader > div:nth-child(5) {
+.circular-loader > span:nth-child(5) {
     transform: rotate(120deg);
 }
 
-.circular-loader > div:nth-child(6) {
+.circular-loader > span:nth-child(6) {
     transform: rotate(150deg);
 }
 
-.circular-loader > div:nth-child(7) {
+.circular-loader > span:nth-child(7) {
     transform: rotate(180deg);
 }
 
-.circular-loader > div:nth-child(8) {
+.circular-loader > span:nth-child(8) {
     transform: rotate(210deg);
 }
 
-.circular-loader > div:nth-child(9) {
+.circular-loader > span:nth-child(9) {
     transform: rotate(240deg);
 }
 
-.circular-loader > div:nth-child(10) {
+.circular-loader > span:nth-child(10) {
     transform: rotate(270deg);
 }
 
-.circular-loader > div:nth-child(11) {
+.circular-loader > span:nth-child(11) {
     transform: rotate(300deg);
 }
 
-.circular-loader > div:nth-child(12) {
+.circular-loader > span:nth-child(12) {
     transform: rotate(330deg);
 }
 
-.circular-loader > div:nth-child(2)::before {
+.circular-loader > span:nth-child(2)::before {
     animation-delay: -1.1s;
 }
 
-.circular-loader > div:nth-child(3)::before {
+.circular-loader > span:nth-child(3)::before {
     animation-delay: -1s;
 }
 
-.circular-loader > div:nth-child(4)::before {
+.circular-loader > span:nth-child(4)::before {
     animation-delay: -0.9s;
 }
 
-.circular-loader > div:nth-child(5)::before {
+.circular-loader > span:nth-child(5)::before {
     animation-delay: -0.8s;
 }
 
-.circular-loader > div:nth-child(6)::before {
+.circular-loader > span:nth-child(6)::before {
     animation-delay: -0.7s;
 }
 
-.circular-loader > div:nth-child(7)::before {
+.circular-loader > span:nth-child(7)::before {
     animation-delay: -0.6s;
 }
 
-.circular-loader > div:nth-child(8)::before {
+.circular-loader > span:nth-child(8)::before {
     animation-delay: -0.5s;
 }
 
-.circular-loader > div:nth-child(9)::before {
+.circular-loader > span:nth-child(9)::before {
     animation-delay: -0.4s;
 }
 
-.circular-loader > div:nth-child(10)::before {
+.circular-loader > span:nth-child(10)::before {
     animation-delay: -0.3s;
 }
 
-.circular-loader > div:nth-child(11)::before {
+.circular-loader > span:nth-child(11)::before {
     animation-delay: -0.2s;
 }
 
-.circular-loader > div:nth-child(12)::before {
+.circular-loader > span:nth-child(12)::before {
     animation-delay: -0.1s;
 }
 

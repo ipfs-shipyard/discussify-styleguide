@@ -12,12 +12,13 @@
     color: var(--color-black);
     font-size: 10px;
 
-    & > div {
+    & > span {
         position: absolute;
         top: 50%;
         width: calc(var(--size) / 4);
         height: calc(var(--size) / 4);
         margin-top: calc(var(--size) / -8);
+        display: block;
         background: currentColor;
         border-radius: calc(var(--size) / 4);
         animation: bounce 1.75s infinite;
