@@ -10,7 +10,26 @@ import { BrandLogo } from '@discussify/styleguide';
 <BrandLogo variant="horizontal" />
 ```
 
-Please read the `Icon` documentation for how to change the color and size of the logos.
+### Changing the color
+
+You may change the dots color via the `fill` CSS property.   
+Additionally, you may tweak the opacity via the `fill-opacity` CSS property.
+
+```jsx
+import { BrandLogo } from '@discussify/styleguide';
+
+<BrandLogo variant="horizontal" style={ { fill: 'red' } } />
+
+```
+### Changing the size
+
+You may change the icon size via the `fontSize` CSS property.
+
+```jsx
+import { BrandLogo } from '@discussify/styleguide';
+
+<BrandLogo variant="horizontal" style={ { fontSize: 20 } } />
+```
 
 ## Props
 

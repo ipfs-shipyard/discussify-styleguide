@@ -45,6 +45,8 @@ import { ReplyIcon } from '@discussify/styleguide';
 <ReplyIcon style={ { fontSize: 20 } } />
 ```
 
+Alternatively you may change the `width` and `height` CSS properties.
+
 ## Props
 
 | name | type | default | description |
