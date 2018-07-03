@@ -8,11 +8,17 @@ import readme from '../src/components/avatar/README.md';
 storiesOf('Avatar', module)
 .addDecorator(withReadme(readme))
 .addDecorator(withKnobs)
-.add('Without image', () => (
+.add('With name', () => (
     <Avatar name="André Cruz" />
+))
+.add('Without name', () => (
+    <Avatar />
 ))
 .add('With image', () => (
     <Avatar name="André Cruz" image="https://en.gravatar.com/userimage/102855892/467eb9028a2018993024d612255dc20e.png" />
+))
+.add('Custom size', () => (
+    <Avatar name="André Cruz" style={ { fontSize: 20 } } />
 ))
 .add('Knobs playground ⚽', () => {
     const name = text('name', 'André Cruz');

@@ -20,11 +20,8 @@ storiesOf('BrandLogo', module)
 .add('Logomark', () => (
     <BrandLogo variant="logomark" />
 ))
-.add('Brand color', () => (
+.add('With brand color', () => (
     <BrandLogo variant="horizontal" colored />
-))
-.add('Custom color', () => (
-    <BrandLogo variant="horizontal" style={ { fill: 'red' } } />
 ))
 .add('Custom size', () => (
     <BrandLogo variant="horizontal" style={ { fontSize: 20 } } />

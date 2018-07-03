@@ -15,7 +15,7 @@ import { Avatar } from '@discussify/styleguide';
 
 | name | type | default | description |
 | -----| ---- | ------- | ----------- |
-| name | string | *required* | The user's name |
+| name | string | | The user's name |
 | image | string | | The user's image |
 | lazy | bool | false | Load the user's image only when it's about to enter the viewport |
 

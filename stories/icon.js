@@ -52,8 +52,8 @@ storiesOf('Icon', module)
 .add('Custom color', () => (
     <icons.ReplyIcon style={ { fill: 'red' } } />
 ))
-.add('Custom color & opacity', () => (
-    <icons.ReplyIcon style={ { fill: 'red', fillOpacity: 0.5 } } />
+.add('Custom opacity', () => (
+    <icons.ReplyIcon style={ { fillOpacity: 0.5 } } />
 ))
 .add('Custom size', () => (
     <icons.ReplyIcon style={ { fontSize: 20 } } />
