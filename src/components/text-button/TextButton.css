@@ -11,6 +11,7 @@
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    cursor: pointer;
 
     &:hover,
     &:focus {
