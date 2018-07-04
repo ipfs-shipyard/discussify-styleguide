@@ -1,5 +1,15 @@
 @import "variables";
 
+.logotype {
+    width: 12.6em;
+    height: 1.4em;
+}
+
+.logomark {
+    width: 4.4em;
+    height: 3.9em;
+}
+
 .brand-logo {
     display: inline-block;
     font-size: 10px;
@@ -7,16 +17,6 @@
     & .logotype,
     & .logomark {
         font-size: inherit;
-    }
-
-    & .logotype {
-        width: 12.6em;
-        height: 1.4em;
-    }
-
-    & .logomark {
-        width: 4.4em;
-        height: 3.9em;
     }
 
     &.horizontal .logomark {

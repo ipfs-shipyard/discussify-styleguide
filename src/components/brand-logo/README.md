@@ -23,7 +23,7 @@ import { BrandLogo } from '@discussify/styleguide';
 ## Props
 
 | name | type | default | description |
-| -----| ---- | ------- | ----------- |
+| ---- | ---- | ------- | ----------- |
 | variant | string | *required* | The variant of the button, can be one of: `horizontal`, `vertical`, `logotype`, `logomark` |
 | colored | bool | false | True to have the primary brand color applied (otherwise it will inherit from `fill`) |
 

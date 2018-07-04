@@ -15,7 +15,7 @@ import { DiscussionFab } from '@discussify/styleguide';
 ## Props
 
 | name | type | default | description |
-| -----| ---- | ------- | ----------- |
+| ---- | ---- | ------- | ----------- |
 | active | bool | false | Enables or disbles active state |
 | commentsCount | number | | Number of comments within the discussion |
 | hasUnread | bool | false | True if there's unread comments within the discussion |

@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import BrandLogo from '../brand-logo';
 import styles from './DiscussionFab.css';
 
-// TODO: Fix focus border
-
 const DicussionFab = ({ className, active, commentsCount, hasUnread, ...rest }) => {
     const hasComments = commentsCount > 0;
     const finalClassName = classNames(

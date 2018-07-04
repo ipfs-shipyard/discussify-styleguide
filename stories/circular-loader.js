@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, object } from '@storybook/addon-knobs';
 import { withReadme } from 'storybook-readme';
-import CircularLoader from '../src/components/circular-loader';
+import { CircularLoader } from '../src';
 import readme from '../src/components/circular-loader/README.md';
 
 storiesOf('CircularLoader', module)

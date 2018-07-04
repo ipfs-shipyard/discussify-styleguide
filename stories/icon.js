@@ -2,10 +2,11 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { withKnobs, object } from '@storybook/addon-knobs';
-import * as icons from '../src/components/icon';
+import * as components from '../src';
 import readme from '../src/components/icon/README.md';
 
-const parsedIcons = Object.entries(icons).filter(([name]) => name !== 'default');
+const icons = Object.entries(components).filter(([name]) => /.+Icon$/.test(name));
+const ReplyIcon = icons.find(([name]) => name === 'ReplyIcon')[1];
 
 const styles = {
     ul: {
@@ -39,7 +40,7 @@ storiesOf('Icon', module)
 .addDecorator(withKnobs)
 .add('All icons', () => (
     <ul style={ styles.ul }>
-        { parsedIcons.map(([name, Icon]) => (
+        { icons.map(([name, Icon]) => (
             <li key={ name } style={ styles.li }>
                 <div style={ styles.icon }>
                     <Icon />
@@ -50,16 +51,16 @@ storiesOf('Icon', module)
     </ul>
 ))
 .add('Custom color', () => (
-    <icons.ReplyIcon style={ { fill: 'red' } } />
+    <ReplyIcon style={ { fill: 'red' } } />
 ))
 .add('Custom opacity', () => (
-    <icons.ReplyIcon style={ { fillOpacity: 0.5 } } />
+    <ReplyIcon style={ { fillOpacity: 0.5 } } />
 ))
 .add('Custom size', () => (
-    <icons.ReplyIcon style={ { fontSize: 20 } } />
+    <ReplyIcon style={ { fontSize: 20 } } />
 ))
 .add('Knobs playground ⚽', () => {
     const style = object('style', { fill: 'red', fillOpacity: 1, fontSize: 20 });
 
-    return <icons.ReplyIcon style={ style } />;
+    return <ReplyIcon style={ style } />;
 });

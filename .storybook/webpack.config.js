@@ -2,9 +2,20 @@ const path = require('path');
 const SvgStorePlugin = require('external-svg-sprite-loader/lib/SvgStorePlugin');
 
 module.exports = (storybookBaseConfig, configType) => {
+    // CSS files loader for node_modules
+    storybookBaseConfig.module.rules.push({
+        test: /\.css$/,
+        include: path.join(__dirname, '../node_modules'),
+        loader: [
+            'style-loader',
+            'css-loader',
+        ],
+    });
+
     // CSS files loader which enables the use of postcss
     storybookBaseConfig.module.rules.push({
         test: /\.css$/,
+        exclude: path.join(__dirname, '../node_modules'),
         loader: [
             {
                 // Extract CSS files if we are not in development mode

@@ -7,3 +7,5 @@ import './circular-loader';
 import './discussion-fab';
 import './dot-loader';
 import './icon';
+import './text-button';
+import './time-ago';

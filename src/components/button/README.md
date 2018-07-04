@@ -13,7 +13,7 @@ import { Button } from '@discussify/styleguide';
 ## Props
 
 | name | type | default | description |
-| -----| ---- | ------- | ----------- |
+| ---- | ---- | ------- | ----------- |
 | variant | string | *required* | The variant of the button, can be one of: `primary`, `secondary` |
 | fullWidth | boolean | false | Ocupies 100% width |
 | disabled | boolean | false | Sets the disabled state |

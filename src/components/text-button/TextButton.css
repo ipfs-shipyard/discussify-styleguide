@@ -1,0 +1,49 @@
+@import "variables";
+
+.text-button {
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    border: 0;
+    background: none;
+    color: var(--color-science-blue);
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    &:hover,
+    &:focus {
+        opacity: 0.8;
+    }
+
+    &[disabled] {
+        opacity: 0.9;
+        color: var(--color-gray);
+    }
+
+    & .text {
+        font-size: 1.2em;
+    }
+
+    & .icon {
+        font-size: 6px;
+        fill: currentColor;
+    }
+
+    &.left {
+        flex-direction: row-reverse;
+
+        & .icon {
+            margin-right: 8px;
+        }
+    }
+
+    &.right {
+        flex-direction: row;
+
+        & .icon {
+            margin-left: 8px;
+        }
+    }
+}

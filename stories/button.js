@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, boolean, selectV2 } from '@storybook/addon-knobs';
+import { withKnobs, boolean, selectV2, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { withReadme } from 'storybook-readme';
-import Button from '../src/components/button';
+import { Button } from '../src';
 import readme from '../src/components/button/README.md';
 
 storiesOf('Button', module)
@@ -19,6 +19,7 @@ storiesOf('Button', module)
     const variant = selectV2('variant', ['primary', 'secondary'], 'primary');
     const disabled = boolean('disabled');
     const fullWidth = boolean('fullWidth');
+    const children = text('children', 'Click me');
 
     return (
         <Button
@@ -26,7 +27,7 @@ storiesOf('Button', module)
             disabled={ disabled }
             fullWidth={ fullWidth }
             onClick={ action('clicked') }>
-            Click me
+            { children }
         </Button>
     );
 });

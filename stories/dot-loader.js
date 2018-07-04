@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, object } from '@storybook/addon-knobs';
 import { withReadme } from 'storybook-readme';
-import DotLoader from '../src/components/dot-loader';
+import { DotLoader } from '../src';
 import readme from '../src/components/dot-loader/README.md';
 
 storiesOf('DotLoader', module)

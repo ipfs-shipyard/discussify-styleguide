@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { withKnobs, number, boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import DiscussionFab from '../src/components/discussion-fab';
+import { DiscussionFab } from '../src';
 import readme from '../src/components/discussion-fab/README.md';
 
 storiesOf('DiscussionFab', module)

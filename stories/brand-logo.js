@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { withKnobs, boolean, selectV2, object } from '@storybook/addon-knobs';
-import BrandLogo from '../src/components/brand-logo';
+import { BrandLogo } from '../src';
 import readme from '../src/components/brand-logo/README.md';
 
 storiesOf('BrandLogo', module)
@@ -29,7 +29,7 @@ storiesOf('BrandLogo', module)
 .add('Knobs playground ⚽', () => {
     const variant = selectV2('variant', ['horizontal', 'vertical', 'logotype', 'logomark'], 'horizontal');
     const colored = boolean('colored');
-    const style = object('style', { fill: 'red', fillOpacity: 1, fontSize: 20 });
+    const style = object('style', { fontSize: 20 });
 
     return <BrandLogo variant={ variant } colored={ colored } style={ style } />;
 });

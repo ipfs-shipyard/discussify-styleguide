@@ -10,7 +10,7 @@ const Avatar = ({ name, image, lazy, className, ...rest }) => {
 
     return (
         <div { ...rest } className={ finalClassName }>
-            { getInitials(name) }
+            { getInitials(name) || '?' }
             { image ? <PreloadImage className={ styles.image } src={ image } lazy={ lazy } /> : null }
         </div>
     );
