@@ -4,7 +4,7 @@
     --size: 1.6em;
 }
 
-.dot-loader {
+.typing-indicator {
     position: relative;
     width: var(--size);
     height: var(--size);

@@ -2,23 +2,23 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, object } from '@storybook/addon-knobs';
 import { withReadme } from 'storybook-readme';
-import { DotLoader } from '../src';
-import readme from '../src/components/dot-loader/README.md';
+import { TypingIndicator } from '../src';
+import readme from '../src/components/typing-indicator/README.md';
 
-storiesOf('DotLoader', module)
+storiesOf('TypingIndicator', module)
 .addDecorator(withReadme(readme))
 .addDecorator(withKnobs)
 .add('Standard', () => (
-    <DotLoader />
+    <TypingIndicator />
 ))
 .add('Custom color', () => (
-    <DotLoader style={ { color: 'red' } } />
+    <TypingIndicator style={ { color: 'red' } } />
 ))
 .add('Custom size', () => (
-    <DotLoader style={ { fontSize: 20 } } />
+    <TypingIndicator style={ { fontSize: 20 } } />
 ))
 .add('Knobs playground ⚽', () => {
     const style = object('style', { color: 'red', fontSize: 20 });
 
-    return <DotLoader style={ style } />;
+    return <TypingIndicator style={ style } />;
 });

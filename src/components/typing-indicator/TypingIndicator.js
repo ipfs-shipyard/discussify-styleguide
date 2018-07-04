@@ -1,11 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import styles from './DotLoader.css';
+import styles from './TypingIndicator.css';
 
-const DotLoader = ({ className, ...rest }) => {
+const TypingIndicator = ({ className, ...rest }) => {
     const finalClassName = classNames(
-        styles.dotLoader,
+        styles.typingIndicator,
         className
     );
 
@@ -18,8 +18,8 @@ const DotLoader = ({ className, ...rest }) => {
     );
 };
 
-DotLoader.propTypes = {
+TypingIndicator.propTypes = {
     className: PropTypes.string,
 };
 
-export default DotLoader;
+export default TypingIndicator;

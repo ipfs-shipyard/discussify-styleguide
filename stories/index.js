@@ -5,7 +5,7 @@ import './brand-logo';
 import './button';
 import './circular-loader';
 import './discussion-fab';
-import './dot-loader';
+import './typing-indicator';
 import './icon';
 import './text-button';
 import './time-ago';
