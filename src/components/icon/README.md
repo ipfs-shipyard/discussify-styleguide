@@ -37,12 +37,12 @@ import { ReplyIcon } from '@discussify/styleguide';
 ```
 ### Changing the size
 
-You may change the icon size via the `fontSize` CSS property.
+You may change the icon size via the `fontSize` CSS property (defaults to `2.4rem`).
 
 ```jsx
 import { ReplyIcon } from '@discussify/styleguide';
 
-<ReplyIcon style={ { fontSize: 20 } } />
+<ReplyIcon style={ { fontSize: '1.6rem' } } />
 ```
 
 Alternatively you may change the `width` and `height` CSS properties.

@@ -45,7 +45,7 @@ Discussify's color pallete.
 You may use these colors in CSS files like so:
 
 \`\`\`css
-@import "variables";
+@import "@discussify/styleguide/styles/colors";
 
 .my-div {
     color: var(--color-science-blue);

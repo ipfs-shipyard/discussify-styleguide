@@ -1,36 +1,37 @@
-@import "variables";
-
-.logotype {
-    width: 12.6em;
-    height: 1.4em;
-}
-
-.logomark {
-    width: 4.4em;
-    height: 3.9em;
-}
+@import "colors";
 
 .brand-logo {
     display: inline-block;
-    font-size: 10px;
+    font-size: 2rem;
 
-    & .logotype,
-    & .logomark {
+    & .logotype {
+        width: calc(12.6em / 2);
+        height: calc(1.4em / 2);
         font-size: inherit;
     }
 
-    &.horizontal .logomark {
-        margin-right: 2.5em;
+    & .logomark {
+        width: calc(4.4em / 2);
+        height: calc(3.9em / 2);
+        font-size: inherit;
     }
 
-    &.vertical .logomark {
-        margin: 0 auto 2.5em auto;
-        display: block;
+    &.horizontal {
+        & .logomark {
+            margin-right: calc(2.5em / 2);
+        }
     }
 
-    &.vertical .logotype {
-        margin: 0 auto;
-        display: block;
+    &.vertical {
+        & .logomark {
+            margin: 0 auto calc(2.5em / 2) auto;
+            display: block;
+        }
+
+        & .logotype {
+            margin: 0 auto;
+            display: block;
+        }
     }
 
     &.colored {

@@ -1,9 +1,10 @@
-@import "variables";
+@import "colors";
+@import "mixins/typography";
 
 .avatar {
     position: relative;
-    width: 30px;
-    height: 30px;
+    width: 3em;
+    height: 3em;
     overflow: hidden;
     display: inline-flex;
     justify-content: center;
@@ -11,8 +12,12 @@
     background-color: var(--color-selago);
     background-size: cover;
     border-radius: 50%;
-    color: var(--color-science-blue);
-    font-size: 12px;
+    font-size: 1rem;
+
+    & .initials {
+        @mixin typography-overline em;
+        color: var(--color-science-blue);
+    }
 
     & .image {
         position: absolute;

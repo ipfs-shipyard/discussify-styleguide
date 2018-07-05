@@ -11,7 +11,11 @@ const Button = ({ variant, fullWidth, children, className, ...rest }) => {
         className
     );
 
-    return <button { ...rest } className={ finalClassName }>{ children }</button>;
+    return (
+        <button { ...rest } className={ finalClassName }>
+            <span className={ styles.text }>{ children }</span>
+        </button>
+    );
 };
 
 Button.propTypes = {

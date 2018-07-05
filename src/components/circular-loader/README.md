@@ -22,12 +22,12 @@ import { CircularLoader } from '@discussify/styleguide';
 
 ### Changing the size
 
-You may change the dots size via the `fontSize` CSS property.
+You may change the dots size via the `fontSize` CSS property (defaults to `1rem`).
 
 ```jsx
 import { CircularLoader } from '@discussify/styleguide';
 
-<CircularLoader style={ { fontSize: 20 } } />
+<CircularLoader style={ { fontSize: '2rem' } } />
 ```
 
 ## Props

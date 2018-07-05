@@ -39,6 +39,8 @@ module.exports = (storybookBaseConfig, configType) => {
                 options: require('postcss-preset-moxy')({
                     // Any non-relative imports are resolved to this path
                     importPath: path.join(__dirname, '../src/styles/imports'),
+                    // Process relative url statements
+                    url: true,
                 }),
             },
         ],
@@ -89,6 +91,19 @@ module.exports = (storybookBaseConfig, configType) => {
                 loader: 'svg-css-modules-loader',
                 options: {
                     transformId: true,
+                },
+            },
+        ],
+    });
+
+    // Support web fonts
+    storybookBaseConfig.module.rules.push({
+        test: /\.(woff2|woff)$/,
+        use: [
+            {
+                loader: 'file-loader',
+                options: {
+                    name: 'fonts/[name].[ext]',
                 },
             },
         ],

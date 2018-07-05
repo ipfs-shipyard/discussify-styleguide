@@ -1,11 +1,11 @@
-@import "variables";
+@import "colors";
 
 .circular-loader {
     position: relative;
     width: 4em;
     height: 4em;
     display: inline-block;
-    font-size: 10px;
+    font-size: 1rem;
 }
 
 .circular-loader > span {

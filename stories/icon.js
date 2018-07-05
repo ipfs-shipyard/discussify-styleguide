@@ -57,10 +57,10 @@ storiesOf('Icon', module)
     <ReplyIcon style={ { fillOpacity: 0.5 } } />
 ))
 .add('Custom size', () => (
-    <ReplyIcon style={ { fontSize: 20 } } />
+    <ReplyIcon style={ { fontSize: '4.8rem' } } />
 ))
 .add('Knobs playground ⚽', () => {
-    const style = object('style', { fill: 'red', fillOpacity: 1, fontSize: 20 });
+    const style = object('style', { fill: 'red', fillOpacity: 1, fontSize: '4.8rem' });
 
     return <ReplyIcon style={ style } />;
 });

@@ -16,7 +16,7 @@ const DicussionFab = ({ className, active, commentsCount, hasUnread, ...rest }) 
     return (
         <button { ...rest } className={ finalClassName }>
             { hasComments ?
-                commentsCount :
+                <span className={ styles.commentsCount }>{ commentsCount }</span> :
                 <BrandLogo variant="logomark" className={ styles.logo } /> }
         </button>
     );

@@ -15,10 +15,10 @@ storiesOf('TypingIndicator', module)
     <TypingIndicator style={ { color: 'red' } } />
 ))
 .add('Custom size', () => (
-    <TypingIndicator style={ { fontSize: 20 } } />
+    <TypingIndicator style={ { fontSize: '2rem' } } />
 ))
 .add('Knobs playground ⚽', () => {
-    const style = object('style', { color: 'red', fontSize: 20 });
+    const style = object('style', { color: 'red', fontSize: '2rem' });
 
     return <TypingIndicator style={ style } />;
 });

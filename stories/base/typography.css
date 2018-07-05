@@ -1,0 +1,33 @@
+@import "../../src/styles/imports/mixins/typography";
+
+.h1 {
+    @mixin typography-h1 rem;
+}
+
+.h2 {
+    @mixin typography-h2 rem;
+}
+
+.h3 {
+    @mixin typography-h3 rem;
+}
+
+.h4 {
+    @mixin typography-h4 rem;
+}
+
+.body-1 {
+    @mixin typography-body-1 rem;
+}
+
+.body-2 {
+    @mixin typography-body-2 rem;
+}
+
+.caption {
+    @mixin typography-caption rem;
+}
+
+.overline {
+    @mixin typography-overline rem;
+}

@@ -1,4 +1,4 @@
-@import "variables";
+@import "../../src/styles/imports/colors";
 
 .science-blue {
     background-color: var(--color-science-blue);

@@ -15,10 +15,10 @@ storiesOf('CircularLoader', module)
     <CircularLoader style={ { color: 'red' } } />
 ))
 .add('Custom size', () => (
-    <CircularLoader style={ { fontSize: 20 } } />
+    <CircularLoader style={ { fontSize: '2rem' } } />
 ))
 .add('Knobs playground ⚽', () => {
-    const style = object('style', { color: 'red', fontSize: 20 });
+    const style = object('style', { color: 'red', fontSize: '2rem' });
 
     return <CircularLoader style={ style } />;
 });

@@ -12,12 +12,12 @@ import { BrandLogo } from '@discussify/styleguide';
 
 ### Changing the size
 
-You may change the icon size via the `fontSize` CSS property.
+You may change the icon size via the `fontSize` CSS property (defaults to `2rem`).
 
 ```jsx
 import { BrandLogo } from '@discussify/styleguide';
 
-<BrandLogo variant="horizontal" style={ { fontSize: 20 } } />
+<BrandLogo variant="horizontal" style={ { fontSize: '3rem' } } />
 ```
 
 ## Props

@@ -12,7 +12,7 @@ const TextButton = ({ icon, iconPosition, children, className, ...rest }) => {
 
     return (
         <button { ...rest } className={ finalClassName }>
-            <span className={ styles.label }>{ children }</span>
+            <span className={ styles.text }>{ children }</span>
             { icon ? React.cloneElement(icon, { className: classNames(styles.icon, icon.props.className) }) : null }
         </button>
     );

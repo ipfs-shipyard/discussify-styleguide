@@ -27,7 +27,7 @@ You may change the dots size via the `fontSize` CSS property.
 ```jsx
 import { TypingIndicator } from '@discussify/styleguide';
 
-<TypingIndicator style={ { fontSize: 20 } } />
+<TypingIndicator style={ { fontSize: '2rem' } } />
 ```
 
 ## Props

@@ -1,3 +1,2 @@
 @import "normalize.css";
-@import "./styles/layout";
-@import "./styles/typography";
+@import "./styles/base.css";

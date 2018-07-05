@@ -1,16 +1,21 @@
-@import "variables";
+@import "colors";
+@import "mixins/typography";
 
 .button {
-    min-width: 140px;
-    height: 44px;
-    padding: 10px 25px;
+    min-width: 14em;
+    height: 4.4em;
+    padding: 0 2.5em;
     border: 0;
-    border-radius: 2px;
-    font-size: 14px;
+    border-radius: 0.2em;
+    font-size: 1rem;
     cursor: pointer;
     transition-property: background-color, color, border-color, opacity;
     transition-duration: 0.2s;
     transition-timing-function: ease;
+
+    & .text {
+        @mixin typography-body-2 em;
+    }
 
     &.full-width {
         width: 100%;
@@ -32,7 +37,7 @@
     }
 
     &.secondary {
-        border: 1px solid var(--color-gray);
+        border: 0.1em solid var(--color-gray);
         background-color: var(--color-white);
         color: var(--color-black);
 

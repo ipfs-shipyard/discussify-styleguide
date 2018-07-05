@@ -1,4 +1,5 @@
-@import "variables";
+@import "colors";
+@import "mixins/typography";
 
 .text-button {
     padding: 0;
@@ -7,10 +8,8 @@
     border: 0;
     background: none;
     color: var(--color-science-blue);
-    font-size: 10px;
-    font-weight: bold;
+    font-size: 1rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
     cursor: pointer;
 
     &:hover,
@@ -24,11 +23,11 @@
     }
 
     & .text {
-        font-size: 1.2em;
+        @mixin typography-caption em;
     }
 
     & .icon {
-        font-size: 6px;
+        font-size: 1.5em;
         fill: currentColor;
     }
 
@@ -36,7 +35,7 @@
         flex-direction: row-reverse;
 
         & .icon {
-            margin-right: 8px;
+            margin-right: calc(0.8em / 1.5);
         }
     }
 
@@ -44,7 +43,7 @@
         flex-direction: row;
 
         & .icon {
-            margin-left: 8px;
+            margin-left: calc(0.8em / 1.5);
         }
     }
 }

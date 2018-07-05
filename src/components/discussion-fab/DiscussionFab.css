@@ -1,15 +1,16 @@
-@import "variables";
+@import "colors";
+@import "mixins/typography";
 
 .discussion-fab {
     position: fixed;
-    width: 60px;
-    height: 60px;
+    width: 6em;
+    height: 6em;
     border: 0;
     background-color: var(--color-white);
     border-radius: 50%;
-    box-shadow: 0 11px 25px 0 var(--color-geyser);
+    box-shadow: 0 1.1em 2.5em 0 var(--color-geyser);
     color: var(--color-science-blue);
-    font-size: 16px;
+    font-size: 1rem;
     cursor: pointer;
     transition-property: background-color, color;
     transition-duration: 0.2s;
@@ -19,17 +20,17 @@
     &::after {
         content: "";
         position: absolute;
-        top: -1px;
-        right: -1px;
-        bottom: -1px;
-        left: -1px;
+        top: -0.1em;
+        right: -0.1em;
+        bottom: -0.1em;
+        left: -0.1em;
         border-radius: 50%;
         box-shadow: inset 0 0 0 0 var(--color-science-blue);
         transition: box-shadow 0.2s ease;
     }
 
     &:hover::after {
-        box-shadow: inset 0 0 0 2px var(--color-science-blue);
+        box-shadow: inset 0 0 0 0.2em var(--color-science-blue);
     }
 
     &.active,
@@ -49,7 +50,7 @@
         fill: var(--color-white);
 
         &::after {
-            box-shadow: inset 0 0 0 2px var(--color-white);
+            box-shadow: inset 0 0 0 0.2em var(--color-white);
         }
 
         &:hover::after {
@@ -59,7 +60,11 @@
 
     & .logo {
         position: relative;
-        left: 2px;
-        font-size: 5.91px;
+        left: 0.1833em;
+        font-size: 1.091em;
+    }
+
+    & .comments-count {
+        @mixin typography-body-1 em;
     }
 }

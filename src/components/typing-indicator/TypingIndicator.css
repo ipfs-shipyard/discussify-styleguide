@@ -1,4 +1,4 @@
-@import "variables";
+@import "colors";
 
 :root {
     --size: 1.6em;
@@ -10,7 +10,7 @@
     height: var(--size);
     display: inline-block;
     color: var(--color-black);
-    font-size: 10px;
+    font-size: 1rem;
 
     & > span {
         position: absolute;

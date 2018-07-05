@@ -24,12 +24,12 @@ storiesOf('BrandLogo', module)
     <BrandLogo variant="horizontal" colored />
 ))
 .add('Custom size', () => (
-    <BrandLogo variant="horizontal" style={ { fontSize: 20 } } />
+    <BrandLogo variant="horizontal" style={ { fontSize: '3rem' } } />
 ))
 .add('Knobs playground ⚽', () => {
     const variant = selectV2('variant', ['horizontal', 'vertical', 'logotype', 'logomark'], 'horizontal');
     const colored = boolean('colored');
-    const style = object('style', { fontSize: 20 });
+    const style = object('style', { fontSize: '3rem' });
 
     return <BrandLogo variant={ variant } colored={ colored } style={ style } />;
 });
