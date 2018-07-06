@@ -10,7 +10,10 @@
     color: var(--color-science-blue);
     font-size: 1rem;
     text-transform: uppercase;
-    cursor: pointer;
+
+    &:not([disabled]) {
+        cursor: pointer;
+    }
 
     &:hover,
     &:focus {
@@ -28,7 +31,6 @@
 
     & .icon {
         font-size: 1.5em;
-        fill: currentColor;
     }
 
     &.left {

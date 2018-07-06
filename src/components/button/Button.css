@@ -2,19 +2,20 @@
 @import "mixins/typography";
 
 .button {
+    position: relative;
     min-width: 14em;
     height: 4.4em;
+    overflow: hidden;
     padding: 0 2.5em;
     border: 0;
     border-radius: 0.2em;
     font-size: 1rem;
-    cursor: pointer;
     transition-property: background-color, color, border-color, opacity;
     transition-duration: 0.2s;
     transition-timing-function: ease;
 
-    & .text {
-        @mixin typography-body-2 em;
+    &:not([disabled]) {
+        cursor: pointer;
     }
 
     &.full-width {
@@ -25,12 +26,12 @@
         background-color: var(--color-science-blue);
         color: var(--color-white);
 
-        &:hover,
-        &:focus {
+        &:hover:not(.loading),
+        &:focus:not(.loading) {
             background-color: color(var(--color-science-blue) alpha(0.8));
         }
 
-        &[disabled] {
+        &[disabled]:not(.loading) {
             background-color: var(--color-seashell);
             color: var(--color-gray);
         }
@@ -41,15 +42,101 @@
         background-color: var(--color-white);
         color: var(--color-black);
 
-        &:hover,
-        &:focus {
+        &:hover:not(.loading),
+        &:focus:not(.loading) {
             border-color: var(--color-science-blue);
         }
 
-        &[disabled] {
+        &[disabled]:not(.loading) {
             border-color: var(--color-gray);
             opacity: 0.4;
             color: var(--color-gray);
+        }
+    }
+
+    /* ==========================================================================
+      Text + feedback
+      ========================================================================== */
+
+    & .progress-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    & .text-block {
+        @mixin typography-body-2 em, no-line-height;
+        position: relative;
+        height: 100%;
+        z-index: 2;
+        transform: translateY(0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.2s ease;
+    }
+
+    & .success-block,
+    & .error-block {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        transform: translateY(100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.2s ease;
+
+        & .feedback-icon {
+            font-size: 1.6em;
+        }
+    }
+
+    &.primary {
+        & .progress-bar {
+            background-color: color(var(--color-black) alpha(0.1));
+        }
+
+        & .error-block {
+            background-color: var(--color-monza);
+        }
+    }
+
+    &.secondary {
+        & .progress-bar {
+            background-color: color(var(--color-black) alpha(0.1));
+        }
+
+        & .success-block .feedback-icon {
+            fill: var(--color-science-blue);
+        }
+
+        & .error-block .feedback-icon {
+            fill: var(--color-monza);
+        }
+    }
+
+    &.success {
+        & .text-block {
+            transform: translateY(-100%);
+        }
+
+        & .success-block {
+            transform: translateY(0);
+        }
+    }
+
+    &.error {
+        & .text-block {
+            transform: translateY(-100%);
+        }
+
+        & .error-block {
+            transform: translateY(0);
         }
     }
 }

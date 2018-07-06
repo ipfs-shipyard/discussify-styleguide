@@ -26,7 +26,9 @@ import mySvg from './path/to/my.svg';
 
 ### Changing the color
 
-You may change the dots color via the `fill` CSS property.   
+By default, `fill` inherits from the current `color`.
+
+Neverthless, you may change the dots color via the `fill` CSS property.   
 Additionally, you may tweak the opacity via the `fill-opacity` CSS property.
 
 ```jsx

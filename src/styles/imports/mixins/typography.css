@@ -1,5 +1,7 @@
 /* ==========================================================================
   Headings
+
+  $unit - Either em or rem
   ========================================================================== */
 
 @define-mixin _heading {
@@ -33,35 +35,46 @@
 }
 
 /* ==========================================================================
-  Regular text
+  Text variants
+
+  $unit - Either `em` or `rem`
+  $line-height-modifier - Specify `no-line-height` to skip adding `line-height`
   ========================================================================== */
 
-@define-mixin typography-body-1 $unit {
+@define-mixin typography-body-1 $unit, $line-height-modifier: none {
     font-family: "NunitoSans", sans-serif;
     font-size: 1.6$(unit);
     font-weight: 400;
-    line-height: 2.6$(unit);
+    @if $line-height-modifier != no-line-height {
+        line-height: 2.6$(unit);
+    }
 }
 
-@define-mixin typography-body-2 $unit {
+@define-mixin typography-body-2 $unit, $line-height-modifier: none {
     font-family: "NunitoSans", sans-serif;
     font-size: 1.4$(unit);
-    font-weight: 400;
-    line-height: 2.2$(unit);
+    font-weight: 300;
+    @if $line-height-modifier != no-line-height {
+        line-height: 2.2$(unit);
+    }
 }
 
-@define-mixin typography-caption $unit {
+@define-mixin typography-caption $unit, $line-height-modifier: none {
     font-family: "NunitoSans", sans-serif;
     font-size: 1.2$(unit);
     font-weight: 700;
-    line-height: 1.8$(unit);
     letter-spacing: 0.04$(unit);
+    @if $line-height-modifier != no-line-height {
+        line-height: 1.8$(unit);
+    }
 }
 
-@define-mixin typography-overline $unit {
+@define-mixin typography-overline $unit, $line-height-modifier: none {
     font-family: "NunitoSans", sans-serif;
     font-size: 1.2$(unit);
     font-weight: 400;
-    line-height: 1.8$(unit);
     letter-spacing: 0.04$(unit);
+    @if $line-height-modifier != no-line-height {
+        line-height: 1.8$(unit);
+    }
 }

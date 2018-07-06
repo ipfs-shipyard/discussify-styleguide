@@ -6,7 +6,7 @@
     font-size: 2.4rem;
     user-select: none;
     transition: fill 0.2s ease, fill-opacity 0.2s ease;
-    fill: inherit;
+    fill: currentColor;
 
     & svg {
         width: inherit;

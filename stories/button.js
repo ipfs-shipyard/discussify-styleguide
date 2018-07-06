@@ -19,6 +19,7 @@ storiesOf('Button', module)
     const variant = selectV2('variant', ['primary', 'secondary'], 'primary');
     const disabled = boolean('disabled');
     const fullWidth = boolean('fullWidth');
+    const feedback = selectV2('feedback', ['', 'loading', 'success', 'error']);
     const children = text('children', 'Click me');
 
     return (
@@ -26,6 +27,7 @@ storiesOf('Button', module)
             variant={ variant }
             disabled={ disabled }
             fullWidth={ fullWidth }
+            feedback={ feedback || undefined }
             onClick={ action('clicked') }>
             { children }
         </Button>
