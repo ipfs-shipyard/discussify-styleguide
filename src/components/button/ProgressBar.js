@@ -8,7 +8,16 @@ import styles from './ProgressBar.css';
 const INCREMENT_INTERVAL = 300;
 const MAX_PROGRESS = 0.95;
 
-class ProgressBar extends Component {
+export default class ProgressBar extends Component {
+    static propTypes = {
+        running: PropTypes.bool.isRequired,
+        onBegin: PropTypes.func,
+        onEnd: PropTypes.func,
+        onReset: PropTypes.func,
+        style: PropTypes.object,
+        className: PropTypes.string,
+    };
+
     componentDidMount() {
         this.maybeHandleRunningChange();
     }
@@ -123,14 +132,3 @@ class ProgressBar extends Component {
         return increment;
     }
 }
-
-ProgressBar.propTypes = {
-    running: PropTypes.bool.isRequired,
-    onBegin: PropTypes.func,
-    onEnd: PropTypes.func,
-    onReset: PropTypes.func,
-    style: PropTypes.object,
-    className: PropTypes.string,
-};
-
-export default ProgressBar;
