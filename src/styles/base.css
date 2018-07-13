@@ -70,12 +70,11 @@ body {
 
 a {
     color: var(--color-science-blue);
-    text-underline-position: under;
-    transition: color 0.2s;
+    transition: opacity 0.2s;
 }
 
 a:hover {
-    color: color(var(--color-science-blue) lightness(35%));
+    opacity: 0.8;
 }
 
 /* ==========================================================================

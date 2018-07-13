@@ -46,7 +46,7 @@
     font-size: 1.6$(unit);
     font-weight: 400;
     @if $line-height-modifier != no-line-height {
-        line-height: 2.6$(unit);
+        line-height: calc(2.6em / 1.6);
     }
 }
 
@@ -55,7 +55,7 @@
     font-size: 1.4$(unit);
     font-weight: 300;
     @if $line-height-modifier != no-line-height {
-        line-height: 2.2$(unit);
+        line-height: calc(2.2em / 1.4);
     }
 }
 
@@ -63,9 +63,9 @@
     font-family: "NunitoSans", sans-serif;
     font-size: 1.2$(unit);
     font-weight: 700;
-    letter-spacing: 0.04$(unit);
+    letter-spacing: calc(0.04em / 1.2);
     @if $line-height-modifier != no-line-height {
-        line-height: 1.8$(unit);
+        line-height: calc(1.8em / 1.2);
     }
 }
 
@@ -73,8 +73,8 @@
     font-family: "NunitoSans", sans-serif;
     font-size: 1.2$(unit);
     font-weight: 400;
-    letter-spacing: 0.04$(unit);
+    letter-spacing: calc(0.04em / 1.2);
     @if $line-height-modifier != no-line-height {
-        line-height: 1.8$(unit);
+        line-height: calc(1.8em / 1.2);
     }
 }

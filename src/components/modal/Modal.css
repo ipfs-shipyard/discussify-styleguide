@@ -1,0 +1,58 @@
+@import "colors";
+
+:root {
+    --spacing: 4em;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-width: calc(100vw - var(--spacing) * 2);
+    max-height: calc(100vh - var(--spacing) * 2);
+    overflow: auto;
+    padding: var(--spacing);
+    transform: translate(-50%, calc(-50% + 2.5em));
+    opacity: 0;
+    background-color: var(--color-white);
+    box-shadow: 0 0.7em 1.7em color(var(--color-black) alpha(0.15));
+    font-size: 1rem;
+    transition: opacity 0.2s ease, transform 0.2s ease-out;
+
+    &.after-open {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+
+    &.before-close {
+        opacity: 0;
+        transition: opacity 0.1s linear;
+    }
+}
+
+.modal-content {
+    @mixin typography-body-1 em;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+
+    &.after-open {
+        background-color: color(var(--color-black) alpha(0.3));
+    }
+
+    &.before-close {
+        background-color: transparent;
+        transition: background-color 0.1s linear;
+    }
+}
+
+.modal-body-open {
+    overflow: hidden;
+}

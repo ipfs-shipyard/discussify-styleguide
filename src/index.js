@@ -6,5 +6,6 @@ export { default as DiscussionFab } from './components/discussion-fab';
 export { default as TypingIndicator } from './components/typing-indicator';
 export { default as Icon } from './components/icon';
 export * from './components/icon';
+export * from './components/modal';
 export { default as TextButton } from './components/text-button';
 export { default as TimeAgo } from './components/time-ago';

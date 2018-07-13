@@ -31,6 +31,7 @@
     "proper-on-transition-end": "^0.3.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-modal": "^3.5.1",
     "react-preload-image": "^1.0.4",
     "react-time-ago": "^2.0.3"
   },

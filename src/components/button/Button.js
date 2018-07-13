@@ -7,7 +7,16 @@ import styles from './Button.css';
 
 const FEEDBACK_OUTCOME_VISIBLE_DURATION = 1750;
 
-class Button extends Component {
+export default class Button extends Component {
+    static propTypes = {
+        variant: PropTypes.oneOf(['primary', 'secondary']).isRequired,
+        fullWidth: PropTypes.bool,
+        disabled: PropTypes.bool,
+        feedback: PropTypes.oneOf(['loading', 'success', 'error']),
+        children: PropTypes.node.isRequired,
+        className: PropTypes.string,
+    };
+
     state = {};
 
     componentDidMount() {
@@ -97,14 +106,3 @@ class Button extends Component {
         });
     };
 }
-
-Button.propTypes = {
-    variant: PropTypes.oneOf(['primary', 'secondary']).isRequired,
-    fullWidth: PropTypes.bool,
-    disabled: PropTypes.bool,
-    feedback: PropTypes.oneOf(['loading', 'success', 'error']),
-    children: PropTypes.node.isRequired,
-    className: PropTypes.string,
-};
-
-export default Button;
