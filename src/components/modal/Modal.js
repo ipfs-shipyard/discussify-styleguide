@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import ReactModal from 'react-modal';
 import styles from './Modal.css';
 
-const CLOSE_TIMEOUT_MS = 250; // Must be 50ms higher than the close animation
+const CLOSE_TRANSITION_DURATION = 250; // Must be 50ms higher than the actual CSS duration
 
 const computeClassName = (className, classNameProp) => {
     if (classNameProp) {
@@ -55,13 +55,13 @@ export default class Modal extends Component {
 
         return (
             <ReactModal
-                closeTimeoutMS={ CLOSE_TIMEOUT_MS }
+                closeTimeoutMS={ CLOSE_TRANSITION_DURATION }
                 { ...rest }
                 className={ finalClassName }
                 overlayClassName={ finalOverlayClassName }
                 portalClassName={ classNames(styles.modalPortal, portalClassName) }
                 bodyOpenClassName={ classNames(styles.modalBodyOpen, bodyOpenClassName) }>
-                <div className={ classNames(styles.modalContent, contentClassName) }>
+                <div className={ classNames(styles.content, contentClassName) }>
                     { children }
                 </div>
             </ReactModal>

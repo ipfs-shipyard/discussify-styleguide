@@ -1,4 +1,5 @@
 @import "colors";
+@import "mixins/typography";
 
 :root {
     --spacing: 4em;
@@ -28,10 +29,10 @@
         opacity: 0;
         transition: opacity 0.1s linear;
     }
-}
 
-.modal-content {
-    @mixin typography-body-1 em;
+    & .content {
+        @mixin typography-body-1 em;
+    }
 }
 
 .modal-overlay {
@@ -51,6 +52,11 @@
         background-color: transparent;
         transition: background-color 0.1s linear;
     }
+}
+
+.modal-portal {
+    position: relative;
+    z-index: 999999;
 }
 
 .modal-body-open {

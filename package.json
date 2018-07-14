@@ -32,8 +32,10 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-modal": "^3.5.1",
+    "react-popper": "^1.0.0",
     "react-preload-image": "^1.0.4",
-    "react-time-ago": "^2.0.3"
+    "react-time-ago": "^2.0.3",
+    "react-transition-group": "^2.4.0"
   },
   "devDependencies": {
     "@storybook/addon-knobs": "^3.4.8",

@@ -42,7 +42,7 @@ export default class ProgressBar extends Component {
     }
 
     storeRef = (ref) => {
-        this.progressBar = ref;
+        this.progressBarNode = ref;
     };
 
     maybeHandleRunningChange(prevRunning) {
@@ -75,12 +75,12 @@ export default class ProgressBar extends Component {
         this.clearTimersAndListeners();
         this.currentProgress = 1;
 
-        this.progressBar.style.transform = 'scaleX(1)';
-        this.cancelOnTransitionEnd = onTransitionEnd(this.progressBar, () => {
+        this.progressBarNode.style.transform = 'scaleX(1)';
+        this.cancelOnTransitionEnd = onTransitionEnd(this.progressBarNode, () => {
             this.props.onEnd && this.props.onEnd();
 
-            this.progressBar.style.opacity = '0';
-            this.cancelOnTransitionEnd = onTransitionEnd(this.progressBar, () => this.reset);
+            this.progressBarNode.style.opacity = '0';
+            this.cancelOnTransitionEnd = onTransitionEnd(this.progressBarNode, () => this.reset);
         });
     }
 
@@ -88,11 +88,11 @@ export default class ProgressBar extends Component {
         this.clearTimersAndListeners();
         this.currentProgress = 0;
 
-        this.progressBar.style.transition = 'none';
-        this.progressBar.style.transform = '';
-        this.progressBar.style.opacity = '';
-        this.progressBar.offsetHeight; // eslint-disable-line no-unused-expressions
-        this.progressBar.style.transition = '';
+        this.progressBarNode.style.transition = 'none';
+        this.progressBarNode.style.transform = '';
+        this.progressBarNode.style.opacity = '';
+        this.progressBarNode.offsetHeight; // eslint-disable-line no-unused-expressions
+        this.progressBarNode.style.transition = '';
 
         this.props.onReset && this.props.onReset();
     };
@@ -113,7 +113,7 @@ export default class ProgressBar extends Component {
         }
 
         this.currentProgress += increment;
-        this.progressBar.style.transform = `scaleX(${this.currentProgress})`;
+        this.progressBarNode.style.transform = `scaleX(${this.currentProgress})`;
     };
 
     determineIncrement() {

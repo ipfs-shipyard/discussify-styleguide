@@ -1,0 +1,99 @@
+@import "colors";
+@import "mixins/typography";
+
+.popover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+    filter: drop-shadow(0 0.7em 1.6em color(var(--color-black) alpha(0.15)));
+    font-size: 1rem;
+    transition: opacity 0.2s ease;
+
+    &.appear,
+    &.enter {
+        opacity: 0;
+    }
+
+    &.appear-active,
+    &.enter-active {
+        opacity: 1;
+    }
+
+    &.exit {
+        opacity: 1;
+    }
+
+    &.exit-active {
+        opacity: 0;
+    }
+
+    & .container {
+        position: relative;
+        z-index: 2;
+        padding: 2em;
+        background-color: var(--color-white);
+        color: var(--color-black);
+        text-align: left;
+
+        & .content {
+            @mixin typography-body-2 em;
+        }
+    }
+
+    & .arrow {
+        position: absolute;
+        width: 0;
+        height: 0;
+        z-index: 1;
+        border-style: solid;
+    }
+
+    &[data-placement="top"] {
+        & {
+            top: -2em !important;
+        }
+
+        & .arrow {
+            bottom: -1em;
+            border-width: 1em 0.9em 0 0.9em;
+            border-color: var(--color-white) transparent transparent transparent;
+        }
+    }
+
+    &[data-placement="right"] {
+        & {
+            left: 2em !important;
+        }
+
+        & .arrow {
+            left: -1em;
+            border-width: 0.9em 1em 0.9em 0;
+            border-color: transparent var(--color-white) transparent transparent;
+        }
+    }
+
+    &[data-placement="bottom"] {
+        & {
+            top: 2em !important;
+        }
+
+        & .arrow {
+            top: -1em;
+            border-width: 0 0.9em 1em 0.9em;
+            border-color: transparent transparent var(--color-white) transparent;
+        }
+    }
+
+    &[data-placement="left"] {
+        & {
+            left: -2em !important;
+        }
+
+        & .arrow {
+            right: -1em;
+            border-width: 0.9em 0 0.9em 1em;
+            border-color: transparent transparent transparent var(--color-white);
+        }
+    }
+}

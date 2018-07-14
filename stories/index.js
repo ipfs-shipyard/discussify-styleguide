@@ -7,6 +7,7 @@ import './circular-loader';
 import './discussion-fab';
 import './icon';
 import './modal';
+import './popover';
 import './text-button';
 import './time-ago';
 import './typing-indicator';

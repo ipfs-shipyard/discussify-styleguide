@@ -32,7 +32,7 @@ export default class Button extends Component {
     }
 
     render() {
-        const { variant, fullWidth, children, className, disabled, ...rest } = this.props;
+        const { variant, fullWidth, disabled, className, children, ...rest } = this.props;
         const { feedback, feedbackOutcome } = this.state;
         const loading = feedback === 'loading';
         const finalDisabled = disabled || loading;
