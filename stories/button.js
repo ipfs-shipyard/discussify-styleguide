@@ -19,7 +19,7 @@ storiesOf('Button', module)
     const variant = selectV2('variant', ['primary', 'secondary'], 'primary');
     const disabled = boolean('disabled');
     const fullWidth = boolean('fullWidth');
-    const feedback = selectV2('feedback', ['', 'loading', 'success', 'error']);
+    const feedback = selectV2('feedback', ['none', 'loading', 'success', 'error'], 'none');
     const children = text('children', 'Click me');
 
     return (

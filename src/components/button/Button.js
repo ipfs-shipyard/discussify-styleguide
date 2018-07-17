@@ -12,9 +12,13 @@ export default class Button extends Component {
         variant: PropTypes.oneOf(['primary', 'secondary']).isRequired,
         fullWidth: PropTypes.bool,
         disabled: PropTypes.bool,
-        feedback: PropTypes.oneOf(['loading', 'success', 'error']),
+        feedback: PropTypes.oneOf(['none', 'loading', 'success', 'error']),
         children: PropTypes.node.isRequired,
         className: PropTypes.string,
+    };
+
+    static defaultProps = {
+        feedback: 'none',
     };
 
     state = {};
