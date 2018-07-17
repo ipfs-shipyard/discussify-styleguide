@@ -11,13 +11,14 @@ const popover = <Popover>I'm a text in a popover.</Popover>
 
 // Simple usage, triggers when clicking and hovering
 <PopoverTrigger popover={ popover }>
-    <Button variant="primary">Click or hover me</Button> }
+    <Button variant="primary">Click or hover me</Button>
 </PopoverTrigger>
 
-// Equivalent to the previous one, but with active status on the button
+// Equivalent to the previous one but with a children as a function
+// You may use `isOpen` to highlight the trigger
 <PopoverTrigger popover={ popover }>
     { ({ isOpen, defaultEventProps }) =>
-        <Button variant="primary" active={ isOpen } { ...defaultEventProps }>Click or hover me</Button> }
+        <Button variant="primary" { ...defaultEventProps }>Click or hover me</Button> }
 </PopoverTrigger>
 
 // Custom trigger

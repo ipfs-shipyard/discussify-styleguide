@@ -15,12 +15,12 @@ const LoremIpsumPopver = forwardRef((props, ref) => (
 storiesOf('Popover', module)
 .addDecorator(withReadme(readme))
 .addDecorator(withKnobs)
-.add('With standard trigger', () => (
+.add('Standard trigger', () => (
     <PopoverTrigger popover={ <LoremIpsumPopver placement="right" /> }>
         <Button variant="primary">Click or hover me</Button>
     </PopoverTrigger>
 ))
-.add('With custom trigger (click)', () => (
+.add('Custom trigger (click)', () => (
     <PopoverTrigger popover={ <LoremIpsumPopver placement="right" /> }>
         { ({ toggle }) =>
             <Button variant="primary" onClick={ toggle }>Click me</Button> }

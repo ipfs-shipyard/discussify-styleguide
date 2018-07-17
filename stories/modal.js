@@ -21,13 +21,13 @@ storiesOf('Modal', module)
 .add('Standalone', () => (
     <LoremIpsumModal isOpen />
 ))
-.add('With standard trigger', () => (
+.add('Standard trigger', () => (
     <ModalTrigger modal={ <LoremIpsumModal /> }>
         <Button variant="primary">Click me</Button>
     </ModalTrigger>
 ))
 /* eslint-disable react/jsx-no-bind */
-.add('With custom trigger (hover)', () => (
+.add('Custom trigger (hover)', () => (
     <ModalTrigger modal={ <LoremIpsumModal /> }>
         { ({ open, cancelOpen }) => (
             <Button

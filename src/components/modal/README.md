@@ -13,13 +13,14 @@ const modal = <Modal>I'm a text in a modal.</Modal>;
 
 // Simple usage, triggers when clicking
 <ModalTrigger modal={ modal }>
-    <Button variant="primary">Click me</Button> }
+    <Button variant="primary">Click me</Button>
 </ModalTrigger>
 
-// Equivalent to the previous one, but with active status on the button
+// Equivalent to the previous one but with a children as a function
+// You may use `isOpen` to highlight the trigger
 <ModalTrigger modal={ modal }>
     { ({ isOpen, defaultEventProps }) =>
-        <Button variant="primary" active={ isOpen } { ...defaultEventProps }>Click me</Button> }
+        <Button variant="primary" { ...defaultEventProps }>Click me</Button> }
 </ModalTrigger>
 
 // Custom trigger
