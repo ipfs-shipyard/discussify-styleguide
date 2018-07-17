@@ -25,6 +25,8 @@
     }
 
     &.exit {
+        pointer-events: none;
+
         & .container {
             transform: scale(1);
             transition: opacity 0.15s ease;
