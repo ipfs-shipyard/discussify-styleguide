@@ -19,7 +19,7 @@ export default class ProgressBar extends Component {
     };
 
     componentDidMount() {
-        this.maybeHandleRunningChange();
+        this.maybeHandleRunningChange(false);
     }
 
     componentDidUpdate(prevProps) {
