@@ -61,7 +61,7 @@ export default class Modal extends Component {
                 overlayClassName={ finalOverlayClassName }
                 portalClassName={ classNames(styles.modalPortal, portalClassName) }
                 bodyOpenClassName={ classNames(styles.modalBodyOpen, bodyOpenClassName) }>
-                <div className={ classNames(styles.content, contentClassName) }>
+                <div className={ classNames(styles.modalContent, contentClassName) }>
                     { children }
                 </div>
             </ReactModal>

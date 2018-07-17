@@ -63,17 +63,11 @@ export default class Popover extends Component {
                 unmountOnExit
                 timeout={ CLOSE_TRANSITION_DURATION }
                 classNames={ {
-                    appear: styles.appear,
-                    appearActive: styles.appearActive,
-                    enter: styles.enter,
                     enterActive: styles.enterActive,
+                    enterDone: styles.enterDone,
                     exit: styles.exit,
-                    exitActive: styles.exitActive,
                 } }>
-                <Popper
-                    placement={ placement }>
-                    { this.renderPopper }
-                </Popper>
+                <Popper placement={ placement }>{ this.renderPopper }</Popper>
             </CSSTransition>
         );
     }
@@ -82,6 +76,7 @@ export default class Popover extends Component {
         // Fix arrow not being positioned correctly in first render
         // See: https://github.com/FezVrasta/react-popper/issues/88
         if (!scheduleUpdate._forced) {
+            cancelAnimationFrame(this.scheduleUpdateRequestId);
             this.scheduleUpdateRequestId = requestAnimationFrame(() => scheduleUpdate());
 
             scheduleUpdate._forced = true;
@@ -110,17 +105,19 @@ export default class Popover extends Component {
                 onMouseLeave={ this.handleMouseLeave }
                 data-placement={ placement }>
 
-                <div ref={ this.storeContainerRef } className={ styles.container }>
-                    <div className={ classNames(styles.content, contentClassName) }>{ children }</div>
-                </div>
+                <div className={ styles.container }>
+                    <div ref={ this.storeBoxRef } className={ styles.box }>
+                        <div className={ classNames(styles.popoverContent, contentClassName) }>{ children }</div>
+                    </div>
 
-                <div ref={ arrowProps.ref } className={ styles.arrow } style={ arrowProps.style } />
+                    <div ref={ arrowProps.ref } className={ styles.arrow } style={ arrowProps.style } />
+                </div>
             </div>
         );
     };
 
-    storeContainerRef= (ref) => {
-        this.containerNode = ref;
+    storeBoxRef= (ref) => {
+        this.boxNode = ref;
     };
 
     addEscapeOutsideListeners() {
@@ -174,10 +171,10 @@ export default class Popover extends Component {
         this.mouseDownEventTarget = undefined;
 
         // Check if we clicked outside of the popover AND outside the reference as well
-        const isOutsideContainer = !this.containerNode || !this.containerNode.contains(target);
+        const isOutsideBox = !this.boxNode || !this.boxNode.contains(target);
         const isOutsideReference = !this.referenceNode || !this.referenceNode.contains(target);
 
-        if (isOutsideContainer && isOutsideReference) {
+        if (isOutsideBox && isOutsideReference) {
             this.props.onRequestClose && this.props.onRequestClose(e, 'clickOutside');
         }
     };

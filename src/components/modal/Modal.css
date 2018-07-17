@@ -13,12 +13,12 @@
     max-height: calc(100vh - var(--spacing) * 2);
     overflow: auto;
     padding: var(--spacing);
-    transform: translate(-50%, calc(-50% + 2.5em));
+    transform: translate(-50%, -50%) scale(0.9);
     opacity: 0;
     background-color: var(--color-white);
     box-shadow: 0 0.7em 1.7em color(var(--color-black) alpha(0.15));
     font-size: 1rem;
-    transition: opacity 0.2s ease, transform 0.2s ease-out;
+    transition: opacity 0.2s 0.1s ease, transform 0.3s 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     &.after-open {
         transform: translate(-50%, -50%);
@@ -27,12 +27,15 @@
 
     &.before-close {
         opacity: 0;
-        transition: opacity 0.1s linear;
+        transition: opacity 0.15s ease;
     }
+}
 
-    & .content {
-        @mixin typography-body-1 em;
-    }
+.modal-content {
+    @mixin typography-body-1 em;
+
+    /* Prevent text from flickering in Webkit */
+    backface-visibility: hidden;
 }
 
 .modal-overlay {
@@ -50,7 +53,7 @@
 
     &.before-close {
         background-color: transparent;
-        transition: background-color 0.1s linear;
+        transition: background-color 0.15s ease;
     }
 }
 

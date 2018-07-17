@@ -39,9 +39,9 @@ storiesOf('Modal', module)
 ))
 .add('Within scrollable body', () => (
     <div style={ { height: 20000 } }>
-        <div style={ { height: 500 } } />
+        <div style={ { height: 200 } } />
 
-        <ModalTrigger modal={ <LoremIpsumModal isOpen /> }>
+        <ModalTrigger modal={ <LoremIpsumModal /> }>
             <Button variant="primary">Click me</Button>
         </ModalTrigger>
     </div>

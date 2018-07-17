@@ -6,39 +6,38 @@
     top: 0;
     left: 0;
     z-index: 999999;
-    filter: drop-shadow(0 0.7em 1.6em color(var(--color-black) alpha(0.15)));
     font-size: 1rem;
-    transition: opacity 0.2s ease;
 
-    &.appear,
-    &.enter {
+    & .container {
+        position: relative;
+        transform: scale(0.9);
         opacity: 0;
+        filter: drop-shadow(0 0.7em 1.6em color(var(--color-black) alpha(0.15)));
+        transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    &.appear-active,
-    &.enter-active {
-        opacity: 1;
+    &.enter-active,
+    &.enter-done {
+        & .container {
+            transform: scale(1);
+            opacity: 1;
+        }
     }
 
     &.exit {
-        opacity: 1;
+        & .container {
+            transform: scale(1);
+            transition: opacity 0.15s ease;
+        }
     }
 
-    &.exit-active {
-        opacity: 0;
-    }
-
-    & .container {
+    & .box {
         position: relative;
         z-index: 2;
         padding: 2em;
         background-color: var(--color-white);
         color: var(--color-black);
         text-align: left;
-
-        & .content {
-            @mixin typography-body-2 em;
-        }
     }
 
     & .arrow {
@@ -55,7 +54,7 @@
         }
 
         & .arrow {
-            bottom: 1em;
+            bottom: -1em;
             border-width: 1em 0.9em 0 0.9em;
             border-color: var(--color-white) transparent transparent transparent;
         }
@@ -67,7 +66,7 @@
         }
 
         & .arrow {
-            left: 1em;
+            left: -1em;
             border-width: 0.9em 1em 0.9em 0;
             border-color: transparent var(--color-white) transparent transparent;
         }
@@ -79,7 +78,7 @@
         }
 
         & .arrow {
-            top: 1em;
+            top: -1em;
             border-width: 0 0.9em 1em 0.9em;
             border-color: transparent transparent var(--color-white) transparent;
         }
@@ -87,13 +86,20 @@
 
     &[data-placement="left"] {
         & {
-            padding-right: 2em !important;
+            padding-right: 2em;
         }
 
         & .arrow {
-            right: 1em;
+            right: -1em;
             border-width: 0.9em 0 0.9em 1em;
             border-color: transparent transparent transparent var(--color-white);
         }
     }
+}
+
+.popover-content {
+    @mixin typography-body-2 em;
+
+    /* Prevent text from flickering in Webkit */
+    backface-visibility: hidden;
 }
