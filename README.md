@@ -49,9 +49,7 @@ Checks if the project has any linting errors.
 $ npm run release
 ```
 
-Releases and publishes the package.
-
-Runs tests, lints and builds the project beforehand.
+Releases and publishes the package. Runs tests, lints and builds the project beforehand.
 
 This command uses [`standard-version`](https://github.com/conventional-changelog/standard-version) underneath. The version is automatically inferred from the [conventional commits](https://conventionalcommits.org/).
 
