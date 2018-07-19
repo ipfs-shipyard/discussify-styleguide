@@ -6,7 +6,7 @@
   "module": "es/index.js",
   "scripts": {
     "start": "npm run storybook",
-    "storybook": "start-storybook -p 9001 -c .storybook",
+    "storybook": "start-storybook -p 3010 -c .storybook",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -40,17 +40,14 @@
   "devDependencies": {
     "@storybook/addon-knobs": "^3.4.8",
     "@storybook/react": "^3.4.8",
-    "babel-core": "^6.26.3",
     "eslint": "^4.19.1",
     "eslint-config-moxy": "^5.4.1",
     "external-svg-sprite-loader": "^3.4.1",
     "marked": "^0.4.0",
     "postcss-preset-moxy": "^2.2.0",
-    "raw-loader": "^0.5.1",
     "storybook-readme": "^3.3.0",
     "stylelint": "^9.3.0",
     "stylelint-config-moxy": "^5.0.0",
-    "svg-css-modules-loader": "^1.6.1",
-    "svgo-loader": "^2.1.0"
+    "svg-css-modules-loader": "^1.6.1"
   }
 }
