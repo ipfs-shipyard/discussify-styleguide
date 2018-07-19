@@ -28,15 +28,7 @@ module.exports = (config) => {
                     localIdentName: '[name]__[local]___[hash:base64:5]!',
                 },
             },
-            {
-                loader: 'postcss-loader',
-                options: require('postcss-preset-moxy')({
-                    // Any non-relative imports are resolved to this path
-                    importPath: path.join(__dirname, '../src/styles/imports'),
-                    // Process relative url statements
-                    url: true,
-                }),
-            },
+            'postcss-loader',
         ],
     });
 

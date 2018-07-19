@@ -4,10 +4,32 @@
   "description": "Discussify's living styleguide",
   "main": "lib/index.js",
   "module": "es/index.js",
+  "files": [
+    "lib",
+    "es",
+    "styles",
+    "media"
+  ],
   "scripts": {
     "start": "npm run storybook",
     "storybook": "start-storybook -p 3010 -c .storybook",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run build:clean && npm run build:js && npm run build:css && npm run build:copy",
+    "build:clean": "rimraf lib es",
+    "build:js": "npm run build:js-cjs && npm run build:js-es",
+    "build:js-cjs": "cross-env BABEL_ENV=cjs babel src --out-dir lib",
+    "build:js-es": "cross-env BABEL_ENV=es babel src --out-dir es",
+    "build:css": "npm run build:css-cjs && npm run build:css-es && npm run build:css-styles",
+    "build:css-styles": "postcss \"src/index.css\" --output styles/index.css",
+    "build:css-cjs": "postcss \"src/components/**/*.css\" --base src --dir lib",
+    "build:css-es": "postcss \"src/components/**/*.css\" --base src --dir es",
+    "build:copy": "npm run build:copy-cjs && npm run build:copy-es && npm run build:copy-styles",
+    "build:copy-cjs": "cpr src/media lib/media",
+    "build:copy-es": "cpr src/media es/media",
+    "build:copy-styles": "cpr src/styles/imports styles/imports",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --ignore-path .gitignore . && stylelint --ignore-path .gitignore \"**/*.css\"",
+    "precommit": "lint-staged",
+    "commitmsg": "commitlint -e $GIT_PARAMS"
   },
   "keywords": [
     "discussify",
@@ -38,16 +60,41 @@
     "react-transition-group": "^2.4.0"
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "^7.0.1",
     "@storybook/addon-knobs": "^3.4.8",
     "@storybook/react": "^3.4.8",
+    "babel-cli": "^6.26.0",
+    "babel-preset-moxy": "^2.3.3",
+    "commitlint": "^7.0.0",
+    "cpr": "^3.0.1",
+    "cross-env": "^5.2.0",
     "eslint": "^4.19.1",
     "eslint-config-moxy": "^5.4.1",
     "external-svg-sprite-loader": "^3.4.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.0",
     "marked": "^0.4.0",
+    "postcss-cli": "^6.0.0",
     "postcss-preset-moxy": "^2.2.0",
+    "rimraf": "^2.6.2",
     "storybook-readme": "^3.3.0",
     "stylelint": "^9.3.0",
     "stylelint-config-moxy": "^5.0.0",
     "svg-css-modules-loader": "^1.6.1"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.css": [
+      "stylelint --fix",
+      "git add"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }
