@@ -2,6 +2,34 @@
 
 Discussify's living styleguide.
 
+
+## Installation
+
+```sh
+$ npm install @discussify/styleguide
+```
+
+Be sure to import the styleguide base styles:
+
+```css
+@import "@discussify/styleguide/styles";
+```
+
+And then simply import the components and use them:
+
+```js
+import { TypingIndicator } from '@discussify/styleguide';
+
+<TypingIndicator />
+```
+
+You may take a look at all the components by [running the Storybook](https://github.com/ipfs-shipyard/discussify-styleguide#start).
+
+### Using the PostCSS variables and mixins
+
+In order to use the variables and mixins, you must setup PostCSS in your application using a configuration similar to ours [`postcss.config.js`](postcss.config.js). You must adjust `importPath` to point to `node_modules/@discussify/styleguide/styles/imports`.
+
+
 ## Base technology
 
 - React
