@@ -10,27 +10,6 @@
     "styles",
     "media"
   ],
-  "scripts": {
-    "start": "npm run storybook",
-    "storybook": "start-storybook -p 3010 -c .storybook",
-    "build": "npm run build:clean && npm run build:js && npm run build:css && npm run build:copy",
-    "build:clean": "rimraf lib es",
-    "build:js": "npm run build:js-cjs && npm run build:js-es",
-    "build:js-cjs": "cross-env BABEL_ENV=cjs babel src --out-dir lib",
-    "build:js-es": "cross-env BABEL_ENV=es babel src --out-dir es",
-    "build:css": "npm run build:css-cjs && npm run build:css-es && npm run build:css-styles",
-    "build:css-styles": "postcss \"src/index.css\" --output styles/index.css",
-    "build:css-cjs": "postcss \"src/components/**/*.css\" --base src --dir lib",
-    "build:css-es": "postcss \"src/components/**/*.css\" --base src --dir es",
-    "build:copy": "npm run build:copy-cjs && npm run build:copy-es && npm run build:copy-styles",
-    "build:copy-cjs": "cpr src/media lib/media",
-    "build:copy-es": "cpr src/media es/media",
-    "build:copy-styles": "cpr src/styles/imports styles/imports",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --ignore-path .gitignore . && stylelint --ignore-path .gitignore \"**/*.css\"",
-    "precommit": "lint-staged",
-    "commitmsg": "commitlint -e $GIT_PARAMS"
-  },
   "keywords": [
     "discussify",
     "styleguide",
@@ -43,6 +22,28 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:ipfs-shipyard/discussify-styleguide"
+  },
+  "scripts": {
+    "start": "start-storybook -p 3010 -c .storybook",
+    "build": "npm run build:clean && npm run build:js && npm run build:css && npm run build:copy",
+    "build:clean": "rimraf lib es styles",
+    "build:js": "npm run build:js-cjs && npm run build:js-es",
+    "build:js-cjs": "cross-env BABEL_ENV=cjs babel src --out-dir lib",
+    "build:js-es": "cross-env BABEL_ENV=es babel src --out-dir es",
+    "build:css": "npm run build:css-cjs && npm run build:css-es && npm run build:css-styles",
+    "build:css-styles": "postcss \"src/index.css\" --output styles/index.css",
+    "build:css-cjs": "postcss \"src/components/**/*.css\" --base src --dir lib",
+    "build:css-es": "postcss \"src/components/**/*.css\" --base src --dir es",
+    "build:copy": "npm run build:copy-cjs && npm run build:copy-es && npm run build:copy-styles",
+    "build:copy-cjs": "cpr src/media lib/media",
+    "build:copy-es": "cpr src/media es/media",
+    "build:copy-styles": "cpr src/styles/imports styles/imports",
+    "test": "exit 0",
+    "lint": "eslint --ignore-path .gitignore . && stylelint --ignore-path .gitignore \"**/*.css\"",
+    "prerelease": "npm t && npm run lint && npm run build",
+    "release": "standard-version",
+    "precommit": "lint-staged",
+    "commitmsg": "commitlint -e $GIT_PARAMS"
   },
   "dependencies": {
     "classnames": "^2.2.6",
@@ -77,10 +78,16 @@
     "postcss-cli": "^6.0.0",
     "postcss-preset-moxy": "^2.2.0",
     "rimraf": "^2.6.2",
+    "standard-version": "^4.4.0",
     "storybook-readme": "^3.3.0",
     "stylelint": "^9.3.0",
     "stylelint-config-moxy": "^5.0.0",
     "svg-css-modules-loader": "^1.6.1"
+  },
+  "standard-version": {
+    "scripts": {
+      "posttag": "git push --follow-tags origin master && npm publish"
+    }
   },
   "lint-staged": {
     "*.js": [
