@@ -30,7 +30,7 @@ Follow the steps below:
     ..or in your entry JavaScript file:
 
     ```js
-    /* src/index.js */
+    // src/index.js
     import "@discussify/styleguide/styles/index.css";
     ```
 
