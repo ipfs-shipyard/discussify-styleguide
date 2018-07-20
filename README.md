@@ -9,25 +9,44 @@ Discussify's living styleguide.
 $ npm install @discussify/styleguide
 ```
 
-Be sure to import the styleguide base styles:
+### Setup
 
-```css
-@import "@discussify/styleguide/styles";
-```
+It's assumed that you will consume this package in an application bundled with Webpack.
+Follow the steps below:
 
-And then simply import the components and use them:
+1. Activate CSS modules
 
-```js
-import { TypingIndicator } from '@discussify/styleguide';
+    Activate [CSS modules](https://github.com/webpack-contrib/css-loader#modules) for this package directory. Here's an [example](https://github.com/ipfs-shipyard/discussify-browser-extension/blob/f540888d5702d45b11b46b7d31bebffac5b8cf81/config-overrides.js#L14) for a CRA application.
 
-<TypingIndicator />
-```
+2. Import base styles
 
-You may take a look at all the components by [running the Storybook](https://github.com/ipfs-shipyard/discussify-styleguide#start).
+    Import the styleguide base styles in the app's entry CSS file:
 
-### Using the PostCSS variables and mixins
+    ```css
+    /* src/index.css */
+    @import "@discussify/styleguide/styles";
+    ```
 
-In order to use the variables and mixins, you must setup PostCSS in your application using a configuration similar to ours [`postcss.config.js`](postcss.config.js). You must adjust `importPath` to point to `node_modules/@discussify/styleguide/styles/imports`.
+    ..or in your entry JavaScript file:
+
+    ```js
+    /* src/index.js */
+    import "@discussify/styleguide/styles/index.css";
+    ```
+
+3. Use the components
+
+    ```js
+    import { TypingIndicator } from '@discussify/styleguide';
+
+    <TypingIndicator />
+    ```
+
+    You may take a look at all the components by [running the Storybook](https://github.com/ipfs-shipyard/discussify-styleguide#start).
+
+4. Use the PostCSS variables and mixins
+
+    In order to use the variables and mixins, you must setup PostCSS in your application using a configuration similar to ours [`postcss.config.js`](postcss.config.js). You must adjust `importPath` to point to `node_modules/@discussify/styleguide/styles/imports`. Here's an [example](https://github.com/ipfs-shipyard/discussify-browser-extension/blob/f540888d5702d45b11b46b7d31bebffac5b8cf81/config-overrides.js#L11) [for](https://github.com/ipfs-shipyard/discussify-browser-extension/blob/f540888d5702d45b11b46b7d31bebffac5b8cf81/postcss.config.js) a CRA application.
 
 
 ## Base technology
