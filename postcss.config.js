@@ -5,6 +5,7 @@ module.exports = require('postcss-preset-moxy')({
     // Any non-relative imports are resolved to this path
     importPath: path.join(__dirname, 'src/styles/imports'),
     // Process relative url statements
+    // Note that when building, we want to translate src/ to dist/
     url: {
         url: process.env.POSTCSS_ENV !== 'dist' ?
             'rebase' :
