@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { Manager, Reference } from 'react-popper';
 
 export default class PopoverTrigger extends Component {
+    static defaultHoverDelay = 200;
+
     static propTypes = {
         popover: PropTypes.element,
         children: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
@@ -135,6 +137,4 @@ export default class PopoverTrigger extends Component {
             this.setState({ isOpen: false });
         }, isMouseLeave ? PopoverTrigger.defaultHoverDelay : 0);
     };
-
-    static defaultHoverDelay = 200;
 }

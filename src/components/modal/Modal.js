@@ -21,6 +21,8 @@ const computeClassName = (className, classNameProp) => {
 };
 
 export default class Modal extends Component {
+    static setAppElement = (el) => ReactModal.setAppElement(el);
+
     static propTypes = {
         className: PropTypes.string,
         contentClassName: PropTypes.string,
@@ -30,7 +32,7 @@ export default class Modal extends Component {
         children: PropTypes.node.isRequired,
     };
 
-    static setAppElement = (el) => ReactModal.setAppElement(el);
+    state = {};
 
     render() {
         const {

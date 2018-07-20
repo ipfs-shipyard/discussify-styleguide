@@ -49,10 +49,6 @@ export default class Popover extends Component {
         this.removeEscapeOutsideListeners();
     }
 
-    setReferenceRef(ref) {
-        this.referenceNode = ref;
-    }
-
     render() {
         const { placement, isOpen } = this.props;
 
@@ -115,6 +111,10 @@ export default class Popover extends Component {
             </div>
         );
     };
+
+    setReferenceRef(ref) {
+        this.referenceNode = ref;
+    }
 
     storeBoxRef= (ref) => {
         this.boxNode = ref;
