@@ -6,7 +6,7 @@
   "module": "dist/index.js",
   "files": [
     "dist",
-    "media"
+    "styles"
   ],
   "keywords": [
     "discussify",
@@ -25,10 +25,10 @@
     "start": "start-storybook -p 3010 -c .storybook",
     "build": "npm run build:clean && npm run build:js && npm run build:css && npm run build:copy",
     "build:clean": "rimraf dist styles",
-    "build:js": "cross-env BABEL_ENV=cjs babel src --out-dir dist",
+    "build:js": "cross-env BABEL_ENV=es babel src --out-dir dist",
     "build:css": "npm run build:css-components && npm run build:css-styles",
     "build:css-components": "postcss \"src/components/**/*.css\" --base src --dir dist",
-    "build:css-styles": "postcss \"src/index.css\" --output styles/index.css",
+    "build:css-styles": "cross-env POSTCSS_ENV=dist postcss \"src/index.css\" --output styles/index.css",
     "build:copy": "npm run build:copy-media && npm run build:copy-styles",
     "build:copy-media": "cpr src/media dist/media",
     "build:copy-styles": "cpr src/styles/imports styles/imports",

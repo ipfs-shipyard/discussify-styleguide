@@ -5,5 +5,13 @@ module.exports = require('postcss-preset-moxy')({
     // Any non-relative imports are resolved to this path
     importPath: path.join(__dirname, 'src/styles/imports'),
     // Process relative url statements
-    url: true,
+    url: {
+        url: process.env.POSTCSS_ENV !== 'dist' ?
+            'rebase' :
+            (asset, dir) => {
+                const absolutePath = asset.absolutePath.replace(/\bsrc\b/, 'dist');
+
+                return path.relative(dir.to, absolutePath);
+            },
+    },
 });
