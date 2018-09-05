@@ -35,6 +35,6 @@
     }
 
     &.colored {
-        fill: var(--color-science-blue);
+        color: var(--color-science-blue);
     }
 }
