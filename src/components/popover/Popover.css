@@ -16,8 +16,8 @@
         transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    &.enter-active,
-    &.enter-done {
+    &.enterActive,
+    &.enterDone {
         & .container {
             transform: scale(1);
             opacity: 1;
@@ -33,15 +33,6 @@
         }
     }
 
-    & .box {
-        position: relative;
-        z-index: 2;
-        padding: 2em;
-        background-color: var(--color-white);
-        color: var(--color-black);
-        text-align: left;
-    }
-
     & .arrow {
         position: absolute;
         width: 0;
@@ -52,7 +43,7 @@
 
     &[data-placement="top"] {
         & {
-            padding-bottom: 2em;
+            margin-bottom: 2em;
         }
 
         & .arrow {
@@ -64,11 +55,10 @@
 
     &[data-placement="right"] {
         & {
-            padding-left: 2em;
+            margin-left: 2em;
         }
 
         & .arrow {
-            left: -1em;
             border-width: 0.9em 1em 0.9em 0;
             border-color: transparent var(--color-white) transparent transparent;
         }
@@ -76,7 +66,7 @@
 
     &[data-placement="bottom"] {
         & {
-            padding-top: 2em;
+            margin-top: 2em;
         }
 
         & .arrow {
@@ -88,7 +78,7 @@
 
     &[data-placement="left"] {
         & {
-            padding-right: 2em;
+            margin-right: 2em;
         }
 
         & .arrow {
@@ -99,9 +89,17 @@
     }
 }
 
-.popover-content {
-    @mixin typography-body-2 em;
+.popoverBox {
+    position: relative;
+    z-index: 2;
+    padding: 2em;
+    background-color: var(--color-white);
+    color: var(--color-black);
+    text-align: left;
+}
 
-    /* Prevent text from flickering in Webkit */
-    backface-visibility: hidden;
+.popoverContent {
+    position: relative;
+    backface-visibility: hidden; /* Prevent text from flickering in Webkit */
+    @mixin typography-body-2 em;
 }
