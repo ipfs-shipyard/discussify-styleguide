@@ -44,10 +44,6 @@ Follow the steps below:
 
     You may take a look at all the components by [running the Storybook](https://github.com/ipfs-shipyard/discussify-styleguide#start).
 
-4. Use the PostCSS variables and mixins
-
-    In order to use the variables and mixins, you must setup PostCSS in your application using a configuration similar to ours [`postcss.config.js`](postcss.config.js). You must adjust `importPath` to point to `node_modules/@discussify/styleguide/styles/imports`. Here's an [example](https://github.com/ipfs-shipyard/discussify-browser-extension/blob/f540888d5702d45b11b46b7d31bebffac5b8cf81/config-overrides.js#L11) [for](https://github.com/ipfs-shipyard/discussify-browser-extension/blob/f540888d5702d45b11b46b7d31bebffac5b8cf81/postcss.config.js) a CRA application.
-
 
 ## Base technology
 

@@ -31,7 +31,7 @@
     "build:css-styles": "cross-env POSTCSS_ENV=dist postcss \"src/index.css\" --output styles/index.css",
     "build:copy": "npm run build:copy-media && npm run build:copy-styles",
     "build:copy-media": "cpr src/media dist/media",
-    "build:copy-styles": "cpr src/styles/imports styles/imports",
+    "build:copy-styles": "cpr src/styles/imports styles",
     "test": "exit 0",
     "lint": "eslint --ignore-path .gitignore . && stylelint --ignore-path .gitignore \"**/*.css\"",
     "prerelease": "npm t && npm run lint && npm run build",
