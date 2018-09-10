@@ -36,12 +36,12 @@ export default class ProgressBar extends Component {
         return (
             <div
                 { ...rest }
-                ref={ this.storeRef }
+                ref={ this.storeProgressBarNode }
                 className={ classNames(styles.progressBar, className) } />
         );
     }
 
-    storeRef = (ref) => {
+    storeProgressBarNode = (ref) => {
         this.progressBarNode = ref;
     };
 

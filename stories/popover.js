@@ -17,13 +17,22 @@ storiesOf('Popover', module)
 .addDecorator(withKnobs)
 .add('Standard trigger', () => (
     <PopoverTrigger popover={ <LoremIpsumPopver placement="right" /> }>
-        <Button variant="primary">Click or hover me</Button>
+        <Button
+            variant="primary"
+            style={ { margin: '2rem' } }>
+            Click or hover me
+        </Button>
     </PopoverTrigger>
 ))
 .add('Custom trigger (click)', () => (
     <PopoverTrigger popover={ <LoremIpsumPopver placement="right" /> }>
         { ({ toggle }) =>
-            <Button variant="primary" onClick={ toggle }>Click me</Button> }
+            (<Button
+                variant="primary"
+                onClick={ toggle }
+                style={ { margin: '2rem' } }>
+                Click me
+            </Button>) }
     </PopoverTrigger>
 ))
 .add('All placements', () => {
@@ -35,23 +44,23 @@ storiesOf('Popover', module)
     return (
         <div style={ styles.container }>
             <PopoverTrigger popover={ <LoremIpsumPopver /> }>
-                <Button style={ styles.button } variant="primary">Auto</Button>
+                <Button variant="primary" style={ styles.button }>Auto</Button>
             </PopoverTrigger>
 
             <PopoverTrigger popover={ <LoremIpsumPopver placement="top" /> }>
-                <Button style={ styles.button } variant="primary">Top</Button>
+                <Button variant="primary" style={ styles.button }>Top</Button>
             </PopoverTrigger>
 
             <PopoverTrigger popover={ <LoremIpsumPopver placement="bottom" /> }>
-                <Button style={ styles.button } variant="primary">Bottom</Button>
+                <Button variant="primary" style={ styles.button }>Bottom</Button>
             </PopoverTrigger>
 
             <PopoverTrigger popover={ <LoremIpsumPopver placement="left" /> }>
-                <Button style={ styles.button } variant="primary">Left</Button>
+                <Button variant="primary" style={ styles.button }>Left</Button>
             </PopoverTrigger>
 
             <PopoverTrigger popover={ <LoremIpsumPopver placement="right" /> }>
-                <Button style={ styles.button } variant="primary">Right</Button>
+                <Button variant="primary" style={ styles.button }>Right</Button>
             </PopoverTrigger>
         </div>
     );

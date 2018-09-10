@@ -18,7 +18,7 @@
         cursor: pointer;
     }
 
-    &.full-width {
+    &.fullWidth {
         width: 100%;
     }
 
@@ -58,14 +58,14 @@
       Text + feedback
       ========================================================================== */
 
-    & .progress-bar {
+    & .progressBar {
         position: absolute;
         top: 0;
         left: 0;
         z-index: 1;
     }
 
-    & .text-block {
+    & .textBlock {
         @mixin typography-body-2 em, no-line-height;
         position: relative;
         height: 100%;
@@ -77,8 +77,8 @@
         transition: transform 0.2s ease;
     }
 
-    & .success-block,
-    & .error-block {
+    & .successBlock,
+    & .errorBlock {
         position: absolute;
         top: 0;
         left: 0;
@@ -91,51 +91,51 @@
         align-items: center;
         transition: transform 0.2s ease;
 
-        & .feedback-icon {
+        & .feedbackIcon {
             font-size: 1.6em;
         }
     }
 
     &.primary {
-        & .progress-bar {
+        & .progressBar {
             background-color: color(var(--color-black) alpha(0.1));
         }
 
-        & .error-block {
+        & .errorBlock {
             background-color: var(--color-monza);
         }
     }
 
     &.secondary {
-        & .progress-bar {
+        & .progressBar {
             background-color: color(var(--color-black) alpha(0.1));
         }
 
-        & .success-block .feedback-icon {
+        & .successBlock .feedbackIcon {
             fill: var(--color-science-blue);
         }
 
-        & .error-block .feedback-icon {
+        & .errorBlock .feedbackIcon {
             fill: var(--color-monza);
         }
     }
 
     &.success {
-        & .text-block {
+        & .textBlock {
             transform: translateY(-100%);
         }
 
-        & .success-block {
+        & .successBlock {
             transform: translateY(0);
         }
     }
 
     &.error {
-        & .text-block {
+        & .textBlock {
             transform: translateY(-100%);
         }
 
-        & .error-block {
+        & .errorBlock {
             transform: translateY(0);
         }
     }

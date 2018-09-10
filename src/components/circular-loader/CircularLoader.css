@@ -1,4 +1,4 @@
-.circular-loader {
+.circularLoader {
     position: relative;
     width: 4em;
     height: 4em;
@@ -6,7 +6,7 @@
     font-size: 1rem;
 }
 
-.circular-loader > span {
+.circularLoader > span {
     position: absolute;
     top: 0;
     left: 0;
@@ -15,7 +15,7 @@
     display: block;
 }
 
-.circular-loader > span::before {
+.circularLoader > span::before {
     content: "";
     width: 15%;
     height: 15%;
@@ -23,98 +23,98 @@
     display: block;
     background-color: currentColor;
     border-radius: 100%;
-    animation: circle-bounce 1.2s infinite ease-in-out both;
+    animation: circleBounce 1.2s infinite ease-in-out both;
 }
 
-.circular-loader > span:nth-child(2) {
+.circularLoader > span:nth-child(2) {
     transform: rotate(30deg);
 }
 
-.circular-loader > span:nth-child(3) {
+.circularLoader > span:nth-child(3) {
     transform: rotate(60deg);
 }
 
-.circular-loader > span:nth-child(4) {
+.circularLoader > span:nth-child(4) {
     transform: rotate(90deg);
 }
 
-.circular-loader > span:nth-child(5) {
+.circularLoader > span:nth-child(5) {
     transform: rotate(120deg);
 }
 
-.circular-loader > span:nth-child(6) {
+.circularLoader > span:nth-child(6) {
     transform: rotate(150deg);
 }
 
-.circular-loader > span:nth-child(7) {
+.circularLoader > span:nth-child(7) {
     transform: rotate(180deg);
 }
 
-.circular-loader > span:nth-child(8) {
+.circularLoader > span:nth-child(8) {
     transform: rotate(210deg);
 }
 
-.circular-loader > span:nth-child(9) {
+.circularLoader > span:nth-child(9) {
     transform: rotate(240deg);
 }
 
-.circular-loader > span:nth-child(10) {
+.circularLoader > span:nth-child(10) {
     transform: rotate(270deg);
 }
 
-.circular-loader > span:nth-child(11) {
+.circularLoader > span:nth-child(11) {
     transform: rotate(300deg);
 }
 
-.circular-loader > span:nth-child(12) {
+.circularLoader > span:nth-child(12) {
     transform: rotate(330deg);
 }
 
-.circular-loader > span:nth-child(2)::before {
+.circularLoader > span:nth-child(2)::before {
     animation-delay: -1.1s;
 }
 
-.circular-loader > span:nth-child(3)::before {
+.circularLoader > span:nth-child(3)::before {
     animation-delay: -1s;
 }
 
-.circular-loader > span:nth-child(4)::before {
+.circularLoader > span:nth-child(4)::before {
     animation-delay: -0.9s;
 }
 
-.circular-loader > span:nth-child(5)::before {
+.circularLoader > span:nth-child(5)::before {
     animation-delay: -0.8s;
 }
 
-.circular-loader > span:nth-child(6)::before {
+.circularLoader > span:nth-child(6)::before {
     animation-delay: -0.7s;
 }
 
-.circular-loader > span:nth-child(7)::before {
+.circularLoader > span:nth-child(7)::before {
     animation-delay: -0.6s;
 }
 
-.circular-loader > span:nth-child(8)::before {
+.circularLoader > span:nth-child(8)::before {
     animation-delay: -0.5s;
 }
 
-.circular-loader > span:nth-child(9)::before {
+.circularLoader > span:nth-child(9)::before {
     animation-delay: -0.4s;
 }
 
-.circular-loader > span:nth-child(10)::before {
+.circularLoader > span:nth-child(10)::before {
     animation-delay: -0.3s;
 }
 
-.circular-loader > span:nth-child(11)::before {
+.circularLoader > span:nth-child(11)::before {
     animation-delay: -0.2s;
 }
 
-.circular-loader > span:nth-child(12)::before {
+.circularLoader > span:nth-child(12)::before {
     animation-delay: -0.1s;
 }
 
-@keyframes circle-bounce {
+@keyframes circleBounce {
     0%,
     80%,
     100% {

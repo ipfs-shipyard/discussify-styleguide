@@ -16,7 +16,7 @@ Follow the steps below:
 
 1. Activate CSS modules
 
-    Activate [CSS modules](https://github.com/webpack-contrib/css-loader#modules) for this package directory. Here's an [example](https://github.com/ipfs-shipyard/discussify-browser-extension/blob/f540888d5702d45b11b46b7d31bebffac5b8cf81/config-overrides.js#L14) for a CRA application.
+    Activate [CSS modules](https://github.com/webpack-contrib/css-loader#modules) for this package directory. Here's an [example](https://github.com/ipfs-shipyard/discussify-browser-extension/blob/master/config-overrides.js) for a CRA application.
 
 2. Import base styles
 

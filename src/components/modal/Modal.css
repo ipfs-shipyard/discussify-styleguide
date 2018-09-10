@@ -20,25 +20,25 @@
     font-size: 1rem;
     transition: opacity 0.2s 0.1s ease, transform 0.3s 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-    &.after-open {
+    &.afterOpen {
         transform: translate(-50%, -50%);
         opacity: 1;
     }
 
-    &.before-close {
+    &.beforeClose {
         opacity: 0;
         transition: opacity 0.15s ease;
     }
 }
 
-.modal-content {
+.modalContent {
     @mixin typography-body-1 em;
 
     /* Prevent text from flickering in Webkit */
     backface-visibility: hidden;
 }
 
-.modal-overlay {
+.modalOverlay {
     position: fixed;
     top: 0;
     right: 0;
@@ -47,21 +47,21 @@
     background-color: transparent;
     transition: background-color 0.2s ease;
 
-    &.after-open {
+    &.afterOpen {
         background-color: color(var(--color-black) alpha(0.3));
     }
 
-    &.before-close {
+    &.beforeClose {
         background-color: transparent;
         transition: background-color 0.15s ease;
     }
 }
 
-.modal-portal {
+.modalPortal {
     position: relative;
     z-index: 999999;
 }
 
-.modal-body-open {
+.modalBodyOpen {
     overflow: hidden;
 }

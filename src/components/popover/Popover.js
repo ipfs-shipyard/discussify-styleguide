@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Popper } from 'react-popper';
 import { CSSTransition } from 'react-transition-group';
 import classNames from 'classnames';
+import getModifiers from './modifiers';
 import styles from './Popover.css';
 
 const CLOSE_TRANSITION_DURATION = 250; // Must be 50ms higher than the actual CSS duration
@@ -10,9 +11,11 @@ const CLOSE_TRANSITION_DURATION = 250; // Must be 50ms higher than the actual CS
 export default class Popover extends Component {
     static propTypes = {
         placement: PropTypes.oneOf(['auto', 'top', 'right', 'bottom', 'left']),
+        viewportPadding: PropTypes.number,
         shouldCloseOnEsc: PropTypes.bool,
         shouldCloseOnOutsideClick: PropTypes.bool,
         className: PropTypes.string,
+        boxClassName: PropTypes.string,
         contentClassName: PropTypes.string,
         children: PropTypes.node.isRequired,
         style: PropTypes.object,
@@ -24,6 +27,7 @@ export default class Popover extends Component {
 
     static defaultProps = {
         placement: 'auto',
+        viewportPadding: 10,
         shouldCloseOnEsc: true,
         shouldCloseOnOutsideClick: true,
     };
@@ -63,25 +67,30 @@ export default class Popover extends Component {
                     enterDone: styles.enterDone,
                     exit: styles.exit,
                 } }>
-                <Popper placement={ placement }>{ this.renderPopper }</Popper>
+                <Popper
+                    modifiers={ getModifiers(this.props) }
+                    placement={ placement }>{ this.renderPopper }</Popper>
             </CSSTransition>
         );
     }
 
     renderPopper = ({ ref, style, placement, arrowProps, scheduleUpdate }) => {
-        // Fix arrow not being positioned correctly in first render
+        // Fix arrow not being positioned correctly in first render or when the placement changes
         // See: https://github.com/FezVrasta/react-popper/issues/88
-        if (!scheduleUpdate._forced) {
+        if (!this.placement || placement !== this.placement) {
             cancelAnimationFrame(this.scheduleUpdateRequestId);
             this.scheduleUpdateRequestId = requestAnimationFrame(() => scheduleUpdate());
-
-            scheduleUpdate._forced = true;
         }
+
+        this.placement = placement;
 
         const {
             isOpen,
+            placement: _placement,
+            viewportPadding,
             className,
             contentClassName,
+            boxClassName,
             onRequestCancelClose,
             onRequestClose,
             shouldCloseOnEsc,
@@ -102,7 +111,7 @@ export default class Popover extends Component {
                 data-placement={ placement }>
 
                 <div className={ styles.container }>
-                    <div ref={ this.storeBoxRef } className={ styles.box }>
+                    <div ref={ this.storeBoxNode } className={ classNames(styles.popoverBox, boxClassName) }>
                         <div className={ classNames(styles.popoverContent, contentClassName) }>{ children }</div>
                     </div>
 
@@ -112,12 +121,12 @@ export default class Popover extends Component {
         );
     };
 
-    setReferenceRef(ref) {
-        this.referenceNode = ref;
+    setReferenceNode(node) {
+        this.referenceNode = node;
     }
 
-    storeBoxRef= (ref) => {
-        this.boxNode = ref;
+    storeBoxNode= (node) => {
+        this.boxNode = node;
     };
 
     addEscapeOutsideListeners() {

@@ -59,7 +59,7 @@
     "@storybook/addon-knobs": "^3.4.10",
     "@storybook/react": "^3.4.10",
     "babel-cli": "^6.26.0",
-    "babel-preset-moxy": "^2.3.3",
+    "babel-preset-moxy": "^2.3.4",
     "commitlint": "^7.0.0",
     "cpr": "^3.0.1",
     "cross-env": "^5.2.0",

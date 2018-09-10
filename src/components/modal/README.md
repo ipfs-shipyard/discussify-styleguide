@@ -84,4 +84,8 @@ For advanced cases, `children` may be a render function which is called with:
 Besides the ones listed above, all properties from [react-modal](http://reactcommunity.org/react-modal/#usage) are also supported.
 By default, the `appElement` property is set to `#root`.
 
-For accessibility reasons, be sure to define the `contentLabel` property.
+Important notes:
+
+- For accessibility reasons, be sure to define the `contentLabel` property.
+- The model has a `max-width` and `max-height` defined to prevent it from touching the viewport, with `4em` of spacing. You may set it by passing a `className` or specifying it via the `style` property.
+- The modal contents have a padding of `4em` by default. You may redefine it by passing a `className` or specifying it via the `style` property.

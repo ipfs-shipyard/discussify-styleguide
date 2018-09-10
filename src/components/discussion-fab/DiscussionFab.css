@@ -1,11 +1,13 @@
 @import "colors";
 @import "mixins/typography";
 
-.discussion-fab {
-    position: fixed;
+.discussionFab {
+    position: relative;
     width: 6em;
     height: 6em;
+    padding: 0;
     border: 0;
+    outline: 0;
     background-color: var(--color-white);
     border-radius: 50%;
     box-shadow: 0 1.1em 2.5em 0 var(--color-geyser);
@@ -28,11 +30,12 @@
         transition: box-shadow 0.2s ease;
     }
 
-    &:hover::after {
+    &:hover::after,
+    &:focus::after {
         box-shadow: inset 0 0 0 0.2em var(--color-science-blue);
     }
 
-    &.has-unread {
+    &.hasUnread {
         background-color: var(--color-science-blue);
         color: var(--color-white);
 
@@ -44,19 +47,6 @@
             box-shadow: inset 0 0 0 0 var(--color-white);
         }
     }
-
-    &:focus {
-        background-color: var(--color-science-blue);
-        color: var(--color-white);
-
-        &::after,
-        &:hover::after {
-            box-shadow: inset 0 0 0 0 var(--color-science-blue);
-        }
-    }
-
-    /* Active state is the same as focus but have to be duplicated due to a bug */
-    /* See https://github.com/MadLittleMods/postcss-css-variables/issues/76 */
 
     &.active {
         background-color: var(--color-science-blue);
@@ -74,7 +64,7 @@
         font-size: 1.091em;
     }
 
-    & .comments-count {
+    & .commentsCount {
         @mixin typography-body-1 em, no-line-height;
     }
 }
