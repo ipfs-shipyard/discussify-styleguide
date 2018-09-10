@@ -35,6 +35,7 @@ You may use the typography CSS mixins like so:
         <div className={ styles.h2 }>h2 - Some cool title</div>
         <div className={ styles.h3 }>h3 - Some cool title</div>
         <div className={ styles.h4 }>h4 - Some cool title</div>
+        <div className={ styles.h5 }>h5 - Some cool title</div>
         <div className={ styles.body1 }>body-1 (default) - The quick brown-fox jumps over the lazy dog.</div>
         <div className={ styles.body2 }>body-2 - The quick brown-fox jumps over the lazy dog.</div>
         <div className={ styles.caption }>caption - The quick brown-fox jumps over the lazy dog.</div>

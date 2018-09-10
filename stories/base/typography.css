@@ -16,11 +16,15 @@
     @mixin typography-h4 rem;
 }
 
-.body-1 {
+.h5 {
+    @mixin typography-h5 rem;
+}
+
+.body1 {
     @mixin typography-body-1 rem;
 }
 
-.body-2 {
+.body2 {
     @mixin typography-body-2 rem;
 }
 

@@ -13,25 +13,31 @@
 @define-mixin typography-h1 $unit {
     @mixin _heading;
     font-size: 6$(unit);
-    line-height: 8$(unit);
+    line-height: calc(8.00001em / 6);
 }
 
 @define-mixin typography-h2 $unit {
     @mixin _heading;
     font-size: 4$(unit);
-    line-height: 5.4$(unit);
+    line-height: calc(5.4em / 4);
 }
 
 @define-mixin typography-h3 $unit {
     @mixin _heading;
     font-size: 3$(unit);
-    line-height: 4$(unit);
+    line-height: calc(4.00001em / 3);
 }
 
 @define-mixin typography-h4 $unit {
     @mixin _heading;
     font-size: 2$(unit);
-    line-height: 3.2$(unit);
+    line-height: calc(3.2em / 2);
+}
+
+@define-mixin typography-h5 $unit {
+    @mixin _heading;
+    font-size: 1.8$(unit);
+    line-height: calc(2.60001em / 1.8);
 }
 
 /* ==========================================================================
