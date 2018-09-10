@@ -33,9 +33,6 @@ const getModifiers = ({ viewportPadding }) => {
         const newData = PopperJS.Defaults.modifiers.preventOverflow.fn(data, options);
         const newOffsets = newData.offsets.popper;
 
-        if (!originalOffsets) {
-            console.log(data.placement);
-        }
         originalOffsets = originalOffsets || offsets;
 
         if (data.flipped) {
