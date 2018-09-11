@@ -16,10 +16,6 @@
     @mixin typography-h4 rem;
 }
 
-.h5 {
-    @mixin typography-h5 rem;
-}
-
 .body1 {
     @mixin typography-body-1 rem;
 }
