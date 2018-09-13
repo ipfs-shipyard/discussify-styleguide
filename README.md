@@ -16,9 +16,63 @@ Follow the steps below:
 
 1. Activate CSS modules
 
-    Activate [CSS modules](https://github.com/webpack-contrib/css-loader#modules) for this package directory. Here's an [example](https://github.com/ipfs-shipyard/discussify-browser-extension/blob/master/config-overrides.js) for a CRA application.
+    Activate [CSS modules](https://github.com/webpack-contrib/css-loader#modules) for this package directory (or for your whole project):
 
-2. Import base styles
+    ```js
+    {
+        test: /\.css$/,
+        include: path.resolve(__dirname, 'node_modules/@discussify/styleguide'),
+        loader: [
+            {
+                loader: require.resolve('style-loader'),
+            },
+            {
+                loader: require.resolve('css-loader'),
+                options: {
+                    modules: true,
+                    sourceMap: true,
+                    importLoaders: 1,
+                    localIdentName: '[name]__[local]___[hash:base64:5]!',
+                },
+            },
+        ],
+    },
+    ```
+
+2. Add SVG rule
+
+    Support inline SVGs by using `raw-loader` (with a few tweaks):
+
+    ```js
+    {
+        test: /\.svg$/,
+        include: path.resolve(__dirname, 'node_modules/@discussify/styleguide'),
+        use: [
+            require.resolve('raw-loader'),
+            {
+                loader: require.resolve('svgo-loader'),
+                options: {
+                    plugins: [
+                        { removeTitle: true },
+                        { removeDimensions: true },
+                        { cleanupIDs: false },
+                    ],
+                },
+            },
+            // Uniquify classnames and ids so they don't conflict with each other
+            {
+                loader: require.resolve('svg-css-modules-loader'),
+                options: {
+                    transformId: true,
+                },
+            },
+        ],
+    },
+    ```
+
+    Alternatively, you may setup [`external-svg-sprite-loader`](https://github.com/karify/external-svg-sprite-loader) for performance reasons. Check out this project storybook [webpack config](.storybook/webpack.config.js) for an example.
+
+3. Import base styles
 
     Import the styleguide base styles in the app's entry CSS file:
 
@@ -34,7 +88,7 @@ Follow the steps below:
     import "@discussify/styleguide/styles/index.css";
     ```
 
-3. Use the components
+4. Use the components
 
     ```js
     import { TypingIndicator } from '@discussify/styleguide';
@@ -50,7 +104,8 @@ Follow the steps below:
 - React
 - CSS modules
 - [PostCSS](https://github.com/postcss/postcss) with [MOXY's preset](https://github.com/moxystudio/postcss-preset-moxy)
-- SVG spriting with [external-svg-sprite-loader](https://github.com/karify/external-svg-sprite-loader)
+- SVG spriting support with [external-svg-sprite-loader](https://github.com/karify/external-svg-sprite-loader)
+
 
 ## Commands
 
