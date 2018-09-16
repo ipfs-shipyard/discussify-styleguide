@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/ipfs-shipyard/discussify-styleguide/compare/v0.1.1...v0.2.0) (2018-09-16)
+
+
+### Bug Fixes
+
+* fix colored BrandLogo ([874cec8](https://github.com/ipfs-shipyard/discussify-styleguide/commit/874cec8))
+* fix variables and mixins usage in prod ([25b0884](https://github.com/ipfs-shipyard/discussify-styleguide/commit/25b0884))
+* update headings ([5c2903d](https://github.com/ipfs-shipyard/discussify-styleguide/commit/5c2903d))
+
+
+### Features
+
+* add h5 and fix line-heights when using em ([6198f0e](https://github.com/ipfs-shipyard/discussify-styleguide/commit/6198f0e))
+* implement padding and box styling to Popover ([094e856](https://github.com/ipfs-shipyard/discussify-styleguide/commit/094e856))
+
+
+
 <a name="0.1.1"></a>
 ## [0.1.1](https://github.com/ipfs-shipyard/discussify-styleguide/compare/v0.1.0...v0.1.1) (2018-07-20)
 
