@@ -1,4 +1,4 @@
-@import "../../src/styles/imports/colors";
+@import "../../src/styles/colors";
 
 .science-blue {
     background-color: var(--color-science-blue);

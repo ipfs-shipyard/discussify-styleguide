@@ -12,8 +12,8 @@ storiesOf('base/Typography', module)
 Discussify's typography, including headings, regular text and links.
 
 There's a set of CSS mixins to apply styles in elements other than the native HTML ones.
-Take a look at \`src/styles/imports/mixins/typography.css\` for the available mixins.
-There's also some CSS mixins related to text processing at \`src/styles/imports/mixins/text.css\`.
+Take a look at \`src/styles/mixins/typography.css\` for the available mixins.
+There's also some CSS mixins related to text processing at \`src/styles/mixins/text.css\`.
 
 You may use the typography CSS mixins like so:
 

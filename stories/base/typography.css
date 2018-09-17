@@ -1,4 +1,4 @@
-@import "../../src/styles/imports/mixins/typography";
+@import "../../src/styles/mixins/typography";
 
 .h1 {
     @mixin typography-h1 rem;

@@ -1,5 +1,5 @@
-@import "./imports/colors";
-@import "./imports/mixins/typography";
+@import "./colors";
+@import "./mixins/typography";
 
 /* ==========================================================================
    Proper box-sizing model

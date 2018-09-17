@@ -16,7 +16,7 @@ Follow the steps below:
 
 1. Activate CSS modules
 
-    Activate [CSS modules](https://github.com/webpack-contrib/css-loader#modules) for this package directory (or for your whole project):
+    Activate [CSS modules](https://github.com/webpack-contrib/css-loader#modules) for this package directory (or for your whole project if you like):
 
     ```js
     {
@@ -39,9 +39,20 @@ Follow the steps below:
     },
     ```
 
+    If you are going to use any of the CSS variables or mixins, please add `postcss-loader` after `css-loader`:
+
+    ```js
+    {
+        loader: require.resolve('postcss-loader'),
+        options: require('postcss-preset-moxy')({
+            url: 'rebase',
+        }),
+    }
+    ```
+
 2. Add SVG rule
 
-    Support inline SVGs by using `raw-loader` (with a few tweaks):
+    Support inline SVGs by using `raw-loader` for this package directory (or for your whole project if you like):
 
     ```js
     {
