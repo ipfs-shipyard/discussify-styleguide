@@ -12,6 +12,7 @@ export default class Popover extends Component {
     static propTypes = {
         placement: PropTypes.oneOf(['auto', 'top', 'right', 'bottom', 'left']),
         viewportPadding: PropTypes.number,
+        boundariesElement: PropTypes.string,
         shouldCloseOnEsc: PropTypes.bool,
         shouldCloseOnOutsideClick: PropTypes.bool,
         className: PropTypes.string,
@@ -88,6 +89,7 @@ export default class Popover extends Component {
             isOpen,
             placement: _placement,
             viewportPadding,
+            boundariesElement,
             className,
             contentClassName,
             boxClassName,
@@ -170,7 +172,8 @@ export default class Popover extends Component {
     };
 
     handleMouseDown = (e) => {
-        this.mouseDownEventTarget = e.target;
+        // Store the event target, with support for shadow dom
+        this.mouseDownEventTarget = e.composedPath ? e.composedPath()[0] : e.target;
     };
 
     handleMouseUp = (e) => {

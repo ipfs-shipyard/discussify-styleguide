@@ -92,7 +92,6 @@
 .popoverBox {
     position: relative;
     z-index: 2;
-    padding: 2em;
     background-color: var(--color-white);
     color: var(--color-black);
     text-align: left;
@@ -100,6 +99,7 @@
 
 .popoverContent {
     position: relative;
+    padding: 2em;
     backface-visibility: hidden; /* Prevent text from flickering in Webkit */
     @mixin typography-body-2 em;
 }

@@ -7,10 +7,11 @@ const oppositeMap = {
     right: 'left',
 };
 
-const getModifiers = ({ viewportPadding }) => {
+const getModifiers = ({ viewportPadding, boundariesElement }) => {
     const modifiers = {
         preventOverflow: {
             padding: viewportPadding,
+            boundariesElement,
         },
         shift: {
             enabled: false,

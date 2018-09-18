@@ -67,6 +67,7 @@ You may access `PopoverTrigger.defaultHoverDelay` to get the standard mouse ente
 | ---- | ---- | ------- | ----------- |
 | placement | string | auto | The popover placement, can be one of: `auto`, `top`, `right`, `left`, `bottom` |
 | viewportMargin | number | 10 | Specifies how close to the edge of the window the popover can appear (in pixels) |
+| boundariesElement | string | scrollParent | Which element to consider when calculating if the popover overflows, can be one of: `scrollParent`, `window` or `viewport` |
 | boxClassName | string | | The CSS class to give to the box element that wraps the content element (useful to adjust padding or size) |
 | contentClassName | string | | The CSS class to give to the content element |
 | shouldCloseOnEsc | bool | true | True to close on escape keypress |
@@ -77,5 +78,5 @@ Any other properties supplied will be spread to the root element (popover).
 
 Important notes:
 
-- The popover doesn't have a with nor height set and will adjust itself based on its contents. You may define a size by passing a `boxClassName`.
-- The popover content will have a padding of `2em` by default. You may redefine it by passing `boxClassName` as well.
+- The popover doesn't have a with nor height set and will adjust itself based on its contents. You may define a size by passing a `contentClassName`.
+- The popover will have a padding of `2em` by default. You may redefine it by passing `contentClassName` as well.
