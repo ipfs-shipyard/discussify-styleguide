@@ -10,6 +10,9 @@
     color: var(--color-science-blue);
     font-size: 1rem;
     text-transform: uppercase;
+    transition-property: opacity, color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
 
     &:not([disabled]) {
         cursor: pointer;
