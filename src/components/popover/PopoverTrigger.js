@@ -9,6 +9,8 @@ export default class PopoverTrigger extends Component {
     static propTypes = {
         popover: PropTypes.element,
         children: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
+        onOpen: PropTypes.func,
+        onClose: PropTypes.func,
     };
 
     constructor() {
@@ -23,9 +25,21 @@ export default class PopoverTrigger extends Component {
 
     state = { isOpen: false };
 
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.isOpen && !prevState.isOpen) {
+            this.props.onOpen && this.props.onOpen();
+        } else if (!this.state.isOpen && prevState.isOpen) {
+            this.props.onClose && this.props.onClose();
+        }
+    }
+
     componentWillUnmount() {
         clearTimeout(this.openCloseTimeoutId);
         cancelAnimationFrame(this.scheduleUpdateRequestId);
+
+        if (this.state.isOpen) {
+            this.props.onClose && this.props.onClose();
+        }
     }
 
     render() {

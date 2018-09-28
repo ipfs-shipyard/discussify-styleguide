@@ -37,6 +37,8 @@ Please note that both the popover and the trigger must support attaching refs. I
 | ---- | ---- | ------- | ----------- |
 | popover | element | *required* | The popover to show |
 | children | element, function | *required* | The trigger element or render prop function that should return the trigger element |
+| onOpen | function | | Function called when the popover opens |
+| onClose | function | | Function called when the popover closes |
 
 If `children` is a react element, event properties such as `onClick` will be added to it.
 For advanced cases, `children` may be a render function which is called with:
