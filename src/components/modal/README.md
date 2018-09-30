@@ -47,6 +47,17 @@ import { Modal } from '@discussify/styleguide';
 Modal.setAppElement('#root');
 ```
 
+Moreover, you may define the element in which all the portals will be inserted, which defaults to `document.body`:
+
+```js
+import { Modal } from '@discussify/styleguide';
+
+Modal.setPortalParentElement('#some-modal-container');
+```
+
+Note that specifying the `parentSelector` property in the `Modal` component will override this definition.
+
+
 ## ModalTrigger props
 
 | name | type | default | description |
@@ -84,7 +95,6 @@ For advanced cases, `children` may be a render function which is called with:
 | contentClassName | string | | The CSS class to give to the content wrapper element |
 
 Besides the ones listed above, all properties from [react-modal](http://reactcommunity.org/react-modal/#usage) are also supported.
-By default, the `appElement` property is set to `#root`.
 
 Important notes:
 

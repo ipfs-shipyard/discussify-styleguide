@@ -20,8 +20,15 @@ const computeClassName = (className, classNameProp) => {
     return className;
 };
 
+let parentSelector;
+
 export default class Modal extends Component {
     static setAppElement = (el) => ReactModal.setAppElement(el);
+    static setPortalParentElement = (el) => {
+        parentSelector = typeof el === 'string' ?
+            () => document.querySelector(el) :
+            () => el;
+    };
 
     static propTypes = {
         className: PropTypes.string,
@@ -42,6 +49,7 @@ export default class Modal extends Component {
             portalClassName,
             bodyOpenClassName,
             children,
+            parentSelector: thisParentSelector,
             ...rest
         } = this.props;
         const finalClassName = computeClassName({
@@ -59,6 +67,7 @@ export default class Modal extends Component {
             <ReactModal
                 closeTimeoutMS={ CLOSE_TRANSITION_DURATION }
                 { ...rest }
+                parentSelector={ thisParentSelector || parentSelector }
                 className={ finalClassName }
                 overlayClassName={ finalOverlayClassName }
                 portalClassName={ classNames(styles.modalPortal, portalClassName) }
