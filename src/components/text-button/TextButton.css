@@ -7,12 +7,20 @@
     align-items: center;
     border: 0;
     background: none;
-    color: var(--color-science-blue);
+
     font-size: 1rem;
     text-transform: uppercase;
     transition-property: opacity, color;
     transition-duration: 0.2s;
     transition-timing-function: ease;
+
+    &.primary {
+        color: var(--color-science-blue);
+    }
+
+    &.secondary {
+        color: var(--color-gray);
+    }
 
     &:not([disabled]) {
         cursor: pointer;

@@ -10,21 +10,34 @@ storiesOf('TextButton', module)
 .addDecorator(withReadme(readme))
 .addDecorator(withKnobs)
 .add('Standard', () => (
-    <TextButton onClick={ action('clicked') }>Click me</TextButton>
+    <TextButton variant="primary" onClick={ action('clicked') }>Click me</TextButton>
 ))
 .add('With an icon (right)', () => (
-    <TextButton icon={ <ReplyIcon /> } onClick={ action('clicked') }>Click me</TextButton>
+    <TextButton
+        variant="primary"
+        icon={ <ReplyIcon /> }
+        onClick={ action('clicked') }>
+        Click me
+    </TextButton>
 ))
 .add('With an icon (left)', () => (
-    <TextButton icon={ <ReplyIcon /> } iconPosition="left" onClick={ action('clicked') }>Click me</TextButton>
+    <TextButton
+        variant="primary"
+        icon={ <ReplyIcon /> }
+        iconPosition="left"
+        onClick={ action('clicked') }>
+        Click me
+    </TextButton>
 ))
 .add('Knobs playground ⚽', () => {
+    const variant = selectV2('variant', ['primary', 'secondary'], 'primary');
     const iconPosition = selectV2('iconPosition', ['left', 'right'], 'right');
     const disabled = boolean('disabled');
     const children = text('children', 'Click me');
 
     return (
         <TextButton
+            variant={ variant }
             icon={ <ReplyIcon /> }
             iconPosition={ iconPosition }
             disabled={ disabled }

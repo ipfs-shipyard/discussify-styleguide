@@ -3,9 +3,10 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import styles from './TextButton.css';
 
-const TextButton = ({ icon, iconPosition, children, className, ...rest }) => {
+const TextButton = ({ variant, icon, iconPosition, children, className, ...rest }) => {
     const finalClassName = classNames(
         styles.textButton,
+        styles[variant],
         styles[iconPosition],
         className
     );
@@ -19,6 +20,7 @@ const TextButton = ({ icon, iconPosition, children, className, ...rest }) => {
 };
 
 TextButton.propTypes = {
+    variant: PropTypes.oneOf(['primary', 'secondary']),
     children: PropTypes.node.isRequired,
     icon: PropTypes.element,
     iconPosition: PropTypes.oneOf(['left', 'right']),
