@@ -8,8 +8,8 @@ const CLOSE_TRANSITION_DURATION = 250; // Must be 50ms higher than the actual CS
 
 const computeClassName = (className, classNameProp) => {
     if (classNameProp) {
-        if (classNameProp === 'string') {
-            className.base = classNames(className.base, className);
+        if (typeof classNameProp === 'string') {
+            className.base = classNames(className.base, classNameProp);
         } else {
             className.base = classNames(className.base, classNameProp.base);
             className.base = classNames(className.base, classNameProp.afterOpen);

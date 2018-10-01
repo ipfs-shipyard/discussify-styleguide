@@ -32,7 +32,7 @@
 }
 
 .modalContent {
-    @mixin typography-body-1 em;
+    @mixin typography-body-2 em;
 
     /* Prevent text from flickering in Webkit */
     backface-visibility: hidden;

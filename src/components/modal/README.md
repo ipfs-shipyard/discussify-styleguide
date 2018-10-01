@@ -101,3 +101,40 @@ Important notes:
 - For accessibility reasons, be sure to define the `contentLabel` property.
 - The model has a `max-width` and `max-height` defined to prevent it from touching the viewport, with `4em` of spacing. You may set it by passing a `className` or specifying it via the `style` property.
 - The modal contents have a padding of `4em` by default. You may redefine it by passing a `className` or specifying it via the `style` property.
+
+## Turnkey modals
+
+### ConfirmModal
+
+A module to confirm an operation where the user must either confirm or cancel.
+
+#### Usage
+
+```js
+import { ConfirmModal, ModalTrigger } from '@discussify/styleguide';
+
+const modal = (
+    <ConfirmModal
+        onConfirm={ () => console.log('confirmed') }
+        onCancel={ () => console.log('canceled') } />
+);
+
+<ModalTrigger modal={ modal }>
+    <Button variant="primary">Click me</Button>
+</ModalTrigger>
+```
+
+The `onRequestClose` property will be automatically called whenever the user confirms or cancels (if supplied). This will effectively close the dialog when using a trigger.
+
+
+#### ConfirmModal props
+
+| name | type | default | description |
+| ---- | ---- | ------- | ----------- |
+| message | element | Are you sure? | The message to show above the buttons |
+| confirmText | string | Yes | The text to show in the accept button |
+| cancelText | string | Yes | The text to show in the reject button |
+| onConfirm | function | | Function to call when the user confirms |
+| onCancel | function | | Function to call when the user rejects |
+
+Besides the ones listed above, all properties from the `Modal` component are supported.

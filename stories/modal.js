@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { withKnobs, boolean, text, selectV2 } from '@storybook/addon-knobs';
-import { Modal, ModalTrigger, Button } from '../src';
+import { Modal, ModalTrigger, ConfirmModal, Button } from '../src';
 import readme from '../src/components/modal/README.md';
 
 Modal.setAppElement('#root');
@@ -81,4 +81,13 @@ storiesOf('Modal', module)
         </ModalTrigger>
     );
 });
+
+storiesOf('Modal/Turnkey', module)
+.addDecorator(withReadme(readme))
+.add('ConfirmModal', () => (
+    <ConfirmModal
+        onConfirm={ () => console.log('confirmed') }
+        onCancel={ () => console.log('canceled') }
+        isOpen />
+));
 /* eslint-disable react/jsx-no-bind */

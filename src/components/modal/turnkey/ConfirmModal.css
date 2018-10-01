@@ -1,0 +1,17 @@
+.confirmModal {
+    min-width: 40rem;
+
+    & .message {
+        text-align: center;
+    }
+
+    & .actions {
+        margin-top: 3.5rem;
+        display: flex;
+        justify-content: space-between;
+
+        & > * {
+            width: calc(50% - 0.8rem);
+        }
+    }
+}
