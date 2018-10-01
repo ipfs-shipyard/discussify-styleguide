@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import getModifiers from './modifiers';
 import styles from './Popover.css';
 
-const CLOSE_TRANSITION_DURATION = 250; // Must be 50ms higher than the actual CSS duration
+const CLOSE_TRANSITION_TIMEOUT = 250; // Must be 50ms higher than the actual CSS duration
 
 export default class Popover extends Component {
     static propTypes = {
@@ -62,7 +62,7 @@ export default class Popover extends Component {
                 in={ isOpen }
                 mountOnEnter
                 unmountOnExit
-                timeout={ CLOSE_TRANSITION_DURATION }
+                timeout={ CLOSE_TRANSITION_TIMEOUT }
                 classNames={ {
                     enterActive: styles.enterActive,
                     enterDone: styles.enterDone,
