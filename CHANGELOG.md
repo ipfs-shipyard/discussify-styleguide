@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/ipfs-shipyard/discussify-styleguide/compare/v0.2.1...v0.3.0) (2018-10-03)
+
+
+### Bug Fixes
+
+* fix geyser collor ([06ce663](https://github.com/ipfs-shipyard/discussify-styleguide/commit/06ce663))
+* fix maxRows being spread into the root element ([3cfeb4f](https://github.com/ipfs-shipyard/discussify-styleguide/commit/3cfeb4f))
+* fix remove icon alignment ([f5510d3](https://github.com/ipfs-shipyard/discussify-styleguide/commit/f5510d3))
+* use event.key for events ([ee9fdea](https://github.com/ipfs-shipyard/discussify-styleguide/commit/ee9fdea))
+
+
+### Features
+
+* add boundariesElement to Popover ([1058739](https://github.com/ipfs-shipyard/discussify-styleguide/commit/1058739))
+* add confirm-modal as a turnkey modal ([6f03a30](https://github.com/ipfs-shipyard/discussify-styleguide/commit/6f03a30))
+* add interactive prop to icon ([33a9567](https://github.com/ipfs-shipyard/discussify-styleguide/commit/33a9567))
+* add onOpen and onClose props to modal and popover ([9384632](https://github.com/ipfs-shipyard/discussify-styleguide/commit/9384632))
+* add setPortalParentElement to modal ([f916299](https://github.com/ipfs-shipyard/discussify-styleguide/commit/f916299))
+* add textarea-autosize ([e246d23](https://github.com/ipfs-shipyard/discussify-styleguide/commit/e246d23))
+* add transitions to text-button ([77e9f46](https://github.com/ipfs-shipyard/discussify-styleguide/commit/77e9f46))
+* add variant to text-button ([6fb8ef4](https://github.com/ipfs-shipyard/discussify-styleguide/commit/6fb8ef4))
+
+
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/ipfs-shipyard/discussify-styleguide/compare/v0.2.0...v0.2.1) (2018-09-17)
 
