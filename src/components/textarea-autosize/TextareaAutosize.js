@@ -33,14 +33,14 @@ export default class TextareaAutosize extends Component {
     }
 
     render() {
-        const { className, rest } = this.props;
+        const { className, maxRows, ...rest } = this.props;
 
         return (
             <textarea
+                { ...rest }
                 ref={ this.storeNode }
                 onFocus={ this.handleFocus }
                 onBlur={ this.handleBlur }
-                { ...rest }
                 className={ classNames(styles.textareaAutosize, className) } />
         );
     }

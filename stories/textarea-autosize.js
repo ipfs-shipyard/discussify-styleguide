@@ -9,7 +9,7 @@ import readme from '../src/components/textarea-autosize/README.md';
 storiesOf('TextareaAutosize', module)
 .addDecorator(withReadme(readme))
 .addDecorator(withKnobs)
-.add('Default', () => (
+.add('Default (1 row, no max limit)', () => (
     <TextareaAutosize />
 ))
 .add('5 max rows ', () => (
