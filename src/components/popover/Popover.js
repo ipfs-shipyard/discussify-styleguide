@@ -166,7 +166,7 @@ export default class Popover extends Component {
     };
 
     handleKeyUp = (e) => {
-        if (e.keyCode === 27) {
+        if (e.key === 'Escape') {
             this.props.onRequestClose && this.props.onRequestClose(e, 'escapePress');
         }
     };
