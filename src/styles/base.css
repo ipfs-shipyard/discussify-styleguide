@@ -59,6 +59,19 @@ body {
     overflow-wrap: break-word;  /* Break long words by default */
 }
 
+input,
+select {
+    @mixin typography-body-1 rem;
+    color: var(--color-black);
+}
+
+textarea {
+    @mixin typography-body-1 rem;
+    color: var(--color-black);
+    white-space: pre-line;
+    overflow-wrap: break-word;  /* Break long words by default */
+}
+
 ::selection {
     background: var(--color-science-blue);
     color: var(--color-seashell);

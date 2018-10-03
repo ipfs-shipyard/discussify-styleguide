@@ -9,5 +9,6 @@ import './icon';
 import './modal';
 import './popover';
 import './text-button';
+import './textarea-autosize';
 import './time-ago';
 import './typing-indicator';
