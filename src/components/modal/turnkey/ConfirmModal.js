@@ -5,7 +5,23 @@ import Button from '../../button';
 import Modal from '../Modal';
 import styles from './ConfirmModal.css';
 
-class ConfirmModal extends Component {
+export default class ConfirmModal extends Component {
+    static propTypes = {
+        message: PropTypes.string,
+        cancelText: PropTypes.string,
+        confirmText: PropTypes.string,
+        onConfirm: PropTypes.func.isRequired,
+        onCancel: PropTypes.func,
+        onRequestClose: PropTypes.func,
+        className: PropTypes.string,
+    };
+
+    static defaultProps = {
+        message: 'Are you sure?',
+        cancelText: 'No',
+        confirmText: 'Yes',
+    };
+
     render() {
         const {
             message,
@@ -44,26 +60,7 @@ class ConfirmModal extends Component {
     };
 
     handleCancelClick = () => {
-        this.props.onCancel();
+        this.props.onCancel && this.props.onCancel();
         this.props.onRequestClose && this.props.onRequestClose();
     };
 }
-
-ConfirmModal.defaultProps = {
-    message: 'Are you sure?',
-    cancelText: 'No',
-    confirmText: 'Yes',
-    autoclose: true,
-};
-
-ConfirmModal.propTypes = {
-    message: PropTypes.string,
-    cancelText: PropTypes.string,
-    confirmText: PropTypes.string,
-    autoclose: PropTypes.bool,
-    onConfirm: PropTypes.func.isRequired,
-    onCancel: PropTypes.func.isRequired,
-    className: PropTypes.string,
-};
-
-export default ConfirmModal;
