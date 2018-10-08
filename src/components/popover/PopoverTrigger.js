@@ -89,15 +89,17 @@ export default class PopoverTrigger extends Component {
     };
 
     storeReferenceRef = (ref) => {
-        this.referenceNode = findDOMNode(ref);
+        this.reference = ref;
 
-        this.setReferenceRef && this.setReferenceRef(this.referenceNode);
-        this.popover && this.popover.setReferenceNode(this.referenceNode);
+        const referenceNode = findDOMNode(this.reference);
+
+        this.setReferenceRef && this.setReferenceRef(referenceNode);
+        this.popover && this.popover.setReferenceNode(referenceNode);
     };
 
     storePopoverRef = (ref) => {
         this.popover = ref;
-        this.popover && this.popover.setReferenceNode(this.referenceNode);
+        this.popover && this.popover.setReferenceNode(findDOMNode(this.reference));
     };
 
     handleOpen = (delay) => {
