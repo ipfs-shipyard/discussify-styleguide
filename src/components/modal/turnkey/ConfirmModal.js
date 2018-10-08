@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Button from '../../button';
@@ -12,7 +13,10 @@ export default class ConfirmModal extends Component {
         confirmText: PropTypes.string,
         onConfirm: PropTypes.func.isRequired,
         onCancel: PropTypes.func,
+        // Props from react-modal
+        onAfterOpen: PropTypes.func,
         onRequestClose: PropTypes.func,
+        shouldFocusAfterRender: PropTypes.bool,
         className: PropTypes.string,
     };
 
@@ -20,6 +24,8 @@ export default class ConfirmModal extends Component {
         message: 'Are you sure?',
         cancelText: 'No',
         confirmText: 'Yes',
+        // Props from react-modal
+        shouldFocusAfterRender: true,
     };
 
     render() {
@@ -35,12 +41,14 @@ export default class ConfirmModal extends Component {
         return (
             <Modal
                 { ...rest }
+                onAfterOpen={ this.handleAfterOpen }
                 className={ classNames(styles.confirmModal, className) }>
                 <div className={ styles.message }>{ message }</div>
 
                 <div className={ styles.actions }>
                     <Button
                         variant="primary"
+                        ref={ this.storePrimaryButtonRef }
                         onClick={ this.handleCancelClick }>
                         { cancelText }
                     </Button>
@@ -53,6 +61,15 @@ export default class ConfirmModal extends Component {
             </Modal>
         );
     }
+
+    storePrimaryButtonRef = (ref) => {
+        this.primaryButton = ref;
+    };
+
+    handleAfterOpen = () => {
+        this.props.shouldFocusAfterRender && findDOMNode(this.primaryButton).focus();
+        this.props.onAfterOpen && this.props.onAfterOpen();
+    };
 
     handleConfirmClick = () => {
         this.props.onConfirm();
