@@ -37,7 +37,7 @@
     }
 
     & .text {
-        @mixin typography-caption em;
+        @mixin typography-caption em, no-line-height;
     }
 
     & .icon {
