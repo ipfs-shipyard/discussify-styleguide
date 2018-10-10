@@ -42,7 +42,7 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "date-is-invalid": "^1.0.10",
-    "grow-element-fn": "^1.0.3",
+    "@moxy/grow-element-fn": "^1.0.6",
     "lodash": "^4.17.10",
     "normalize.css": "^8.0.0",
     "prop-types": "^15.6.2",

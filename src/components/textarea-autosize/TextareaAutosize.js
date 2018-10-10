@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import growElementFn from 'grow-element-fn';
+import growElementFn from '@moxy/grow-element-fn';
 import { debounce } from 'lodash';
 import styles from './TextareaAutosize.css';
 
@@ -10,6 +10,7 @@ export default class TextareaAutosize extends Component {
     static propTypes = {
         rows: PropTypes.number,
         maxRows: PropTypes.number,
+        animate: PropTypes.bool,
         onFocus: PropTypes.func,
         onBlur: PropTypes.func,
         className: PropTypes.string,
@@ -17,6 +18,7 @@ export default class TextareaAutosize extends Component {
 
     static defaultProps = {
         rows: 1,
+        animate: true,
     };
 
     componentDidMount() {
@@ -33,7 +35,8 @@ export default class TextareaAutosize extends Component {
     }
 
     render() {
-        const { className, maxRows, ...rest } = this.props;
+        const { className, maxRows, animate, ...rest } = this.props;
+        const finalClassName = classNames(styles.textareaAutosize, animate && styles.animate, className);
 
         return (
             <textarea
@@ -41,7 +44,7 @@ export default class TextareaAutosize extends Component {
                 ref={ this.storeNode }
                 onFocus={ this.handleFocus }
                 onBlur={ this.handleBlur }
-                className={ classNames(styles.textareaAutosize, className) } />
+                className={ finalClassName } />
         );
     }
 
@@ -56,7 +59,7 @@ export default class TextareaAutosize extends Component {
     };
 
     updateSize = () => {
-        growElementFn({
+        this.node && growElementFn({
             el: this.node,
             minLines: this.props.rows,
             maxLines: this.props.maxRows,

@@ -1,5 +1,8 @@
 .textareaAutosize {
     overflow: hidden;
     resize: none;
-    transition: height 0.2s ease, max-height 0.2s ease;
+
+    &.animate {
+        transition: height 0.2s ease, max-height 0.2s ease;
+    }
 }
