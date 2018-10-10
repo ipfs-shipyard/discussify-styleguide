@@ -3,7 +3,6 @@
 
 .textButton {
     padding: 0;
-    display: inline-flex;
     align-items: center;
     border: 0;
     background: none;
@@ -38,25 +37,19 @@
 
     & .text {
         @mixin typography-caption em, no-line-height;
+        vertical-align: middle;
     }
 
     & .icon {
+        vertical-align: middle;
         font-size: 1.5em;
     }
 
-    &.left {
-        flex-direction: row-reverse;
-
-        & .icon {
-            margin-right: calc(0.8em / 1.5);
-        }
+    &.left .icon {
+        margin-right: calc(0.8em / 1.5);
     }
 
-    &.right {
-        flex-direction: row;
-
-        & .icon {
-            margin-left: calc(0.8em / 1.5);
-        }
+    &.right .icon {
+        margin-left: calc(0.8em / 1.5);
     }
 }
