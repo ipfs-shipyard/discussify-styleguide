@@ -11,3 +11,4 @@ export * from './components/popover';
 export { default as TextButton } from './components/text-button';
 export { default as TextareaAutosize } from './components/textarea-autosize';
 export { default as TimeAgo } from './components/time-ago';
+export { default as KeyboardOnlyOutlines } from './components/keyboard-only-outlines';

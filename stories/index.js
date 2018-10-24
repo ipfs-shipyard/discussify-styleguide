@@ -6,6 +6,7 @@ import './button';
 import './circular-loader';
 import './discussion-fab';
 import './icon';
+import './keyboard-only-outlines';
 import './modal';
 import './popover';
 import './text-button';
