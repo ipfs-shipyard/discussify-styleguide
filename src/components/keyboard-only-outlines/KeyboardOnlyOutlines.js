@@ -3,23 +3,39 @@ import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
 import keyboardOnlyOutlines from 'keyboard-only-outlines';
 
+const getStylesheetTarget = (node) => {
+    const rootNode = node.getRootNode ? node.getRootNode() : document;
+
+    return rootNode === document ? document.head : rootNode;
+};
+
 export default class KeyboardOnlyOutlines extends Component {
     static propTypes = {
         children: PropTypes.node,
+        stylesheetTarget: PropTypes.object,
+        styles: PropTypes.string,
     };
 
     componentDidMount() {
         const node = findDOMNode(this);
 
-        console.log(node);
-        const rootNode = node.getRootNode ? node.getRootNode() : document;
-        const stylesheetTarget = rootNode === document ? document.head : rootNode;
+        if (!node) {
+            throw new Error('Unable to find DOM node, did the children actually rendered a DOM element?');
+        }
 
-        this.dispose = keyboardOnlyOutlines({ stylesheetTarget });
+        const options = {
+            stylesheetTarget: this.props.stylesheetTarget || getStylesheetTarget(node),
+        };
+
+        if (this.props.styles != null) {
+            options.styles = this.props.styles;
+        }
+
+        this.dispose = keyboardOnlyOutlines(options);
     }
 
     componentWillUnmount() {
-        this.dispose();
+        this.dispose && this.dispose();
     }
 
     render() {

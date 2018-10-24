@@ -99,7 +99,19 @@ Follow the steps below:
     import "@discussify/styleguide/styles/index.css";
     ```
 
-4. Use the components
+4. Wrap your app
+
+   Wrap your app with `KeyboardOnlyOutlines` components to disable outlines when using a pointer device, such as a mouse:
+
+   ```js
+   import { KeyboardOnlyOutlines } from '@discussify/styleguide';
+
+   <KeyboardOnlyOutlines>
+     <MyApp />
+   </KeyboardOnlyOutlines>
+   ```
+
+5. Use the components
 
     ```js
     import { TypingIndicator } from '@discussify/styleguide';
@@ -108,6 +120,8 @@ Follow the steps below:
     ```
 
     You may take a look at all the components by [running the Storybook](https://github.com/ipfs-shipyard/discussify-styleguide#start).
+
+    If you are using the `Modal` component, please call `Modal.setAppElement` with your app element.
 
 
 ## Base technology
