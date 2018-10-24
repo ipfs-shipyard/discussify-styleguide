@@ -3,12 +3,12 @@
 
 .textButton {
     padding: 0;
-    align-items: center;
     border: 0;
     background: none;
-
     font-size: 1rem;
     text-transform: uppercase;
+    line-height: inherit;
+    white-space: nowrap;
     transition-property: opacity, color;
     transition-duration: 0.2s;
     transition-timing-function: ease;
@@ -36,6 +36,7 @@
     }
 
     & .text {
+        display: inline-block;
         @mixin typography-caption em, no-line-height;
         vertical-align: middle;
     }
