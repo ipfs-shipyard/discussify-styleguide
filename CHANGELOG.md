@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/ipfs-shipyard/discussify-styleguide/compare/v0.3.0...v0.4.0) (2018-10-28)
+
+
+### Bug Fixes
+
+* ensure focus on primary button on confirm modal ([7ccbf07](https://github.com/ipfs-shipyard/discussify-styleguide/commit/7ccbf07))
+* fix a bug with text-button outline ([4ff2d61](https://github.com/ipfs-shipyard/discussify-styleguide/commit/4ff2d61))
+* fix NunitoSans hinting ([eb110e2](https://github.com/ipfs-shipyard/discussify-styleguide/commit/eb110e2))
+* fix some bugs with the refs ([901a66f](https://github.com/ipfs-shipyard/discussify-styleguide/commit/901a66f))
+* fix text button line heights ([c3eaf65](https://github.com/ipfs-shipyard/discussify-styleguide/commit/c3eaf65))
+* use keyCode for compability ([875ed57](https://github.com/ipfs-shipyard/discussify-styleguide/commit/875ed57))
+
+
+### Features
+
+* add animate to textarea autosize component ([c8b50ce](https://github.com/ipfs-shipyard/discussify-styleguide/commit/c8b50ce))
+* add KeyboardOnlyOutlines component ([cff6772](https://github.com/ipfs-shipyard/discussify-styleguide/commit/cff6772))
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/ipfs-shipyard/discussify-styleguide/compare/v0.2.1...v0.3.0) (2018-10-03)
 
