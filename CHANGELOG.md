@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/ipfs-shipyard/discussify-styleguide/compare/v0.4.0...v0.5.0) (2018-11-10)
+
+
+### Features
+
+* add comment components ([1afd8d0](https://github.com/ipfs-shipyard/discussify-styleguide/commit/1afd8d0))
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/ipfs-shipyard/discussify-styleguide/compare/v0.3.0...v0.4.0) (2018-10-28)
 
