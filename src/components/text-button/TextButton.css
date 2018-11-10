@@ -32,20 +32,20 @@
 
     & .text {
         display: inline-block;
-        @mixin typography-caption em, no-line-height;
+        @mixin typography-caption rem, no-line-height;
         vertical-align: middle;
     }
 
     & .icon {
         vertical-align: middle;
-        font-size: 1.5em;
+        font-size: 1.5rem;
     }
 
     &.left .icon {
-        margin-right: calc(0.8em / 1.5);
+        margin-right: calc(0.8rem / 1.5);
     }
 
     &.right .icon {
-        margin-left: calc(0.8em / 1.5);
+        margin-left: calc(0.8rem / 1.5);
     }
 }

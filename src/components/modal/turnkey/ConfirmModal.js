@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -28,6 +28,8 @@ export default class ConfirmModal extends Component {
         shouldFocusAfterRender: true,
     };
 
+    primaryButtonRef = createRef();
+
     render() {
         const {
             message,
@@ -48,7 +50,7 @@ export default class ConfirmModal extends Component {
                 <div className={ styles.actions }>
                     <Button
                         variant="primary"
-                        ref={ this.storePrimaryButtonRef }
+                        ref={ this.primaryButtonRef }
                         onClick={ this.handleCancelClick }>
                         { cancelText }
                     </Button>
@@ -62,12 +64,8 @@ export default class ConfirmModal extends Component {
         );
     }
 
-    storePrimaryButtonRef = (ref) => {
-        this.primaryButton = ref;
-    };
-
     handleAfterOpen = () => {
-        this.props.shouldFocusAfterRender && findDOMNode(this.primaryButton).focus();
+        this.props.shouldFocusAfterRender && findDOMNode(this.primaryButtonRef.current).focus();
         this.props.onAfterOpen && this.props.onAfterOpen();
     };
 

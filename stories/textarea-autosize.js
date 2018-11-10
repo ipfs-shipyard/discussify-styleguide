@@ -21,13 +21,15 @@ storiesOf('TextareaAutosize', module)
 .add('Knobs playground ⚽', () => {
     const rows = number('rows', 1);
     const maxRows = number('maxRows', 5);
-    const disabled = boolean('disabled');
+    const animate = boolean('animate');
 
     return (
         <TextareaAutosize
             rows={ rows }
             maxRows={ maxRows }
-            disabled={ disabled }
-            onHeightChange={ action('height changed') } />
+            animate={ animate }
+            onFocus={ action('focus') }
+            onBlur={ action('blur') }
+            onChange={ action('change') } />
     );
 });

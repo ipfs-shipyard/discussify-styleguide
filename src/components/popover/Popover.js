@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { Popper } from 'react-popper';
 import { CSSTransition } from 'react-transition-group';
@@ -32,6 +32,8 @@ export default class Popover extends Component {
         shouldCloseOnEsc: true,
         shouldCloseOnOutsideClick: true,
     };
+
+    boxRef = createRef();
 
     componentDidMount() {
         if (this.props.isOpen) {
@@ -113,7 +115,7 @@ export default class Popover extends Component {
                 data-placement={ placement }>
 
                 <div className={ styles.container }>
-                    <div ref={ this.storeBoxNode } className={ classNames(styles.popoverBox, boxClassName) }>
+                    <div ref={ this.boxRef } className={ classNames(styles.popoverBox, boxClassName) }>
                         <div className={ classNames(styles.popoverContent, contentClassName) }>{ children }</div>
                     </div>
 
@@ -126,10 +128,6 @@ export default class Popover extends Component {
     setReferenceNode(node) {
         this.referenceNode = node;
     }
-
-    storeBoxNode= (node) => {
-        this.boxNode = node;
-    };
 
     addEscapeOutsideListeners() {
         const { shouldCloseOnOutsideClick, shouldCloseOnEsc } = this.props;
@@ -154,41 +152,41 @@ export default class Popover extends Component {
         document.removeEventListener('keyup', this.handleKeyUp);
     }
 
-    handleMouseEnter = (e) => {
-        this.props.onRequestCancelClose && this.props.onRequestCancelClose(e, 'mouseEnter');
+    handleMouseEnter = (event) => {
+        this.props.onRequestCancelClose && this.props.onRequestCancelClose(event, 'mouseEnter');
     };
 
-    handleMouseLeave = (e) => {
+    handleMouseLeave = (event) => {
         // If user is selecting text, skip any check!
         if (!this.mouseDownEventTarget) {
-            this.props.onRequestClose && this.props.onRequestClose(e, 'mouseLeave');
+            this.props.onRequestClose && this.props.onRequestClose(event, 'mouseLeave');
         }
     };
 
-    handleKeyUp = (e) => {
+    handleKeyUp = (event) => {
         // Handle escape
-        if (e.key === 'Escape') {
-            this.props.onRequestClose && this.props.onRequestClose(e, 'escapePress');
+        if (event.key === 'Escape') {
+            this.props.onRequestClose && this.props.onRequestClose(event, 'escapePress');
         }
     };
 
-    handleMouseDown = (e) => {
+    handleMouseDown = (event) => {
         // Store the event target, with support for shadow dom
-        this.mouseDownEventTarget = e.composedPath ? e.composedPath()[0] : e.target;
+        this.mouseDownEventTarget = event.composedPath ? event.composedPath()[0] : event.target;
     };
 
-    handleMouseUp = (e) => {
+    handleMouseUp = (event) => {
         // Use also mouse down event because user might be selecting text and accidently left the popover
-        const target = this.mouseDownEventTarget || e.target;
+        const target = this.mouseDownEventTarget || event.target;
 
         this.mouseDownEventTarget = undefined;
 
         // Check if we clicked outside of the popover AND outside the reference as well
-        const isOutsideBox = !this.boxNode || !this.boxNode.contains(target);
+        const isOutsideBox = !this.boxRef.current.contains(target);
         const isOutsideReference = !this.referenceNode || !this.referenceNode.contains(target);
 
         if (isOutsideBox && isOutsideReference) {
-            this.props.onRequestClose && this.props.onRequestClose(e, 'clickOutside');
+            this.props.onRequestClose && this.props.onRequestClose(event, 'clickOutside');
         }
     };
 }

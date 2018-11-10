@@ -2,7 +2,7 @@
 @import "mixins/typography";
 
 :root {
-    --spacing: 4em;
+    --spacing: 4rem;
 }
 
 .modal {
@@ -16,8 +16,7 @@
     transform: translate(-50%, -50%) scale(0.9);
     opacity: 0;
     background-color: var(--color-white);
-    box-shadow: 0 0.7em 1.7em color(var(--color-black) alpha(0.15));
-    font-size: 1rem;
+    box-shadow: 0 0.7rem 1.7rem color(var(--color-black) alpha(0.15));
     transition: opacity 0.2s 0.1s ease, transform 0.3s 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     &.afterOpen {
@@ -32,7 +31,7 @@
 }
 
 .modalContent {
-    @mixin typography-body-2 em;
+    @mixin typography-body-2 rem;
 
     /* Prevent text from flickering in Webkit */
     backface-visibility: hidden;

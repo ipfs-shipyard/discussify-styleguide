@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { random } from 'lodash';
@@ -18,6 +18,8 @@ export default class ProgressBar extends Component {
         className: PropTypes.string,
     };
 
+    progressBarRef = createRef();
+
     componentDidMount() {
         this.maybeHandleRunningChange(false);
     }
@@ -36,14 +38,10 @@ export default class ProgressBar extends Component {
         return (
             <div
                 { ...rest }
-                ref={ this.storeProgressBarNode }
+                ref={ this.progressBarRef }
                 className={ classNames(styles.progressBar, className) } />
         );
     }
-
-    storeProgressBarNode = (ref) => {
-        this.progressBarNode = ref;
-    };
 
     maybeHandleRunningChange(prevRunning) {
         const { running } = this.props;
@@ -75,12 +73,12 @@ export default class ProgressBar extends Component {
         this.clearTimersAndListeners();
         this.currentProgress = 1;
 
-        this.progressBarNode.style.transform = 'scaleX(1)';
-        this.cancelOnTransitionEnd = onTransitionEnd(this.progressBarNode, () => {
+        this.progressBarRef.current.style.transform = 'scaleX(1)';
+        this.cancelOnTransitionEnd = onTransitionEnd(this.progressBarRef.current, () => {
             this.props.onEnd && this.props.onEnd();
 
-            this.progressBarNode.style.opacity = '0';
-            this.cancelOnTransitionEnd = onTransitionEnd(this.progressBarNode, () => this.reset);
+            this.progressBarRef.current.style.opacity = '0';
+            this.cancelOnTransitionEnd = onTransitionEnd(this.progressBarRef.current, () => this.reset);
         });
     }
 
@@ -88,11 +86,11 @@ export default class ProgressBar extends Component {
         this.clearTimersAndListeners();
         this.currentProgress = 0;
 
-        this.progressBarNode.style.transition = 'none';
-        this.progressBarNode.style.transform = '';
-        this.progressBarNode.style.opacity = '';
-        this.progressBarNode.offsetHeight; // eslint-disable-line no-unused-expressions
-        this.progressBarNode.style.transition = '';
+        this.progressBarRef.current.style.transition = 'none';
+        this.progressBarRef.current.style.transform = '';
+        this.progressBarRef.current.style.opacity = '';
+        this.progressBarRef.current.offsetHeight; // eslint-disable-line no-unused-expressions
+        this.progressBarRef.current.style.transition = '';
 
         this.props.onReset && this.props.onReset();
     };
@@ -113,7 +111,7 @@ export default class ProgressBar extends Component {
         }
 
         this.currentProgress += increment;
-        this.progressBarNode.style.transform = `scaleX(${this.currentProgress})`;
+        this.progressBarRef.current.style.transform = `scaleX(${this.currentProgress})`;
     };
 
     determineIncrement() {

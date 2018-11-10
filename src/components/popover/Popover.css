@@ -6,13 +6,12 @@
     top: 0;
     left: 0;
     z-index: 999999;
-    font-size: 1rem;
 
     & .container {
         position: relative;
         transform: scale(0.9);
         opacity: 0;
-        filter: drop-shadow(0 0.7em 1.6em color(var(--color-black) alpha(0.15)));
+        filter: drop-shadow(0 0.7rem 1.6rem color(var(--color-black) alpha(0.15)));
         transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
@@ -43,47 +42,48 @@
 
     &[data-placement="top"] {
         & {
-            margin-bottom: 2em;
+            margin-bottom: 2rem;
         }
 
         & .arrow {
-            bottom: -1em;
-            border-width: 1em 0.9em 0 0.9em;
+            bottom: -1rem;
+            border-width: 1rem 0.9rem 0 0.9rem;
             border-color: var(--color-white) transparent transparent transparent;
         }
     }
 
     &[data-placement="right"] {
         & {
-            margin-left: 2em;
+            margin-left: 2rem;
         }
 
         & .arrow {
-            border-width: 0.9em 1em 0.9em 0;
+            left: -1rem;
+            border-width: 0.9rem 1rem 0.9rem 0;
             border-color: transparent var(--color-white) transparent transparent;
         }
     }
 
     &[data-placement="bottom"] {
         & {
-            margin-top: 2em;
+            margin-top: 2rem;
         }
 
         & .arrow {
-            top: -1em;
-            border-width: 0 0.9em 1em 0.9em;
+            top: -1rem;
+            border-width: 0 0.9rem 1rem 0.9rem;
             border-color: transparent transparent var(--color-white) transparent;
         }
     }
 
     &[data-placement="left"] {
         & {
-            margin-right: 2em;
+            margin-right: 2rem;
         }
 
         & .arrow {
-            right: -1em;
-            border-width: 0.9em 0 0.9em 1em;
+            right: -1rem;
+            border-width: 0.9rem 0 0.9rem 1rem;
             border-color: transparent transparent transparent var(--color-white);
         }
     }
@@ -99,7 +99,7 @@
 
 .popoverContent {
     position: relative;
-    padding: 2em;
+    padding: 2rem;
     backface-visibility: hidden; /* Prevent text from flickering in Webkit */
-    @mixin typography-body-2 em;
+    @mixin typography-body-2 rem;
 }

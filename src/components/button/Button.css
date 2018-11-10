@@ -3,13 +3,12 @@
 
 .button {
     position: relative;
-    min-width: 14em;
-    height: 4.4em;
+    min-width: 14rem;
+    height: 4.4rem;
     overflow: hidden;
-    padding: 0 2.5em;
+    padding: 0 2.5rem;
     border: 0;
-    border-radius: 0.2em;
-    font-size: 1rem;
+    border-radius: 0.2rem;
     transition-property: background-color, color, border-color, opacity;
     transition-duration: 0.2s;
     transition-timing-function: ease;
@@ -38,7 +37,7 @@
     }
 
     &.secondary {
-        border: 0.1em solid var(--color-gray);
+        border: 0.1rem solid var(--color-gray);
         background-color: var(--color-white);
         color: var(--color-black);
 
@@ -66,7 +65,7 @@
     }
 
     & .textBlock {
-        @mixin typography-body-2 em, no-line-height;
+        @mixin typography-body-2 rem, no-line-height;
         position: relative;
         height: 100%;
         z-index: 2;
@@ -92,7 +91,7 @@
         transition: transform 0.2s ease;
 
         & .feedbackIcon {
-            font-size: 1.6em;
+            font-size: 1.6rem;
         }
     }
 

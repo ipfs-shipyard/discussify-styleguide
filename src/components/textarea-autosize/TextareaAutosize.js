@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { findDOMNode } from 'react-dom';
+import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import growElementFn from '@moxy/grow-element-fn';
@@ -13,6 +12,7 @@ export default class TextareaAutosize extends Component {
         animate: PropTypes.bool,
         onFocus: PropTypes.func,
         onBlur: PropTypes.func,
+        onChange: PropTypes.func,
         className: PropTypes.string,
     };
 
@@ -20,6 +20,8 @@ export default class TextareaAutosize extends Component {
         rows: 1,
         animate: true,
     };
+
+    textareaRef = createRef();
 
     componentDidMount() {
         this.updateSize();
@@ -41,42 +43,38 @@ export default class TextareaAutosize extends Component {
         return (
             <textarea
                 { ...rest }
-                ref={ this.storeNode }
+                ref={ this.textareaRef }
                 onFocus={ this.handleFocus }
                 onBlur={ this.handleBlur }
+                onChange={ this.handleChange }
                 className={ finalClassName } />
         );
     }
 
-    storeNode = (ref) => {
-        this.node = findDOMNode(ref);
-
-        if (this.node) {
-            this.node.addEventListener('focus', this.updateSize);
-            this.node.addEventListener('blur', this.updateSize);
-            this.node.addEventListener('input', this.updateSize);
-        }
-    };
-
-    updateSize = () => {
-        this.node && growElementFn({
-            el: this.node,
+    updateSize() {
+        growElementFn({
+            el: this.textareaRef.current,
             minLines: this.props.rows,
             maxLines: this.props.maxRows,
             extraLine: this.focused,
         });
-    };
+    }
 
-    handleFocus = () => {
+    handleFocus = (event) => {
         this.focused = true;
         this.updateSize();
-        this.props.onFocus && this.props.onFocus();
+        this.props.onFocus && this.props.onFocus(event);
     };
 
-    handleBlur = () => {
+    handleBlur = (event) => {
         this.focused = false;
         this.updateSize();
-        this.props.onBlur && this.props.onBlur();
+        this.props.onBlur && this.props.onBlur(event);
+    };
+
+    handleChange = (event) => {
+        this.updateSize();
+        this.props.onChange && this.props.onChange(event);
     };
 
     handleResize = debounce(() => this.updateSize(), 500);
