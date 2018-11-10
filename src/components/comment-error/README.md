@@ -7,7 +7,7 @@ A component to be used when a comment failed to load.
 ```jsx
 import { CommentError } from '@discussify/styleguide';
 
-<CommentError />
+<CommentError onRetry={ handleRetry } />
 ```
 
 ## Props

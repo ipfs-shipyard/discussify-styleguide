@@ -12,6 +12,6 @@ import { CommentPlaceholder } from '@discussify/styleguide';
 
 ## Props
 
-No properties.
+No props to document.
 
 Any other properties supplied will be spread to the root element.

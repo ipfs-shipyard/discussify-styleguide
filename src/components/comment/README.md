@@ -36,4 +36,4 @@ const comment = {
 
 Any other properties supplied will be spread to the root element.
 
-Whenever `onEdit` gets called, a `CommentInput` component should be rendered in place of this one. But to avoid flickers, such as the avatar image being preloaded, the `Comment` component should be kept but with the `hidden` property enabled.
+Whenever `onEdit` gets called, a `CommentInput` component should be rendered in place of this one. But to avoid flickers, such as the avatar image being preloaded, the `Comment` component should be kept but hidden.

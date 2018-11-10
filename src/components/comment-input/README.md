@@ -33,7 +33,7 @@ const me = {
 | ---- | ---- | ------- | ----------- |
 | author | object | *required* | The author of the comment, usually the logged-in user |
 | body | string | | The body of the comment we are editing; if not passed, it's assumed we are replying |
-| onSave | func | *required* | Function to call when save/reply is clicked |
+| onSubmit | func | *required* | Function to call when save/reply is clicked |
 | onCancel | func | *required* | Function to call when cancel is clicked |
 
 Any other properties supplied will be spread to the root element.
