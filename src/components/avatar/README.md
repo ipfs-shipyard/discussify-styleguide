@@ -8,7 +8,19 @@ Avatar to render the user's image, fallbacks to the user's initials.
 import { Avatar } from '@discussify/styleguide';
 
 <Avatar name="André Cruz" />
-<Avatar name="André Cruz" image="https://en.gravatar.com/userimage/102855892/467eb9028a2018993024d612255dc20e.png" />
+<Avatar
+    name="André Cruz"
+    image="https://ipfs.infura.io/ipfs/Qme2BurB5BFTLxTqmjUBu7qgsE96iCpf6iJD9MurhBRoSC" />
+```
+
+### Changing the size
+
+You may change the icon size via the `fontSize` CSS property (defaults to `1rem`).
+
+```jsx
+import { Avatar } from '@discussify/styleguide';
+
+<Avatar name="André Cruz" style={ { fontSize: '2rem' } } />
 ```
 
 ## Props
@@ -17,6 +29,6 @@ import { Avatar } from '@discussify/styleguide';
 | ---- | ---- | ------- | ----------- |
 | name | string | | The user's name |
 | image | string | | The user's image |
-| lazy | bool | false | Load the user's image only when it's about to enter the viewport |
+| preloadImage | bool | true | Show the user's image only when it's loaded |
 
 Any other properties supplied will be spread to the root element.

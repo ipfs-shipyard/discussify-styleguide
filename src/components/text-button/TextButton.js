@@ -6,10 +6,9 @@ import styles from './TextButton.css';
 const renderIcon = (icon, className) =>
     icon ? React.cloneElement(icon, { className: classNames(styles.icon, className) }) : null;
 
-const TextButton = ({ variant, icon, iconPosition, children, className, ...rest }) => {
+const TextButton = ({ icon, iconPosition, children, className, ...rest }) => {
     const finalClassName = classNames(
         styles.textButton,
-        styles[variant],
         styles[iconPosition],
         className
     );
@@ -24,7 +23,6 @@ const TextButton = ({ variant, icon, iconPosition, children, className, ...rest 
 };
 
 TextButton.propTypes = {
-    variant: PropTypes.oneOf(['primary', 'secondary']),
     children: PropTypes.node.isRequired,
     icon: PropTypes.element,
     iconPosition: PropTypes.oneOf(['left', 'right']),

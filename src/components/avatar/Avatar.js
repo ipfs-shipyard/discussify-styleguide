@@ -5,13 +5,21 @@ import PreloadImage from 'react-preload-image';
 import getInitials from './initials';
 import styles from './Avatar.css';
 
-const Avatar = ({ name, image, lazy, className, ...rest }) => {
+const Image = ({ preloadImage, ...rest }) => preloadImage ?
+    <PreloadImage { ...rest } /> :
+    <img { ...rest } alt="" />;
+
+Image.propTypes = {
+    preloadImage: PropTypes.bool,
+};
+
+const Avatar = ({ name, image, preloadImage, className, ...rest }) => {
     const finalClassName = classNames(styles.avatar, className);
 
     return (
         <div { ...rest } className={ finalClassName }>
             <span className={ styles.initials }>{ getInitials(name) || '?' }</span>
-            { image ? <PreloadImage className={ styles.image } src={ image } lazy={ lazy } /> : null }
+            { image && <Image src={ image } preloadImage={ preloadImage } className={ styles.image } /> }
         </div>
     );
 };
@@ -19,8 +27,12 @@ const Avatar = ({ name, image, lazy, className, ...rest }) => {
 Avatar.propTypes = {
     name: PropTypes.string,
     image: PropTypes.string,
-    lazy: PropTypes.bool,
+    preloadImage: PropTypes.bool,
     className: PropTypes.string,
+};
+
+Avatar.defaultProps = {
+    preloadImage: true,
 };
 
 export default Avatar;

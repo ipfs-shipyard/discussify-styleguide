@@ -1,0 +1,45 @@
+@import "colors";
+@import "mixins/typography";
+
+.commentInput {
+    min-width: 350px;
+
+    & .textarea {
+        width: 100%;
+        padding: 1.7rem 1.9rem;
+        display: block; /* Remove extra space at the bottom */
+        border: none;
+        border: 1px solid var(--color-gray);
+        background-color: var(--color-white);
+        border-radius: 0.8rem 0.8rem 0.8rem 0;
+        @mixin typography-body-2 rem;
+    }
+
+    & .bottomBar {
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        line-height: 1;
+
+        & .author {
+            margin-right: 1rem;
+            flex: 1 0;
+        }
+
+        & .actions {
+            display: inline-flex;
+            align-items: center;
+
+            & .separator {
+                margin: 0 1rem;
+                font-size: 1.2rem;
+
+                &::after {
+                    content: "•";
+                    opacity: 0.5;
+                    color: var(--color-gray);
+                }
+            }
+        }
+    }
+}

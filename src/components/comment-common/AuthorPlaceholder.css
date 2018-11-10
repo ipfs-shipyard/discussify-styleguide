@@ -1,0 +1,24 @@
+@import "colors";
+
+.authorPlaceholder {
+    display: flex;
+    flex: 1 0;
+    align-items: center;
+
+    & .dummyAvatar {
+        width: 3rem;
+        height: 3rem;
+        display: inline-block;
+        background-color: var(--color-seashell);
+        border-radius: 50%;
+    }
+
+    & .dummyNameText {
+        max-width: 14rem;
+        height: 1rem;
+        margin-left: 1.5rem;
+        flex: 1 1;
+        background-color: var(--color-seashell);
+        border-radius: 0.6rem;
+    }
+}

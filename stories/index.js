@@ -4,6 +4,7 @@ import './avatar';
 import './brand-logo';
 import './button';
 import './circular-loader';
+import './comments';
 import './discussion-fab';
 import './icon';
 import './keyboard-only-outlines';

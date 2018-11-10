@@ -1,0 +1,45 @@
+@import "colors";
+@import "mixins/typography";
+
+.commentError {
+    min-width: 35rem;
+
+    & .content {
+        position: relative;
+
+        & .message {
+            padding: 1.8rem 2rem;
+            @mixin typography-body-2 rem;
+            background-color: var(--color-seashell);
+            border-radius: 0.8rem 0.8rem 0.8rem 0;
+        }
+
+        & .actions {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            padding: 1rem;
+            display: flex; /* Remove extra space because of inline-block of children */
+            background-color: var(--color-seashell);
+            border-radius: 0.8rem;
+
+            & .icon {
+                width: 1.6rem;
+                height: 1.6rem;
+                color: var(--color-gray);
+
+                &:not(:last-child) {
+                    margin-right: 1rem;
+                }
+            }
+        }
+
+        &:hover .actions .icon {
+            fill: var(--color-science-blue);
+        }
+    }
+
+    & .bottomBar {
+        margin-top: 1rem;
+    }
+}

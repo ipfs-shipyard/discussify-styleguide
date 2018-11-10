@@ -15,12 +15,14 @@ storiesOf('Avatar', module)
     <Avatar />
 ))
 .add('With image', () => (
-    <Avatar name="André Cruz" image="https://en.gravatar.com/userimage/102855892/467eb9028a2018993024d612255dc20e.png" />
+    <Avatar
+        name="André Cruz"
+        image="https://en.gravatar.com/userimage/102855892/467eb9028a2018993024d612255dc20e.png" />
 ))
 .add('Knobs playground ⚽', () => {
     const name = text('name', 'André Cruz');
     const image = text('image', 'https://en.gravatar.com/userimage/102855892/467eb9028a2018993024d612255dc20e.png');
-    const lazy = boolean('lazy');
+    const preloadImage = boolean('preloadImage', true);
 
-    return <Avatar name={ name } image={ image } lazy={ lazy } />;
+    return <Avatar name={ name } image={ image } preloadImage={ preloadImage } />;
 });

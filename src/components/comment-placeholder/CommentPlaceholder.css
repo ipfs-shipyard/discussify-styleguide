@@ -1,0 +1,43 @@
+@import "colors";
+@import "mixins/typography";
+
+.commentPlaceholder {
+    min-width: 35rem;
+    background-color: var(--color-white);
+
+    & .content {
+        position: relative;
+        padding: 1.8rem 2rem;
+        background-color: color(var(--color-science-blue) alpha(0.1));
+        border-radius: 0.8rem 0.8rem 0.8rem 0;
+
+        & pre {
+            margin: 0;
+            padding: 0;
+            @mixin typography-body-2 rem;
+            white-space: pre-line;
+        }
+
+        & .dummyTextLine1 {
+            position: absolute;
+            top: 2.4rem;
+            left: 2rem;
+            width: calc(85% - 4rem);
+            height: 1rem;
+            background-color: color(var(--color-science-blue) alpha(0.1));
+        }
+
+        & .dummyTextLine2 {
+            position: absolute;
+            top: 4.6rem;
+            left: 2rem;
+            width: calc(67% - 4rem);
+            height: 1rem;
+            background-color: color(var(--color-science-blue) alpha(0.1));
+        }
+    }
+
+    & .bottomBar {
+        margin-top: 1rem;
+    }
+}

@@ -4,7 +4,9 @@
 .textButton {
     padding: 0;
     border: 0;
+    opacity: 0.5;
     background: none;
+    color: var(--color-gray);
     font-size: 1rem;
     text-transform: uppercase;
     line-height: inherit;
@@ -13,25 +15,18 @@
     transition-duration: 0.2s;
     transition-timing-function: ease;
 
-    &.primary {
-        color: var(--color-science-blue);
-    }
-
-    &.secondary {
-        color: var(--color-gray);
-    }
-
     &:not([disabled]) {
         cursor: pointer;
     }
 
     &:hover,
     &:focus {
-        opacity: 0.8;
+        opacity: 1;
+        color: var(--color-science-blue);
     }
 
     &[disabled] {
-        opacity: 0.9;
+        opacity: 0.25;
         color: var(--color-gray);
     }
 
