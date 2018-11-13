@@ -62,7 +62,7 @@ export default class CommentInput extends PureComponent {
                     onChange={ this.handleTextareaChange }
                     className={ styles.textarea } />
 
-                <div className={ classNames(styles.bottomBar, className) }>
+                <div className={ styles.bottomBar }>
                     <Author
                         author={ author }
                         myself
