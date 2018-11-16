@@ -15,7 +15,7 @@
     font-size: 1rem;
 
     & .initials {
-        @mixin typography-overline em, no-line-height;
+        @mixin typography-overline em;
         color: var(--color-science-blue);
     }
 

@@ -65,7 +65,7 @@
     }
 
     & .textBlock {
-        @mixin typography-body-2 rem, no-line-height;
+        @mixin typography-body-2 rem;
         position: relative;
         height: 100%;
         z-index: 2;

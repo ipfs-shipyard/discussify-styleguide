@@ -9,7 +9,6 @@
     color: var(--color-gray);
     font-size: 1rem;
     text-transform: uppercase;
-    line-height: inherit;
     white-space: nowrap;
     transition-property: opacity, color;
     transition-duration: 0.2s;
@@ -32,7 +31,7 @@
 
     & .text {
         display: inline-block;
-        @mixin typography-caption rem, no-line-height;
+        @mixin typography-caption rem;
         vertical-align: middle;
     }
 

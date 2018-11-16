@@ -1,0 +1,47 @@
+@import "colors";
+@import "mixins/typography";
+
+.commentRepliesHeader {
+    min-width: 350px;
+    display: flex;
+    align-items: center;
+
+    & .replyingTo {
+        display: flex;
+        flex: 1 0;
+        align-items: center;
+        color: var(--color-gray);
+
+        & .replyIcon {
+            width: 1.6rem;
+            height: 1.6rem;
+        }
+
+        & .text {
+            @mixin typography-overline rem;
+            margin-left: 0.8rem;
+        }
+    }
+
+    & .viewMore {
+        margin-left: 1rem;
+        display: flex;
+        align-items: center;
+
+        & .button {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            @mixin typography-overline rem;
+            opacity: 0.5;
+            background: none;
+            color: var(--color-gray);
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+}

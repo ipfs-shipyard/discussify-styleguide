@@ -74,7 +74,6 @@
         margin-top: 1rem;
         display: flex;
         align-items: center;
-        line-height: 1;
 
         & .author {
             margin-right: 1rem;
@@ -89,7 +88,7 @@
                 margin: 0;
                 padding: 0;
                 border: 0;
-                @mixin typography-overline rem, no-line-height;
+                @mixin typography-overline rem;
                 opacity: 0.5;
                 background: none;
                 color: var(--color-gray);
@@ -109,7 +108,8 @@
                 margin: 0 1rem;
                 opacity: 0.5;
                 color: var(--color-gray);
-                font-size: 1.2rem;
+                @mixin typography-overline rem;
+                letter-spacing: 0;
 
                 &::after {
                     content: "•";

@@ -14,7 +14,6 @@
     & .details {
         display: flex;
         align-items: center;
-        line-height: 1;
 
         & .dummyDateText {
             width: 3rem;
@@ -26,7 +25,8 @@
         & .dummySeparator {
             margin: 0 1rem;
             color: var(--color-seashell);
-            @mixin typography-overline rem, no-line-height;
+            @mixin typography-overline rem;
+            letter-spacing: 0;
 
             &::after {
                 content: "•";
@@ -34,7 +34,7 @@
         }
 
         & .dummyActionsText {
-            width: 6.1rem;
+            width: 5.9rem;
             height: 1rem;
             background-color: var(--color-seashell);
             border-radius: 0.6rem;

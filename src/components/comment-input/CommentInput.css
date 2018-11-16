@@ -19,7 +19,6 @@
         margin-top: 1rem;
         display: flex;
         align-items: center;
-        line-height: 1;
 
         & .author {
             margin-right: 1rem;
@@ -32,12 +31,13 @@
 
             & .separator {
                 margin: 0 1rem;
-                font-size: 1.2rem;
+                opacity: 0.5;
+                color: var(--color-gray);
+                @mixin typography-overline rem;
+                letter-spacing: 0;
 
                 &::after {
                     content: "•";
-                    opacity: 0.5;
-                    color: var(--color-gray);
                 }
             }
         }
