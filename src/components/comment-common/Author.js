@@ -12,7 +12,7 @@ const Author = ({ author, myself, preloadAvatarImage, className }) => (
             preloadImage={ preloadAvatarImage } />
 
         <span className={ styles.name }>
-            { author.name }
+            { author.name || 'Unnamed' }
             { myself && ' (You)' }
         </span>
     </div>

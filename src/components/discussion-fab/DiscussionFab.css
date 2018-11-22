@@ -64,6 +64,6 @@
     }
 
     & .commentsCount {
-        @mixin typography-body-1 rem, no-line-height;
+        @mixin typography-body-1 rem;
     }
 }

@@ -31,11 +31,24 @@ const me = {
 
 | name | type | default | description |
 | ---- | ---- | ------- | ----------- |
+| type | one of `reply`, `edit` | *required* | The type of the comment input |
 | author | object | *required* | The author of the comment, usually the logged-in user |
-| body | string | | The body of the comment we are editing; if not passed, it's assumed we are replying |
+| body | string | | The body of the comment |
+| focusOnMount | bool | true | True to focus the textarea automatically, scrolling to it if necessary |
+| preloadAvatarImage | bool | true | Enables preloading the author's avatar |
 | onSubmit | func | *required* | Function to call when save/reply is clicked |
 | onCancel | func | *required* | Function to call when cancel is clicked |
 
 Any other properties supplied will be spread to the root element.
 
-The preload of the avatar image will be disabled when editing a comment. The reasoning is that this component will be rendered in-place of the `Comment` component, which has the avatar image already loaded.
+The `preloadAvatarImage` should be disabled when editing a comment. The reasoning is that this component will be rendered in-place of the `Comment` component, which has the avatar image already loaded.
+
+## Methods
+
+### .focus()
+
+Focus the textarea, scrolling to it if necessary.
+
+### .isFocused()
+
+Checks if the textare is focused.

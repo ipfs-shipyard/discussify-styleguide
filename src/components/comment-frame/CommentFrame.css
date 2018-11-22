@@ -1,0 +1,72 @@
+@import "colors";
+@import "mixins/typography";
+
+.commentFrame {
+    & .replyToPlaceholder {
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        @mixin typography-overline rem;
+        color: var(--color-seashell);
+
+        &::after {
+            content: "-";
+            position: relative;
+            left: -1rem;
+        }
+
+        & .dummyText {
+            width: 14rem;
+            height: 1rem;
+            background-color: var(--color-seashell);
+            border-radius: 0.6rem;
+        }
+    }
+
+    & .replyTo {
+        margin-bottom: 1rem;
+        opacity: 0.5;
+        @mixin typography-overline rem;
+        color: var(--color-gray);
+    }
+
+    & .repliesCountPlaceholder {
+        margin-left: 4.5rem;
+        display: flex;
+        align-items: center;
+        @mixin typography-overline rem;
+        color: color(var(--color-science-blue) alpha(0.1));
+
+        &::after {
+            content: "-";
+            position: relative;
+            left: -1rem;
+        }
+
+        & .dummyText {
+            position: relative;
+            width: 6rem;
+            height: 1rem;
+            background-color: color(var(--color-science-blue) alpha(0.1));
+            border-radius: 0.6rem;
+        }
+    }
+
+    & .repliesCount {
+        margin: 0 0 0 4.5rem;
+        padding: 0;
+        display: block;
+        border: 0;
+        @mixin typography-overline rem;
+        opacity: 0.6;
+        background: none;
+        color: var(--color-science-blue);
+        text-align: left;
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

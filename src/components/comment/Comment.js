@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { isRequiredIf } from 'prop-type-conditionals';
 import TimeAgo from '../time-ago';
 import TextButton from '../text-button';
 import { ReplyIcon, EditIcon, RemoveIcon } from '../icon';
@@ -8,38 +9,36 @@ import { ModalTrigger, ConfirmModal } from '../modal';
 import { Author, AuthorPlaceholder } from '../comment-common';
 import styles from './Comment.css';
 
-const Content = ({ comment, owner, onEdit, onRemove }) => {
-    const confirmModal = owner && (
-        <ConfirmModal
-            message="Are you sure you want to remove the comment?"
-            confirmText="Yes, remove."
-            cancelText="No, cancel."
-            onConfirm={ onRemove } />
-    );
+const ConfirmRemoveModal = (props) => (
+    <ConfirmModal
+        message="Are you sure you want to remove the comment?"
+        confirmText="Yes, remove."
+        cancelText="No, cancel."
+        { ...props } />
+);
 
-    return (
-        <div className={ styles.content }>
-            <pre className={ styles.message }>{ comment.body }</pre>
-            { owner && (
-                <div className={ styles.actions }>
-                    <EditIcon
-                        interactive
-                        onClick={ onEdit }
-                        className={ styles.icon } />
-                    <ModalTrigger modal={ confirmModal }>
-                        <RemoveIcon interactive className={ styles.icon } />
-                    </ModalTrigger>
-                </div>
-            ) }
-        </div>
-    );
-};
+const Content = ({ comment, owner, onEdit, onRemove }) => (
+    <div className={ styles.content }>
+        <pre className={ styles.message }>{ comment.body }</pre>
+        { owner && (
+            <div className={ styles.actions }>
+                <EditIcon
+                    interactive
+                    onClick={ onEdit }
+                    className={ styles.icon } />
+                <ModalTrigger modal={ <ConfirmRemoveModal onConfirm={ onRemove } /> }>
+                    <RemoveIcon interactive className={ styles.icon } />
+                </ModalTrigger>
+            </div>
+        ) }
+    </div>
+);
 
 Content.propTypes = {
     comment: PropTypes.object.isRequired,
     owner: PropTypes.bool,
-    onEdit: PropTypes.func.isRequired,
-    onRemove: PropTypes.func.isRequired,
+    onEdit: PropTypes.func,
+    onRemove: PropTypes.func,
 };
 
 const ContentRemoved = () => (
@@ -50,7 +49,17 @@ const ContentRemoved = () => (
     </div>
 );
 
-const Comment = ({ comment, owner, onEdit, onRemove, onReply, className, ...rest }) => {
+const Comment = ({
+    comment,
+    owner,
+    preloadAvatarImage,
+    onViewMoreReplies,
+    onReply,
+    onEdit,
+    onRemove,
+    className,
+    ...rest
+}) => {
     const removed = comment.body == null;
     const edited = !removed && comment.updatedAt != null;
 
@@ -71,6 +80,7 @@ const Comment = ({ comment, owner, onEdit, onRemove, onReply, className, ...rest
                     <Author
                         author={ comment.author }
                         myself={ owner }
+                        preloadAvatarImage={ preloadAvatarImage }
                         className={ styles.author } />
                 }
 
@@ -103,10 +113,15 @@ const Comment = ({ comment, owner, onEdit, onRemove, onReply, className, ...rest
 Comment.propTypes = {
     comment: PropTypes.object.isRequired,
     owner: PropTypes.bool,
-    onEdit: PropTypes.func.isRequired,
-    onRemove: PropTypes.func.isRequired,
+    preloadAvatarImage: PropTypes.bool,
     onReply: PropTypes.func.isRequired,
+    onEdit: isRequiredIf((props) => props.owner, PropTypes.func),
+    onRemove: isRequiredIf((props) => props.owner, PropTypes.func),
     className: PropTypes.string,
+};
+
+Comment.defaultProps = {
+    preloadAvatarImage: true,
 };
 
 export default Comment;

@@ -8,6 +8,7 @@
         position: relative;
 
         & .message {
+            margin: 0;
             padding: 1.8rem 2rem;
             @mixin typography-body-2 rem;
             background-color: var(--color-seashell);

@@ -6,6 +6,7 @@ export { default as Comment } from './components/comment';
 export { default as CommentError } from './components/comment-error';
 export { default as CommentInput } from './components/comment-input';
 export { default as CommentPlaceholder } from './components/comment-placeholder';
+export { default as CommentFrame } from './components/comment-frame';
 export { default as DiscussionFab } from './components/discussion-fab';
 export { default as TypingIndicator } from './components/typing-indicator';
 export { default as Icon } from './components/icon';

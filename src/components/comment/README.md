@@ -19,8 +19,6 @@ const comment = {
 
 <Comment
     comment={ comment }
-    onEdit={ handleEdit }
-    onRemove={ handleRemove }
     onReply={ handleReply } />
 ```
 
@@ -30,10 +28,13 @@ const comment = {
 | ---- | ---- | ------- | ----------- |
 | comment | object | *required* | The comment object |
 | owner | bool | false | True if the current logged-in user owns the comment |
-| onEdit | func | *required* | Function to call when edit is clicked |
-| onRemove | func | *required* | Function to call when remove is clicked |
+| preloadAvatarImage | bool | true | Enables preloading the author's avatar |
 | onReply | func | *required* | Function to call when reply is clicked |
+| onEdit | func | *required* if owner | Function to call when edit is clicked |
+| onRemove | func | *required* if owner | Function to call when remove is clicked |
 
 Any other properties supplied will be spread to the root element.
 
 Whenever `onEdit` gets called, a `CommentInput` component should be rendered in place of this one. But to avoid flickers, such as the avatar image being preloaded, the `Comment` component should be kept but hidden.
+
+The `preloadAvatarImage` property should be set to `false` when a new reply settled. The reasoning is that this component will be rendered in-place of the `CommentInput` component, which has the avatar image already loaded.
