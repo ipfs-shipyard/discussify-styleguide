@@ -1,6 +1,7 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { isRequiredIf } from 'prop-type-conditionals';
 import growElementFn from '@moxy/grow-element-fn';
 import { debounce } from 'lodash';
 import styles from './TextareaAutosize.css';
@@ -10,6 +11,8 @@ export default class TextareaAutosize extends Component {
         rows: PropTypes.number,
         maxRows: PropTypes.number,
         animate: PropTypes.bool,
+        submitOnEnter: PropTypes.bool,
+        onSubmit: isRequiredIf((props) => props.submitOnEnter, PropTypes.func),
         onFocus: PropTypes.func,
         onBlur: PropTypes.func,
         onChange: PropTypes.func,
@@ -19,6 +22,7 @@ export default class TextareaAutosize extends Component {
     static defaultProps = {
         rows: 1,
         animate: true,
+        submitOnEnter: false,
     };
 
     textareaRef = createRef();
@@ -37,13 +41,14 @@ export default class TextareaAutosize extends Component {
     }
 
     render() {
-        const { className, maxRows, animate, ...rest } = this.props;
+        const { className, maxRows, animate, submitOnEnter, onSubmit, ...rest } = this.props;
         const finalClassName = classNames(styles.textareaAutosize, animate && styles.animate, className);
 
         return (
             <textarea
                 { ...rest }
                 ref={ this.textareaRef }
+                onKeyPress={ this.handleKeyPress }
                 onFocus={ this.handleFocus }
                 onBlur={ this.handleBlur }
                 onChange={ this.handleChange }
@@ -59,6 +64,20 @@ export default class TextareaAutosize extends Component {
             extraLine: this.focused,
         });
     }
+
+    handleKeyPress = (event) => {
+        this.props.onKeyPress && this.props.onKeyPress(event);
+
+        if (event.defaultPrevented || !this.props.submitOnEnter) {
+            return;
+        }
+
+        // Create new comments when pressing enter without shift
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            this.props.onSubmit();
+        }
+    };
 
     handleFocus = (event) => {
         this.focused = true;

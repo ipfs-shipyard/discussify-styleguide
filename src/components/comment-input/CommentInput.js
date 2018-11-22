@@ -72,6 +72,8 @@ export default class CommentInput extends PureComponent {
                         defaultValue={ body }
                         rows={ reply ? 2 : 1 }
                         maxRows={ 10 }
+                        submitOnEnter
+                        onSubmit={ this.handleSubmitClick }
                         onChange={ this.handleTextareaChange }
                         onTransitionEnd={ this.handleTextareaTransitionEnd }
                         className={ styles.textarea } />

@@ -12,22 +12,28 @@ storiesOf('TextareaAutosize', module)
 .add('Default (1 row, no max limit)', () => (
     <TextareaAutosize />
 ))
-.add('5 max rows ', () => (
+.add('5 max rows', () => (
     <TextareaAutosize maxRows={ 5 } />
 ))
-.add('2 rows, 5 max rows ', () => (
+.add('2 rows, 5 max rows', () => (
     <TextareaAutosize rows={ 2 } maxRows={ 5 } />
+))
+.add('Submit on enter', () => (
+    <TextareaAutosize submitOnEnter onSubmit={ action('submit') } />
 ))
 .add('Knobs playground ⚽', () => {
     const rows = number('rows', 1);
     const maxRows = number('maxRows', 5);
     const animate = boolean('animate');
+    const submitOnEnter = boolean('submitOnEnter');
 
     return (
         <TextareaAutosize
             rows={ rows }
             maxRows={ maxRows }
             animate={ animate }
+            submitOnEnter={ submitOnEnter }
+            onSubmit={ action('submit') }
             onFocus={ action('focus') }
             onBlur={ action('blur') }
             onChange={ action('change') } />
