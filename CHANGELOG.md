@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/ipfs-shipyard/discussify-styleguide/compare/v0.5.0...v0.6.0) (2018-12-05)
+
+
+### Bug Fixes
+
+* fix fab dropshadow on darker backgrounds ([9cc0800](https://github.com/ipfs-shipyard/discussify-styleguide/commit/9cc0800))
+* fix line-height weirdness ([f2a8623](https://github.com/ipfs-shipyard/discussify-styleguide/commit/f2a8623))
+* fix wrong class name being applied in comment input ([bc5cedf](https://github.com/ipfs-shipyard/discussify-styleguide/commit/bc5cedf))
+
+
+### Features
+
+* add comment frame instead of replies header ([a55733d](https://github.com/ipfs-shipyard/discussify-styleguide/commit/a55733d))
+* add submitOnEnter to textarea ([f3ba954](https://github.com/ipfs-shipyard/discussify-styleguide/commit/f3ba954))
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/ipfs-shipyard/discussify-styleguide/compare/v0.4.0...v0.5.0) (2018-11-10)
 
