@@ -1,5 +1,10 @@
 @import "colors";
+@import "keyframes";
 @import "mixins/typography";
+
+:root {
+    --color-content-background-solid: rgb(231, 240, 251);
+}
 
 .commentPlaceholder {
     min-width: 35rem;
@@ -24,6 +29,7 @@
             left: 2rem;
             width: calc(85% - 4rem);
             height: 1rem;
+            overflow: hidden;
             background-color: color(var(--color-science-blue) alpha(0.1));
         }
 
@@ -33,7 +39,28 @@
             left: 2rem;
             width: calc(67% - 4rem);
             height: 1rem;
+            overflow: hidden;
             background-color: color(var(--color-science-blue) alpha(0.1));
+        }
+
+        & .dummyTextLine1,
+        & .dummyTextLine2 {
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background:
+                    linear-gradient(
+                        90deg,
+                        transparent,
+                        var(--color-content-background-solid),
+                        transparent
+                    );
+                animation: progress 1s ease-in-out infinite;
+            }
         }
     }
 
