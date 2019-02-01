@@ -35,7 +35,8 @@
     "test": "exit 0",
     "lint": "eslint --ignore-path .gitignore . && stylelint --ignore-path .gitignore \"**/*.css\"",
     "prerelease": "npm t && npm run lint && npm run build",
-    "release": "standard-version"
+    "release": "standard-version",
+    "dev": "onchange src/** -- npm run build"
   },
   "dependencies": {
     "@moxy/grow-element-fn": "^1.0.6",
@@ -50,11 +51,12 @@
     "prop-type-conditionals": "0.0.6",
     "prop-types": "^15.6.2",
     "proper-on-transition-end": "^0.3.0",
+    "react-animate-height": "^2.0.7",
     "react-modal": "^3.5.1",
     "react-popper": "^1.0.0",
     "react-preload-image": "^1.0.4",
     "react-time-ago": "^3.0.2",
-    "react-transition-group": "^2.4.0"
+    "react-transition-group": "^2.5.3"
   },
   "peerDepedencies": {
     "react": "^16.6.0",
@@ -75,6 +77,7 @@
     "husky": "^1.0.0",
     "lint-staged": "^8.0.0",
     "marked": "^0.5.1",
+    "onchange": "^5.2.0",
     "postcss-cli": "^6.0.0",
     "postcss-loader": "^3.0.0",
     "postcss-preset-moxy": "^3.0.0",

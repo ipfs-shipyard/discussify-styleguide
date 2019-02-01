@@ -7,7 +7,6 @@ import TextareaAutosize from '../textarea-autosize';
 import TextButton from '../text-button';
 import { ModalTrigger, ConfirmModal } from '../modal';
 import { Author } from '../comment-common';
-import FocusManager from './FocusManager';
 import styles from './CommentInput.css';
 
 const isBodyEmpty = (body) => !body || isWhitespace(body);
@@ -33,18 +32,13 @@ export default class CommentInput extends PureComponent {
         type: PropTypes.oneOf(['reply', 'edit']),
         author: PropTypes.object.isRequired,
         body: PropTypes.string,
-        focusOnMount: PropTypes.bool,
         preloadAvatarImage: PropTypes.bool,
         onSubmit: PropTypes.func.isRequired,
         onCancel: PropTypes.func.isRequired,
         className: PropTypes.string,
+        rows: PropTypes.number,
     };
 
-    static defaultProps = {
-        focusOnMount: true,
-    };
-
-    focusManagerRef = createRef();
     textareaAutosizeRef = createRef();
 
     constructor(props) {
@@ -57,74 +51,64 @@ export default class CommentInput extends PureComponent {
     }
 
     render() {
-        const { type, body, author, focusOnMount, preloadAvatarImage, onSubmit, onCancel, className, ...rest } = this.props;
+        const { type, body, author, preloadAvatarImage, onSubmit, onCancel, className, ...rest } = this.props;
         const { empty, changed } = this.state;
         const reply = type === 'reply';
 
         const ConfirmCancelModal = reply ? ConfirmCancelReplyModal : ConfirmCancelEditModal;
 
         return (
-            <FocusManager ref={ this.focusManagerRef } focusOnMount={ focusOnMount }>
-                <div { ...rest } className={ classNames(styles.commentInput, className) }>
-                    <TextareaAutosize
-                        placeholder={ reply ? 'Reply to this comment...' : '' }
-                        ref={ this.textareaAutosizeRef }
-                        defaultValue={ body }
-                        rows={ reply ? 2 : 1 }
-                        maxRows={ 10 }
-                        submitOnEnter
-                        onSubmit={ this.handleSubmitClick }
-                        onChange={ this.handleTextareaChange }
-                        onTransitionEnd={ this.handleTextareaTransitionEnd }
-                        className={ styles.textarea } />
+            <div { ...rest } className={ classNames(styles.commentInput, className) }>
+                <TextareaAutosize
+                    placeholder={ reply ? 'Reply to this comment...' : '' }
+                    ref={ this.textareaAutosizeRef }
+                    defaultValue={ body }
+                    rows={ 1 }
+                    maxRows={ 10 }
+                    submitOnEnter
+                    onSubmit={ this.handleSubmitClick }
+                    onChange={ this.handleTextareaChange }
+                    onTransitionEnd={ this.handleTextareaTransitionEnd }
+                    className={ styles.textarea } />
 
-                    <div className={ styles.bottomBar }>
-                        <Author
-                            author={ author }
-                            myself
-                            preloadAvatarImage={ preloadAvatarImage }
-                            className={ styles.author } />
+                <div className={ styles.bottomBar }>
+                    <Author
+                        author={ author }
+                        myself
+                        preloadAvatarImage={ preloadAvatarImage }
+                        className={ styles.author } />
 
-                        <div className={ styles.actions }>
-                            <TextButton
-                                onMouseDown={ this.handleActionMouseDown }
-                                onClick={ this.handleSubmitClick }
-                                disabled={ empty }
-                                className={ styles.button }>
-                                { reply ? 'Send' : 'Save' }
-                            </TextButton>
+                    <div className={ styles.actions }>
+                        <TextButton
+                            onMouseDown={ this.handleActionMouseDown }
+                            onClick={ this.handleSubmitClick }
+                            disabled={ empty }
+                            className={ styles.button }>
+                            { reply ? 'Send' : 'Save' }
+                        </TextButton>
 
-                            <span className={ styles.separator } />
+                        <span className={ styles.separator } />
 
-                            { changed ? (
-                                <ModalTrigger modal={ <ConfirmCancelModal onConfirm={ onCancel } /> }>
-                                    <TextButton
-                                        onMouseDown={ this.handleActionMouseDown }
-                                        className={ styles.button }>
-                                        Cancel
-                                    </TextButton>
-                                </ModalTrigger>
-                            ) : (
+                        { changed ? (
+                            <ModalTrigger modal={ <ConfirmCancelModal onConfirm={ onCancel } /> }>
                                 <TextButton
                                     onMouseDown={ this.handleActionMouseDown }
-                                    onClick={ this.handleCancelClick }
                                     className={ styles.button }>
-                                    Cancel
+                                        Cancel
                                 </TextButton>
-                            ) }
-                        </div>
+                            </ModalTrigger>
+                        ) : (
+                            <TextButton
+                                onMouseDown={ this.handleActionMouseDown }
+                                onClick={ this.handleCancelClick }
+                                className={ styles.button }>
+                                    Cancel
+                            </TextButton>
+                        ) }
                     </div>
                 </div>
-            </FocusManager>
+            </div>
         );
-    }
-
-    isFocused() {
-        return this.focusManagerRef.current ? this.focusManagerRef.current.isFocused() : false;
-    }
-
-    focus() {
-        this.focusManagerRef.current && this.focusManagerRef.current.focus();
     }
 
     handleActionMouseDown = (event) => {
