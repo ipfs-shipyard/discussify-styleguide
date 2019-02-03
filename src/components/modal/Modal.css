@@ -26,7 +26,7 @@
 
     &.beforeClose {
         opacity: 0;
-        transition: opacity 0.15s ease;
+        transition: opacity 0.3s ease;
     }
 }
 
@@ -52,7 +52,7 @@
 
     &.beforeClose {
         background-color: transparent;
-        transition: background-color 0.15s ease;
+        transition: background-color 0.3s ease;
     }
 }
 
