@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import ReactModal from 'react-modal';
 import styles from './Modal.css';
 
-const CLOSE_TRANSITION_DURATION = 250; // Must be 50ms higher than the actual CSS duration
+const CLOSE_TRANSITION_DURATION = 350; // Must be 50ms higher than the actual CSS duration
 
 const computeClassName = (className, classNameProp) => {
     if (classNameProp) {
