@@ -1,4 +1,4 @@
-@import "mixins/typography";
+@import "../../styles/mixins/typography";
 
 .author {
     display: flex;
