@@ -2,7 +2,7 @@
 @import "../../styles/mixins/typography";
 
 .comment {
-    min-width: 350px;
+    min-width: 30rem;
 
     & .content {
         position: relative;

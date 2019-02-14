@@ -7,7 +7,7 @@
 }
 
 .commentPlaceholder {
-    min-width: 35rem;
+    min-width: 30rem;
     background-color: var(--color-white);
 
     & .content {
