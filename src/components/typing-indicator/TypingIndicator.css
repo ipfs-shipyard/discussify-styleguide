@@ -1,4 +1,4 @@
-@import "colors";
+@import "../../styles/colors";
 
 :root {
     --size: 1.6em;

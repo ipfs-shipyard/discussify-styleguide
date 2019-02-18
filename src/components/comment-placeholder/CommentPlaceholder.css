@@ -1,6 +1,6 @@
-@import "colors";
-@import "keyframes";
-@import "mixins/typography";
+@import "../../styles/colors";
+@import "../../styles/keyframes";
+@import "../../styles/mixins/typography";
 
 :root {
     --color-content-background-solid: rgb(231, 240, 251);
