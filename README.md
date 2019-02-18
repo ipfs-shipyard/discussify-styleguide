@@ -176,6 +176,60 @@ Releases and publishes the package. Runs tests, lints and builds the project bef
 
 This command uses [`standard-version`](https://github.com/conventional-changelog/standard-version) underneath. The version is automatically inferred from the [conventional commits](https://conventionalcommits.org/).
 
+## Using a linked version of discussify-styleguide
+
+In some cases, you may want to make changes to Discussify's styleguide at the same time as you work on your project which uses the styleguide. In order to use a local version of [@discussify-styleguide](https://github.com/ipfs-shipyard/discussify-styleguide) and have any styleguide modifications be reflected live on your project, some pages have to be made in our main project.
+
+### Install and update dependencies
+
+Run the following command in your main project to install `postcss-import-webpack-resolver`.
+
+```sh
+$ npm i postcss-import-webpack-resolver
+```
+
+NOTE: if using `postcss-preset-moxy`, it should be of version '^3.0.0' or older.
+
+### Make required changes to your Webpack config
+
+Add two new dependencies. `fs` and `postcss-import-webpack-resolver`.
+
+```js
+const fs = require('fs');
+const createResolver = require('postcss-import-webpack-resolver');
+```
+
+Before exporting the webpack configuration, add the following line to the file. This will check if there is a linked version of `discussify-styleguide`.
+
+```js
+const existsStyleguideSrc = fs.existsSync(path.join(projectDir, 'node_modules/@discussify/styleguide/src'));
+```
+
+In the `resolve` option of your webpack configuration, insert the following. This will allow your project to update when changes occur to `js` files in the styleguide, without requiring a new styleguide build.
+
+```js
+alias: process.env.NODE_ENV === 'development' && existsStyleguideSrc ? {
+    '@discussify/styleguide': path.join(projectDir, 'node_modules/@discussify/styleguide/src'),
+} : undefined,
+```
+
+Pass a [`resolve`](https://github.com/postcss/postcss-import#resolve) option to [`postcss-import` plugin](https://github.com/postcss/postcss-import). This option will create a new alias for the `styles` folder in the styleguide's `src/` directory. This will have a similar effect as the previous bit of code, but for CSS imports.
+
+```js
+resolve: createResolver({
+    alias: process.env.NODE_ENV === 'development' && existsStyleguideSrc ? {
+        '@discussify/styleguide/styles': path.join(projectDir, 'node_modules/@discussify/styleguide/src/styles'),
+        } : undefined,
+})
+```
+
+NOTE: if using `postcss-preset-moxy`, this `resolve` option should be wrapped in the [`import`](https://github.com/moxystudio/postcss-preset-moxy#usage) option.
+
+
+### Link `discussify-styleguide` to your main project
+
+Link the projects by running `npm link` inside the root directory of the `discussify-styleguide` project, then run `npm link @discussify/styleguide` inside your main project. NOTE: this step has to be retaken every time you run an `npm i` command in your main project, because `npm i` will replace your linked version with an installed version.
+
 
 ## Contributing
 
