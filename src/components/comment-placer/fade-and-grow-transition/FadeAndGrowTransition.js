@@ -2,18 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AnimateHeight from 'react-animate-height';
 
+const ANIMATION_DURATION = 300;
+
 export default class FadeAndGrowTransition extends Component {
     static propTypes = {
         children: PropTypes.node.isRequired,
-        duration: PropTypes.number,
         animateOnMount: PropTypes.bool,
         animateOnUnmount: PropTypes.bool,
-        triggerUnmount: PropTypes.bool,
+        in: PropTypes.bool,
         onAnimationEnd: PropTypes.func,
-    };
-
-    static defaultProps = {
-        duration: 300,
     };
 
     static getDerivedStateFromProps(props, state) {
@@ -28,7 +25,7 @@ export default class FadeAndGrowTransition extends Component {
                 willAnimate: false,
             };
         }
-        if (props.triggerUnmount) {
+        if (!props.in) {
             return {
                 willAnimate: props.animateOnUnmount,
             };
@@ -55,19 +52,19 @@ export default class FadeAndGrowTransition extends Component {
             this.simulateAnimationEnd(false);
         }
         // Simulate animationEnd to reset parent state when animationOnUnmount is set to 'false'
-        if (this.props.triggerUnmount && !this.state.willAnimate) {
+        if (!this.props.in && !this.state.willAnimate) {
             this.simulateAnimationEnd(true);
         }
     };
 
     render() {
-        const { children, duration } = this.props;
+        const { children } = this.props;
         const { willAnimate } = this.state;
 
         return (
             <AnimateHeight
                 height={ willAnimate ? 0 : 'auto' }
-                duration={ duration }
+                duration={ ANIMATION_DURATION }
                 animateOpacity
                 onAnimationEnd={ this.handleAnimationEnd }>
                 { children }

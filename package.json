@@ -35,8 +35,7 @@
     "test": "exit 0",
     "lint": "eslint --ignore-path .gitignore . && stylelint --ignore-path .gitignore \"**/*.css\"",
     "prerelease": "npm t && npm run lint && npm run build",
-    "release": "standard-version",
-    "dev": "onchange src/** -- npm run build"
+    "release": "standard-version"
   },
   "dependencies": {
     "@moxy/grow-element-fn": "^1.0.6",
@@ -77,7 +76,6 @@
     "husky": "^1.0.0",
     "lint-staged": "^8.0.0",
     "marked": "^0.5.1",
-    "onchange": "^5.2.0",
     "postcss-cli": "^6.0.0",
     "postcss-loader": "^3.0.0",
     "postcss-preset-moxy": "^3.0.0",

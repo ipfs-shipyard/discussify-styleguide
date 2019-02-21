@@ -36,7 +36,6 @@ export default class CommentInput extends PureComponent {
         onSubmit: PropTypes.func.isRequired,
         onCancel: PropTypes.func.isRequired,
         className: PropTypes.string,
-        rows: PropTypes.number,
     };
 
     textareaAutosizeRef = createRef();

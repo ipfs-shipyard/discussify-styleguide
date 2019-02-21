@@ -12,9 +12,8 @@ export default class CommentPlacer extends Component {
         scrollOnMount: PropTypes.bool,
         autofocus: PropTypes.bool,
         children: PropTypes.element.isRequired,
-        animation: PropTypes.oneOf(['fade', 'fade-and-grow']).isRequired,
+        animation: PropTypes.oneOf(['fade', 'fade-and-grow']),
         className: PropTypes.string,
-        listHasScroll: PropTypes.bool.isRequired,
     };
 
     static defaultProps = {
@@ -22,6 +21,7 @@ export default class CommentPlacer extends Component {
         animateOnUnmount: false,
         scrollOnMount: false,
         autofocus: false,
+        animation: 'fade',
     };
 
     static getDerivedStateFromProps(props, state) {
@@ -42,7 +42,7 @@ export default class CommentPlacer extends Component {
             // If children passed as prop is not defined and the previous state has stored children
             // it means the component was already mounted and we must unmount it
             return {
-                triggerUnmount: true,
+                in: false,
             };
         }
 
@@ -52,7 +52,7 @@ export default class CommentPlacer extends Component {
     state = {
         animation: null,
         children: null,
-        triggerUnmount: false,
+        in: true,
         mountAnimationCompleted: false,
         animationHasChanged: false,
     };
@@ -66,10 +66,10 @@ export default class CommentPlacer extends Component {
     }
 
     componentDidUpdate() {
-        const { animationHasChanged, triggerUnmount } = this.state;
+        const { animationHasChanged, in: in_ } = this.state;
 
         // Reset animationHasChanged so that component can unmount normally
-        if (animationHasChanged && !this.props.children && !triggerUnmount) {
+        if (animationHasChanged && !this.props.children && in_) {
             this.setTextareaValue(this.textareaValue);
             this.setState({
                 animationHasChanged: false,
@@ -106,15 +106,15 @@ export default class CommentPlacer extends Component {
     };
 
     renderFadeAndGrow = () => {
-        const { animateOnMount, animateOnUnmount, listHasScroll } = this.props;
-        const { triggerUnmount, children } = this.state;
+        const { animateOnMount, animateOnUnmount } = this.props;
+        const { in: in_, children } = this.state;
 
         return (
             ({ totallyInView }) => (
                 <FadeAndGrowTransition
-                    animateOnMount={ animateOnMount && (!listHasScroll || totallyInView) }
+                    animateOnMount={ animateOnMount && totallyInView }
                     animateOnUnmount={ animateOnUnmount }
-                    triggerUnmount={ triggerUnmount }
+                    in={ in_ }
                     onAnimationEnd={ this.handleAnimationEnd }>
                     { children }
                 </FadeAndGrowTransition>
@@ -123,14 +123,14 @@ export default class CommentPlacer extends Component {
     };
 
     renderFade = () => {
-        const { triggerUnmount, children, animationHasChanged } = this.state;
+        const { in: in_, children, animationHasChanged } = this.state;
         const { animateOnMount, animateOnUnmount } = this.props;
 
         return (
             <FadeTransition
                 animateOnMount={ animationHasChanged ? false : animateOnMount }
                 animateOnUnmount={ animateOnUnmount }
-                triggerUnmount={ animationHasChanged ? true : !triggerUnmount }
+                in={ animationHasChanged ? true : in_ }
                 onAnimationEnd={ this.handleAnimationEnd }>
                 { children }
             </FadeTransition>
@@ -141,7 +141,7 @@ export default class CommentPlacer extends Component {
         this.setState({
             animation: null,
             children: null,
-            triggerUnmount: false,
+            in: true,
             mountAnimationCompleted: false,
             animationHasChanged: false,
         });

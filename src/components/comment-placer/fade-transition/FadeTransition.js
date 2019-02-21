@@ -4,18 +4,15 @@ import { CSSTransition } from 'react-transition-group';
 
 import styles from './FadeTransition.css';
 
+const ANIMATION_DURATION = 300;
+
 export default class FadeTransition extends Component {
     static propTypes = {
         children: PropTypes.element.isRequired,
-        duration: PropTypes.number,
         animateOnMount: PropTypes.bool,
         animateOnUnmount: PropTypes.bool,
-        triggerUnmount: PropTypes.bool,
+        in: PropTypes.bool,
         onAnimationEnd: PropTypes.func,
-    };
-
-    static defaultProps = {
-        duration: 300,
     };
 
     static classes = {
@@ -29,15 +26,15 @@ export default class FadeTransition extends Component {
     };
 
     render() {
-        const { children, duration, animateOnMount, triggerUnmount } = this.props;
+        const { children, animateOnMount, in: in_ } = this.props;
 
         return (
             <CSSTransition
                 mountOnEnter
                 appear={ animateOnMount }
-                in={ triggerUnmount }
+                in={ in_ }
                 classNames={ FadeTransition.classes }
-                timeout={ duration }
+                timeout={ ANIMATION_DURATION }
                 onEntered={ this.handleOnEntered }
                 onExit={ this.handleOnExit }
                 onExited={ this.handleOnExited }>

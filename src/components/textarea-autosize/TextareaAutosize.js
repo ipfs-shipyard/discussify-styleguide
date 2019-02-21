@@ -1,6 +1,5 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
-import { findDOMNode } from 'react-dom';
 import classNames from 'classnames';
 import { isRequiredIf } from 'prop-type-conditionals';
 import growElementFn from '@moxy/grow-element-fn';
@@ -15,6 +14,7 @@ export default class TextareaAutosize extends Component {
         submitOnEnter: PropTypes.bool,
         onSubmit: isRequiredIf((props) => props.submitOnEnter, PropTypes.func),
         onFocus: PropTypes.func,
+        onKeyPress: PropTypes.func,
         onBlur: PropTypes.func,
         onChange: PropTypes.func,
         className: PropTypes.string,
@@ -76,7 +76,6 @@ export default class TextareaAutosize extends Component {
         // Create new comments when pressing enter without shift
         if (event.key === 'Enter' && !event.shiftKey) {
             event.preventDefault();
-            findDOMNode(this).blur();
             this.props.onSubmit();
         }
     };
