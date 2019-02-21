@@ -35,7 +35,7 @@ export default class FadeAndGrowTransition extends Component {
     }
 
     state = {
-        willAnimate: undefined,
+        willAnimate: null,
         isMounted: false,
     };
 

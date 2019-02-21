@@ -107,12 +107,12 @@ export default class CommentPlacer extends Component {
 
     renderFadeAndGrow = () => {
         const { animateOnMount, animateOnUnmount } = this.props;
-        const { in: in_, children } = this.state;
+        const { in: in_, animationHasChanged, children } = this.state;
 
         return (
             ({ totallyInView }) => (
                 <FadeAndGrowTransition
-                    animateOnMount={ animateOnMount && totallyInView }
+                    animateOnMount={ animationHasChanged ? false : animateOnMount && totallyInView }
                     animateOnUnmount={ animateOnUnmount }
                     in={ in_ }
                     onAnimationEnd={ this.handleAnimationEnd }>

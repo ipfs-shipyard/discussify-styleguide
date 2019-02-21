@@ -36,6 +36,7 @@ export default class Modal extends Component {
         overlayClassName: PropTypes.string,
         portalClassName: PropTypes.string,
         bodyOpenClassName: PropTypes.string,
+        parentSelector: PropTypes.func,
         children: PropTypes.node.isRequired,
     };
 

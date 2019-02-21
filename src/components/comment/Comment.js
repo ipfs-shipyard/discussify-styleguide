@@ -53,7 +53,6 @@ const Comment = ({
     comment,
     owner,
     preloadAvatarImage,
-    onViewMoreReplies,
     onReply,
     onEdit,
     onRemove,
