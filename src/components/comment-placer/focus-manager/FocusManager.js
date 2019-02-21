@@ -20,8 +20,8 @@ export default class FocusManager extends Component {
     };
 
     state = {
-        totallyInView: undefined,
-        inView: true,
+        totallyInView: null,
+        inView: null,
     };
 
     componentDidMount() {
@@ -44,7 +44,7 @@ export default class FocusManager extends Component {
         const { renderImmediately, className } = this.props;
         const { totallyInView, inView } = this.state;
         const containerClasses = classNames(styles.container, {
-            [styles.scaledDown]: !inView,
+            [styles.scaledDown]: inView === false,
         });
 
         return (
@@ -52,7 +52,7 @@ export default class FocusManager extends Component {
                 threshold={ [0, 1] }
                 onChange={ this.handleObserverChange }>
                 <div className={ classNames(containerClasses, className) }>
-                    { !renderImmediately && totallyInView !== undefined && this.renderChildren() }
+                    { !renderImmediately && totallyInView != null && this.renderChildren() }
                     { renderImmediately && this.renderChildren() }
                 </div>
             </Observer>
