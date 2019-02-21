@@ -14,6 +14,7 @@ export default class TextareaAutosize extends Component {
         submitOnEnter: PropTypes.bool,
         onSubmit: isRequiredIf((props) => props.submitOnEnter, PropTypes.func),
         onFocus: PropTypes.func,
+        onKeyPress: PropTypes.func,
         onBlur: PropTypes.func,
         onChange: PropTypes.func,
         className: PropTypes.string,

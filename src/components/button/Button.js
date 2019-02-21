@@ -21,7 +21,10 @@ export default class Button extends Component {
         feedback: 'none',
     };
 
-    state = {};
+    state = {
+        feedback: null,
+        feedbackOutcome: null,
+    };
 
     componentDidMount() {
         this.maybeHandleFeedbackChange();
@@ -95,7 +98,7 @@ export default class Button extends Component {
 
     handleProgressBarBegin = () => {
         this.clearFeedbackOutcomeTimers();
-        this.setState({ feedbackOutcome: undefined });
+        this.setState({ feedbackOutcome: null });
     };
 
     handleProgressBarEnd = () => {
@@ -105,7 +108,7 @@ export default class Button extends Component {
         this.setState({ feedbackOutcome: feedback }, () => {
             this.clearFeedbackOutcomeTimers();
             this.resetFeedbackOutcomeTimeoutId = setTimeout(() => {
-                this.setState({ feedbackOutcome: undefined });
+                this.setState({ feedbackOutcome: null });
             }, FEEDBACK_OUTCOME_VISIBLE_DURATION);
         });
     };

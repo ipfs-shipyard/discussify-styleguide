@@ -2,7 +2,7 @@
 @import "../../styles/mixins/typography";
 
 .commentInput {
-    min-width: 350px;
+    min-width: 30rem;
 
     & .textarea {
         width: 100%;
