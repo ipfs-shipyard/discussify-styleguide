@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/ipfs-shipyard/discussify-styleguide/compare/v0.6.0...v1.0.0) (2019-02-21)
+
+
+### Bug Fixes
+
+* fix icon keyboard not working correctly when interactive ([ebb79f8](https://github.com/ipfs-shipyard/discussify-styleguide/commit/ebb79f8))
+
+
+### Features
+
+* add comment-placer-component ([#5](https://github.com/ipfs-shipyard/discussify-styleguide/issues/5)) ([dfe61d3](https://github.com/ipfs-shipyard/discussify-styleguide/commit/dfe61d3))
+* add comments skeleton animation ([c3694fe](https://github.com/ipfs-shipyard/discussify-styleguide/commit/c3694fe))
+* adjust modal closing animation time ([1b0cfd4](https://github.com/ipfs-shipyard/discussify-styleguide/commit/1b0cfd4))
+
+
+
 <a name="0.6.0"></a>
 # [0.6.0](https://github.com/ipfs-shipyard/discussify-styleguide/compare/v0.5.0...v0.6.0) (2018-12-05)
 
