@@ -57,3 +57,5 @@ Alternatively you may change the `width` and `height` CSS properties.
 | interactive | boolean | false | True will make the icon behave similarly to a button |
 
 Any other properties supplied will be spread to the root element.
+
+When `interactive` is enabled, using `Enter` or `Spacebar` will trigger the `onClick` event, just as regular buttons.

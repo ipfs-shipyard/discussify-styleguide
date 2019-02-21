@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import styles from './Icon.css';
@@ -26,24 +26,35 @@ InlineIcon.propTypes = {
     svg: PropTypes.string.isRequired,
 };
 
-const Icon = (props) => {
-    const { svg, interactive, className, ...rest } = props;
-    const finalProps = {
-        tabIndex: interactive ? 0 : undefined,
-        ...rest,
-        svg,
-        className: classNames(styles.icon, interactive && styles.interactive, className),
+export default class Icon extends Component {
+    static propTypes = {
+        svg: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+        interactive: PropTypes.bool,
+        onClick: PropTypes.func,
+        onKeyDown: PropTypes.func,
+        className: PropTypes.string,
     };
 
-    return typeof svg === 'string' ?
-        <InlineIcon { ...finalProps } /> :
-        <SpriteIcon svg={ svg } { ...finalProps } />;
-};
+    render() {
+        const { svg, interactive, onKeyDown, className, ...rest } = this.props;
+        const finalProps = {
+            tabIndex: interactive ? 0 : undefined,
+            ...rest,
+            onKeyDown: interactive ? this.handleKeyDown : onKeyDown,
+            svg,
+            className: classNames(styles.icon, interactive && styles.interactive, className),
+        };
 
-Icon.propTypes = {
-    svg: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
-    interactive: PropTypes.bool,
-    className: PropTypes.string,
-};
+        return typeof svg === 'string' ?
+            <InlineIcon { ...finalProps } /> :
+            <SpriteIcon svg={ svg } { ...finalProps } />;
+    }
 
-export default Icon;
+    handleKeyDown = (event) => {
+        this.props.onKeyDown && this.props.onKeyDown(event);
+
+        if (event.key === 'Enter' || event.key === ' ') {
+            this.props.onClick && this.props.onClick(event);
+        }
+    };
+}
