@@ -13,6 +13,7 @@ export default class FocusManager extends Component {
             PropTypes.node,
         ]).isRequired,
         scrollIntoView: PropTypes.func.isRequired,
+        renderImmediately: PropTypes.bool,
         mountAnimationCompleted: PropTypes.bool,
         autofocus: PropTypes.bool,
         className: PropTypes.string,
@@ -40,24 +41,29 @@ export default class FocusManager extends Component {
     }
 
     render() {
-        const { children, className } = this.props;
+        const { renderImmediately, className } = this.props;
         const { totallyInView, inView } = this.state;
         const containerClasses = classNames(styles.container, {
             [styles.scaledDown]: !inView,
         });
-        const isChildrenFunction = typeof children === 'function';
 
         return (
             <Observer
                 threshold={ [0, 1] }
                 onChange={ this.handleObserverChange }>
                 <div className={ classNames(containerClasses, className) }>
-                    { typeof totallyInView !== 'undefined' && (
-                        isChildrenFunction ? children(totallyInView) : children
-                    ) }
+                    { !renderImmediately && totallyInView !== undefined && this.renderChildren() }
+                    { renderImmediately && this.renderChildren() }
                 </div>
             </Observer>
         );
+    }
+
+    renderChildren() {
+        const { children } = this.props;
+        const { totallyInView, inView } = this.state;
+
+        return typeof children === 'function' ? children({ inView, totallyInView }) : children;
     }
 
     isFocused = () => (document.activeElement && document.activeElement === this.getTextareaNode());

@@ -78,7 +78,7 @@ export default class CommentPlacer extends Component {
     }
 
     render() {
-        const { autofocus, className } = this.props;
+        const { animateOnMount, autofocus, className } = this.props;
         const { children, mountAnimationCompleted } = this.state;
 
         return (
@@ -87,6 +87,7 @@ export default class CommentPlacer extends Component {
                     <FocusManager
                         scrollIntoView={ this.scrollIntoView }
                         autofocus={ autofocus }
+                        renderImmediately={ !animateOnMount }
                         mountAnimationCompleted={ mountAnimationCompleted }
                         className={ className }>
                         { this.renderAnimationComponent() }
@@ -109,9 +110,9 @@ export default class CommentPlacer extends Component {
         const { triggerUnmount, children } = this.state;
 
         return (
-            (inView) => (
+            ({ totallyInView }) => (
                 <FadeAndGrowTransition
-                    animateOnMount={ animateOnMount && (!listHasScroll || inView) }
+                    animateOnMount={ animateOnMount && (!listHasScroll || totallyInView) }
                     animateOnUnmount={ animateOnUnmount }
                     triggerUnmount={ triggerUnmount }
                     onAnimationEnd={ this.handleAnimationEnd }>
