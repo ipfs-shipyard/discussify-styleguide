@@ -65,20 +65,12 @@ export default class TextareaAutosize extends Component {
         );
     }
 
-    focus() {
-        this.textareaRef.current && this.textareaRef.current.focus();
-    }
-
-    blur() {
-        this.textareaRef.current && this.textareaRef.current.blur();
-    }
-
     isAnimating() {
         return this.animating;
     }
 
-    getValue() {
-        return this.textareaRef.current ? this.textareaRef.current.value : null;
+    isFocused() {
+        return this.focused;
     }
 
     updateSize() {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import styles from './TextButton.css';
@@ -6,7 +6,7 @@ import styles from './TextButton.css';
 const renderIcon = (icon, className) =>
     icon ? React.cloneElement(icon, { className: classNames(styles.icon, className) }) : null;
 
-const TextButton = ({ icon, iconPosition, children, className, ...rest }) => {
+const TextButton = forwardRef(({ icon, iconPosition, children, className, ...rest }, ref) => {
     const finalClassName = classNames(
         styles.textButton,
         styles[iconPosition],
@@ -14,13 +14,13 @@ const TextButton = ({ icon, iconPosition, children, className, ...rest }) => {
     );
 
     return (
-        <button { ...rest } className={ finalClassName }>
+        <button ref={ ref } { ...rest } className={ finalClassName }>
             { icon && iconPosition === 'left' ? renderIcon(icon, icon.props.className) : null }
             <span className={ styles.text }>{ children }</span>
             { icon && iconPosition === 'right' ? renderIcon(icon, icon.props.className) : null }
         </button>
     );
-};
+});
 
 TextButton.propTypes = {
     children: PropTypes.node.isRequired,

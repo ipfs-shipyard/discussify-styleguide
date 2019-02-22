@@ -1,4 +1,5 @@
 import React, { PureComponent, createRef } from 'react';
+import { findDOMNode } from 'react-dom';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import isWhitespace from 'is-whitespace';
@@ -38,6 +39,7 @@ export default class CommentInput extends PureComponent {
     };
 
     textareaAutosizeRef = createRef();
+    cancelButtonWithConfirmationRef = createRef();
     pendingAction = null;
 
     constructor(props) {
@@ -92,8 +94,8 @@ export default class CommentInput extends PureComponent {
                         { changed ? (
                             <ModalTrigger modal={ <ConfirmCancelModal onConfirm={ onCancel } /> }>
                                 <TextButton
-                                    onMouseDown={ this.handleCancelMouseDown }
-                                    onClick={ this.handleCancelClick }
+                                    ref={ this.cancelButtonWithConfirmationRef }
+                                    onMouseDown={ this.handleConfirmCancelMouseDown }
                                     className={ styles.button }>
                                         Cancel
                                 </TextButton>
@@ -114,7 +116,7 @@ export default class CommentInput extends PureComponent {
 
     handleTextareaChange = () => {
         const originalBody = this.props.body || '';
-        const body = this.textareaAutosizeRef.current.getValue();
+        const body = findDOMNode(this.textareaAutosizeRef.current).value;
 
         this.setState({
             empty: isBodyEmpty(body),
@@ -128,7 +130,7 @@ export default class CommentInput extends PureComponent {
 
     handleTextareaSubmit = () => {
         this.pendingAction = 'submit';
-        this.textareaAutosizeRef.current.blur();
+        findDOMNode(this.textareaAutosizeRef.current).blur();
     };
 
     handleTextareaAnimationEnd = () => {
@@ -144,12 +146,16 @@ export default class CommentInput extends PureComponent {
         this.handlePendingAction();
     };
 
+    handleConfirmCancelMouseDown = () => {
+        this.pendingAction = 'confirmCancel';
+    };
+
     handleSaveMouseDown = () => {
         this.pendingAction = 'submit';
     };
 
     handleSaveClick = () => {
-        this.pendingAction = 'cancel';
+        this.pendingAction = 'submit';
         this.handlePendingAction();
     };
 
@@ -159,12 +165,22 @@ export default class CommentInput extends PureComponent {
             return;
         }
 
-        if (this.pendingAction === 'submit') {
-            const body = this.textareaAutosizeRef.current.getValue();
+        switch (this.pendingAction) {
+        case 'submit': {
+            const body = findDOMNode(this.textareaAutosizeRef.current).value;
 
             !isWhitespace(body) && this.props.onSubmit(body);
-        } else if (this.pendingAction === 'cancel') {
+            break;
+        }
+        case 'cancel': {
             this.props.onCancel();
+            break;
+        }
+        case 'confirmCancel': {
+            findDOMNode(this.cancelButtonWithConfirmationRef.current).click();
+            break;
+        }
+        default:
         }
 
         this.pendingAction = null;
