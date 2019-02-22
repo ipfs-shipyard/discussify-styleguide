@@ -1,5 +1,4 @@
 import React, { PureComponent, createRef } from 'react';
-import { findDOMNode } from 'react-dom';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import isWhitespace from 'is-whitespace';
@@ -39,6 +38,7 @@ export default class CommentInput extends PureComponent {
     };
 
     textareaAutosizeRef = createRef();
+    pendingAction = null;
 
     constructor(props) {
         super();
@@ -65,9 +65,10 @@ export default class CommentInput extends PureComponent {
                     rows={ 1 }
                     maxRows={ 10 }
                     submitOnEnter
-                    onSubmit={ this.handleSubmitClick }
+                    onFocus={ this.handleTextareaFocus }
+                    onSubmit={ this.handleTextareaSubmit }
                     onChange={ this.handleTextareaChange }
-                    onTransitionEnd={ this.handleTextareaTransitionEnd }
+                    onAnimationEnd={ this.handleTextareaAnimationEnd }
                     className={ styles.textarea } />
 
                 <div className={ styles.bottomBar }>
@@ -79,8 +80,8 @@ export default class CommentInput extends PureComponent {
 
                     <div className={ styles.actions }>
                         <TextButton
-                            onMouseDown={ this.handleActionMouseDown }
-                            onClick={ this.handleSubmitClick }
+                            onMouseDown={ this.handleSaveMouseDown }
+                            onClick={ this.handleSaveClick }
                             disabled={ empty }
                             className={ styles.button }>
                             { reply ? 'Send' : 'Save' }
@@ -91,14 +92,15 @@ export default class CommentInput extends PureComponent {
                         { changed ? (
                             <ModalTrigger modal={ <ConfirmCancelModal onConfirm={ onCancel } /> }>
                                 <TextButton
-                                    onMouseDown={ this.handleActionMouseDown }
+                                    onMouseDown={ this.handleCancelMouseDown }
+                                    onClick={ this.handleCancelClick }
                                     className={ styles.button }>
                                         Cancel
                                 </TextButton>
                             </ModalTrigger>
                         ) : (
                             <TextButton
-                                onMouseDown={ this.handleActionMouseDown }
+                                onMouseDown={ this.handleCancelMouseDown }
                                 onClick={ this.handleCancelClick }
                                 className={ styles.button }>
                                     Cancel
@@ -110,39 +112,9 @@ export default class CommentInput extends PureComponent {
         );
     }
 
-    handleActionMouseDown = (event) => {
-        // Since the textarea animates, when the mouseup happens the mouse is no longer within the button
-        // Because of that we trigger click() manually after the animation ends
-        const textareaNode = findDOMNode(this.textareaAutosizeRef.current);
-        const textareaFocused = document.activeElement === textareaNode;
-
-        this.buttonToTriggerClick = textareaFocused ? event.currentTarget : null;
-    };
-
-    handleCancelClick = () => {
-        if (this.buttonToTriggerClick) {
-            return;
-        }
-
-        this.props.onCancel();
-    };
-
-    handleSubmitClick = () => {
-        if (this.buttonToTriggerClick) {
-            return;
-        }
-
-        const textareaNode = findDOMNode(this.textareaAutosizeRef.current);
-        const body = textareaNode.value;
-
-        if (!isWhitespace(body)) {
-            this.props.onSubmit(body);
-        }
-    };
-
-    handleTextareaChange = (event) => {
+    handleTextareaChange = () => {
         const originalBody = this.props.body || '';
-        const body = event.target.value;
+        const body = this.textareaAutosizeRef.current.getValue();
 
         this.setState({
             empty: isBodyEmpty(body),
@@ -150,14 +122,51 @@ export default class CommentInput extends PureComponent {
         });
     };
 
-    handleTextareaTransitionEnd = () => {
-        if (!this.buttonToTriggerClick) {
+    handleTextareaFocus = () => {
+        this.pendingAction = null;
+    };
+
+    handleTextareaSubmit = () => {
+        this.pendingAction = 'submit';
+        this.textareaAutosizeRef.current.blur();
+    };
+
+    handleTextareaAnimationEnd = () => {
+        this.handlePendingAction();
+    };
+
+    handleCancelMouseDown = () => {
+        this.pendingAction = 'cancel';
+    };
+
+    handleCancelClick = () => {
+        this.pendingAction = 'cancel';
+        this.handlePendingAction();
+    };
+
+    handleSaveMouseDown = () => {
+        this.pendingAction = 'submit';
+    };
+
+    handleSaveClick = () => {
+        this.pendingAction = 'cancel';
+        this.handlePendingAction();
+    };
+
+    handlePendingAction = () => {
+        // If textarea is animating, wait till the animation finishes
+        if (this.textareaAutosizeRef.current.isAnimating()) {
             return;
         }
 
-        const buttonToTriggerClick = this.buttonToTriggerClick;
+        if (this.pendingAction === 'submit') {
+            const body = this.textareaAutosizeRef.current.getValue();
 
-        this.buttonToTriggerClick = null;
-        buttonToTriggerClick.click();
+            !isWhitespace(body) && this.props.onSubmit(body);
+        } else if (this.pendingAction === 'cancel') {
+            this.props.onCancel();
+        }
+
+        this.pendingAction = null;
     };
 }

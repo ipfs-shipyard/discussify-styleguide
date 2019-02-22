@@ -6,6 +6,8 @@ import growElementFn from '@moxy/grow-element-fn';
 import { debounce } from 'lodash';
 import styles from './TextareaAutosize.css';
 
+const ANIMATION_DURATION = 250;
+
 export default class TextareaAutosize extends Component {
     static propTypes = {
         rows: PropTypes.number,
@@ -13,8 +15,10 @@ export default class TextareaAutosize extends Component {
         animate: PropTypes.bool,
         submitOnEnter: PropTypes.bool,
         onSubmit: isRequiredIf((props) => props.submitOnEnter, PropTypes.func),
+        onAnimationEnd: PropTypes.func,
+        onTransitionEnd: PropTypes.func,
         onFocus: PropTypes.func,
-        onKeyPress: PropTypes.func,
+        onKeyDown: PropTypes.func,
         onBlur: PropTypes.func,
         onChange: PropTypes.func,
         className: PropTypes.string,
@@ -27,6 +31,8 @@ export default class TextareaAutosize extends Component {
     };
 
     textareaRef = createRef();
+    animating = false;
+    focused = false;
 
     componentDidMount() {
         this.updateSize();
@@ -38,6 +44,7 @@ export default class TextareaAutosize extends Component {
     }
 
     componentWillUnmount() {
+        clearTimeout(this.resetAnimatingTimeout);
         window.removeEventListener('resize', this.handleResize);
     }
 
@@ -49,7 +56,8 @@ export default class TextareaAutosize extends Component {
             <textarea
                 { ...rest }
                 ref={ this.textareaRef }
-                onKeyPress={ this.handleKeyPress }
+                onTransitionEnd={ this.handleTransitionEnd }
+                onKeyDown={ this.handleKeyDown }
                 onFocus={ this.handleFocus }
                 onBlur={ this.handleBlur }
                 onChange={ this.handleChange }
@@ -57,7 +65,30 @@ export default class TextareaAutosize extends Component {
         );
     }
 
+    focus() {
+        this.textareaRef.current && this.textareaRef.current.focus();
+    }
+
+    blur() {
+        this.textareaRef.current && this.textareaRef.current.blur();
+    }
+
+    isAnimating() {
+        return this.animating;
+    }
+
+    getValue() {
+        return this.textareaRef.current ? this.textareaRef.current.value : null;
+    }
+
     updateSize() {
+        this.animating = true;
+
+        // Start a timer in case height will not change by `growElementFn`
+        // This ensures that `animating` is reseted and `props.onAnimationEnd` is called
+        clearTimeout(this.resetAnimatingTimeout);
+        this.resetAnimatingTimeout = setTimeout(this.handleAnimationEnd, ANIMATION_DURATION);
+
         growElementFn({
             el: this.textareaRef.current,
             minLines: this.props.rows,
@@ -66,8 +97,8 @@ export default class TextareaAutosize extends Component {
         });
     }
 
-    handleKeyPress = (event) => {
-        this.props.onKeyPress && this.props.onKeyPress(event);
+    handleKeyDown = (event) => {
+        this.props.onKeyDown && this.props.onKeyDown(event);
 
         if (event.defaultPrevented || !this.props.submitOnEnter) {
             return;
@@ -95,6 +126,17 @@ export default class TextareaAutosize extends Component {
     handleChange = (event) => {
         this.updateSize();
         this.props.onChange && this.props.onChange(event);
+    };
+
+    handleTransitionEnd = (event) => {
+        this.props.onTransitionEnd && this.props.onTransitionEnd(event);
+        this.handleAnimationEnd();
+    };
+
+    handleAnimationEnd = () => {
+        this.animating = false;
+        clearTimeout(this.resetAnimatingTimeout);
+        this.props.onAnimationEnd && this.props.onAnimationEnd();
     };
 
     handleResize = debounce(() => this.updateSize(), 500);
