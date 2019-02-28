@@ -172,7 +172,7 @@ Checks if the project has any linting errors.
 $ npm run release
 ```
 
-Releases and publishes the package. Runs tests, lints and builds the project beforehand.
+Releases a new version of the package. Runs tests, lints and builds the project beforehand. If successful, you may publish the release to npm by running `$ npm publish`.
 
 This command uses [`standard-version`](https://github.com/conventional-changelog/standard-version) underneath. The version is automatically inferred from the [conventional commits](https://conventionalcommits.org/).
 
