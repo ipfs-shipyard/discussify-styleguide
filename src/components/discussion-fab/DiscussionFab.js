@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import BrandLogo from '../brand-logo';
 import styles from './DiscussionFab.css';
 
-const DicussionFab = ({ className, active, commentsCount, hasUnread, ...rest }) => {
+const DicussionFab = ({ className, logoClassName, active, commentsCount, hasUnread, ...rest }) => {
     const hasComments = commentsCount > 0;
     const finalClassName = classNames(
         styles.discussionFab,
@@ -12,12 +12,13 @@ const DicussionFab = ({ className, active, commentsCount, hasUnread, ...rest }) 
         hasComments && hasUnread && styles.hasUnread,
         className
     );
+    const logoFinalClassName = classNames(styles.logo, logoClassName);
 
     return (
         <button { ...rest } className={ finalClassName }>
             { hasComments ?
                 <span className={ styles.commentsCount }>{ commentsCount }</span> :
-                <BrandLogo variant="logomark" className={ styles.logo } /> }
+                <BrandLogo variant="logomark" className={ logoFinalClassName } /> }
         </button>
     );
 };
@@ -27,6 +28,7 @@ DicussionFab.propTypes = {
     commentsCount: PropTypes.number,
     hasUnread: PropTypes.bool,
     className: PropTypes.string,
+    logoClassName: PropTypes.string,
 };
 
 export default DicussionFab;
