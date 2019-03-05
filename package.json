@@ -1,6 +1,6 @@
 {
   "name": "@discussify/styleguide",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Discussify's living styleguide",
   "main": "dist/index.js",
   "module": "dist/index.js",

@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/ipfs-shipyard/discussify-styleguide/compare/v1.0.0...v1.1.0) (2019-03-05)
+
+
+### Bug Fixes
+
+* fix comment input not waiting for animation when using keyboard ([#9](https://github.com/ipfs-shipyard/discussify-styleguide/issues/9)) ([c08f068](https://github.com/ipfs-shipyard/discussify-styleguide/commit/c08f068))
+* fix previous commit ([1e88ec1](https://github.com/ipfs-shipyard/discussify-styleguide/commit/1e88ec1))
+
+
+### Features
+
+* allow adding class names to fab logo ([#10](https://github.com/ipfs-shipyard/discussify-styleguide/issues/10)) ([e2e4208](https://github.com/ipfs-shipyard/discussify-styleguide/commit/e2e4208))
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/ipfs-shipyard/discussify-styleguide/compare/v0.6.0...v1.0.0) (2019-02-21)
 
